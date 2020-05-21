@@ -1,6 +1,18 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import SectionCoursesItem from '../SectionCourseItem/section-courses-item'
+import {
+  View,
+  Text,
+  ScrollView,
+  Button,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+} from 'react-native';
+import SectionCoursesItem from '../SectionCourseItem/section-courses-item';
+import SectionFeaturePath from '../SectionCourseItem/section-feature-path';
+import SectionFeatureChannel from '../SectionCourseItem/section-feature-channel';
+import SectionMyChannel from '../SectionCourseItem/section-my-channel';
+import { render } from 'react-dom';
 
 const SectionCourses = (props) => {
   const courses = [
@@ -21,29 +33,126 @@ const SectionCourses = (props) => {
       duration: '5 hours',
     },
     {
-        id: 3,
-        title: 'Android',
-        author: 'Kianto',
-        level: 'Intermediate',
-        release: 'May 12, 2020',
-        duration: '15 hours',
-      },
+      id: 3,
+      title: 'Android',
+      author: 'Kianto',
+      level: 'Intermediate',
+      release: 'May 12, 2020',
+      duration: '15 hours',
+    },
   ];
-  
-  const renderListItems = (courses) => {
-    return courses.map(item => <SectionCoursesItem item = {item}/>)
-  }
+
+  const featurePaths = [
+    {
+      title: 'Visual Studio',
+      total: 10,
+    },
+    {
+      title: 'Apllication Development on Microsoft Azure',
+      total: 9,
+    },
+    {
+      title: 'Angular',
+      total: 14,
+    },
+    {
+      title: 'Designing Microsoft Azure Applications',
+      total: 8,
+    },
+    {
+      title: 'C# Development Fundamental',
+      total: 14,
+    },
+  ];
+
+  const featureChannels = [
+    {
+      title: 'Microsoft Azure Developers',
+      author: 'Pluralsight + Microsoft',
+      total: 8227,
+    },
+    {
+      title: 'Microsoft Azure Solution Architects',
+      author: 'Pluralsight + Microsoft',
+      total: 12481,
+    },
+    {
+      title: 'Microsoft Azure Devops Engineers',
+      author: 'Pluralsight + Microsoft',
+      total: 2208,
+    },
+    {
+      title: '.NET Developer on Microsoft Azure',
+      author: 'Pluralsight + Microsoft',
+      total: 689,
+    },
+    {
+      title: 'Node.js Developer on Microsoft Azure',
+      author: 'Pluralsight + Microsoft',
+      total: 226,
+    },
+  ];
+
+  const myChannel = [
+    {
+      title: "react"
+    }
+  ]
+
+  const title = {
+    ContinueLearning: 'Continue learning',
+    FeaturePath: 'Featured Paths',
+    FeaturedChannels: 'Featured Channels',
+    CourseList: 'Course List',
+    MyPath: 'My paths',
+    MyChannel: 'My channels',
+  };
 
   return (
     <View>
-      <View>
+      <View style={styles.header}>
         <Text>{props.title}</Text>
+        <TouchableOpacity>
+          <Text>See all ></Text>
+        </TouchableOpacity>
       </View>
-      <ScrollView horizontal={true}>
-        {renderListItems(courses)}
-      </ScrollView>
+      {(props.title === title.ContinueLearning ||
+        props.title === title.CourseList) && (
+        <FlatList
+          horizontal={true}
+          data={courses}
+          renderItem={({ item }) => <SectionCoursesItem item={item} />}
+        ></FlatList>
+      )}
+      {(props.title === title.FeaturePath || props.title === title.MyPath) && (
+        <FlatList
+          horizontal={true}
+          data={featurePaths}
+          renderItem={({ item }) => <SectionFeaturePath item={item} />}
+        ></FlatList>
+      )}
+      {props.title === title.FeaturedChannels && (
+        <FlatList
+          horizontal={true}
+          data={featureChannels}
+          renderItem={({ item }) => <SectionFeatureChannel item={item} />}
+        ></FlatList>
+      )}
+      {props.title === title.MyChannel && (
+        <FlatList
+          horizontal={true}
+          data={myChannel}
+          renderItem={({ item }) => <SectionMyChannel item={item} />}
+        ></FlatList>
+      )}
     </View>
   );
 };
 
 export default SectionCourses;
+const styles = StyleSheet.create({
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+});

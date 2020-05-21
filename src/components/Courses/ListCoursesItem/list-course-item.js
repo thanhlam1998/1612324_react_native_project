@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 const ListCourseItem = (props) => {
   return (
-    <View style={styles.item}>
+    <TouchableOpacity style={styles.item}>
       <Image source={require('../../../../assets/ic_course.jpg')} style={styles.image} />
       <View style={{ margin: 5 }}>
         <Text style={{ fontSize: 16 }}>{props.item.title}</Text>
@@ -12,7 +12,7 @@ const ListCourseItem = (props) => {
           style={styles.darkText}
         >{`${props.item.level}  .  ${props.item.release}  .  ${props.item.duration}`}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
