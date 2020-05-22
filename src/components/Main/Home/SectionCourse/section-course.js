@@ -95,9 +95,9 @@ const SectionCourses = (props) => {
 
   const myChannel = [
     {
-      title: "react"
-    }
-  ]
+      title: 'react',
+    },
+  ];
 
   const title = {
     ContinueLearning: 'Continue learning',
@@ -116,6 +116,7 @@ const SectionCourses = (props) => {
           <Text>See all ></Text>
         </TouchableOpacity>
       </View>
+
       {(props.title === title.ContinueLearning ||
         props.title === title.CourseList) && (
         <FlatList

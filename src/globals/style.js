@@ -29,7 +29,6 @@ export default StyleSheet.create({
 /* ------------------------ Default margin for layout with status bar ----------------------- */
   marginForLayout: {
     marginTop: Constants.statusBarHeight,
-    marginLeft: 5,
-    marginRight: 5,
+    margin: 10
   },
 });
