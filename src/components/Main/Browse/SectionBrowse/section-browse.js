@@ -144,7 +144,8 @@ const SectionBrowse = (props) => {
         </View>
       )}
         {!props.title && (
-          <ScrollView horizontal={true}>
+          <ScrollView horizontal={true}
+          showsHorizontalScrollIndicator={false}>
             <FlatList
               contentContainerStyle={{ alignSelf: 'flex-start' }}
               data={categories}

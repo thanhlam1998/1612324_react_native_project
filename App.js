@@ -11,13 +11,22 @@ import {createStackNavigator} from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const BottomTab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
+function HomeStack(){
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home}/>
+      <Stack.Screen name="ListCourse" component={ListCourses}/>
+    </Stack.Navigator>
+  )
+}
 
 export default function App() {
   return (
     <NavigationContainer>
       <BottomTab.Navigator>
-        <BottomTab.Screen name="Home" component = {Home} />
+        <BottomTab.Screen name="Home" component = {HomeStack} />
         <BottomTab.Screen name="Download" component = {Download} />
         <BottomTab.Screen name="Browse" component = {Browse} />
         <BottomTab.Screen name="Search" component = {Search} />

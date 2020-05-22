@@ -18,10 +18,11 @@ const Home = (props) => {
     alert('Press on new release');
   };
   return (
-    <ScrollView style={DefaultStyle.marginForLayout}>
+    <ScrollView style={DefaultStyle.marginForLayout}
+    showsVerticalScrollIndicator={false}>
       <ImageButton title="Visual Studio" onPress={onPressNewReleases} />
       {titles.map((title, key) => (
-        <SectionCourse key={key} title={title} />
+        <SectionCourse navigation={props.navigation} key={key} title={title} />
       ))}
     </ScrollView>
   );

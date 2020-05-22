@@ -116,14 +116,21 @@ const SectionCourses = (props) => {
           <Text>See all ></Text>
         </TouchableOpacity>
       </View>
-
       {(props.title === title.ContinueLearning ||
         props.title === title.CourseList) && (
-        <FlatList
-          horizontal={true}
-          data={courses}
-          renderItem={({ item }) => <SectionCoursesItem item={item} />}
-        ></FlatList>
+        <View>
+          <View style={styles.header}>
+            <Text>{props.title}</Text>
+            <TouchableOpacity onPress={()=>props.navigation.navigate('ListCourse')}>
+              <Text>See all ></Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            horizontal={true}
+            data={courses}
+            renderItem={({ item }) => <SectionCoursesItem item={item} />}
+          ></FlatList>
+        </View>
       )}
       {(props.title === title.FeaturePath || props.title === title.MyPath) && (
         <FlatList
