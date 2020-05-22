@@ -8,10 +8,10 @@ import {
   StyleSheet,
   FlatList,
 } from 'react-native';
-import SectionCoursesItem from '../SectionCourseItem/section-courses-item';
-import SectionFeaturePath from '../SectionCourseItem/section-feature-path';
-import SectionFeatureChannel from '../SectionCourseItem/section-feature-channel';
-import SectionMyChannel from '../SectionCourseItem/section-my-channel';
+import SectionCoursesItem from '../SectionItem/section-courses-item';
+import SectionFeaturePath from '../SectionItem/section-feature-path';
+import SectionFeatureChannel from '../SectionItem/section-feature-channel';
+import SectionMyChannel from '../SectionItem/section-my-channel';
 import { render } from 'react-dom';
 
 const SectionCourses = (props) => {

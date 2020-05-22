@@ -4,6 +4,9 @@ import Home from './src/components/Main/Home/home'
 import Constants from 'expo-constants'
 import ListCourses from './src/components/Courses/ListCourses/list-courses';
 import NavigationContainer from '@react-navigation/native/src/NavigationContainer'
+import Download from './src/components/Main/Download/download'
+import Browse from './src/components/Main/Browse/browse'
+import Search from './src/components/Main/Search/search'
 import {createStackNavigator} from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -15,7 +18,9 @@ export default function App() {
     <NavigationContainer>
       <BottomTab.Navigator>
         <BottomTab.Screen name="Home" component = {Home} />
-        <BottomTab.Screen name="ListCourse" component = {ListCourses} />
+        <BottomTab.Screen name="Download" component = {Download} />
+        <BottomTab.Screen name="Browse" component = {Browse} />
+        <BottomTab.Screen name="Search" component = {Search} />
       </BottomTab.Navigator>
     </NavigationContainer>
 

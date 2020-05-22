@@ -19,7 +19,7 @@ const Home = (props) => {
   };
   return (
     <ScrollView style={DefaultStyle.marginForLayout}>
-      <ImageButton title="NEW RELEASES" onPress={onPressNewReleases} />
+      <ImageButton title="Visual Studio" onPress={onPressNewReleases} />
       {titles.map((title, key) => (
         <SectionCourse key={key} title={title} />
       ))}

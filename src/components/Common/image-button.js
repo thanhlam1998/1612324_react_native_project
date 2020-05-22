@@ -5,7 +5,7 @@ const ImageButton = (props) => {
   return <ImageBackground style={styles.button} source={{uri:'https://image.freepik.com/free-vector/futuristic-technology-background-with-honeycombs_23-2148481277.jpg'}}>
       <TouchableOpacity style={styles.touchable}
       onPress = {props.onPress}>
-          <Text style={styles.text}>{props.title}></Text>
+          <Text style={styles.text}>{props.title}</Text>
       </TouchableOpacity>
   </ImageBackground>;
 };
