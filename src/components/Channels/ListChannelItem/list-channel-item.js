@@ -1,24 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import DefaultStyle from '../../../../globals/style';
+import DefaultStyle from '../../../globals/style';
 
-const SectionFeatureChannel= (props) => {
+const ListChannelItem = (props) => {
   return (
-    <View style={DefaultStyle.item}>
+    <TouchableOpacity style={DefaultStyle.item_horizontal}>
       <Image
-        source={require('../../../../../assets/ic_course.jpg')}
-        style={DefaultStyle.image}
+        source={require('../../../../assets/ic_course.jpg')}
+        style={DefaultStyle.item_horizontal_image}
       />
       <View style={DefaultStyle.contentMargin}>
         <Text style={DefaultStyle.title}>{props.item.title}</Text>
         <Text style={DefaultStyle.darkText}>
-          {props.item.author}{' '}&middot;{' '}
-          {props.item.total}{' '}
+          {props.item.author} &middot; {props.item.total}{' '}
           {props.item.total > 0 ? <Text>members</Text> : <Text>member</Text>}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
-export default SectionFeatureChannel;
+export default ListChannelItem;
+
+const styles = StyleSheet.create({});

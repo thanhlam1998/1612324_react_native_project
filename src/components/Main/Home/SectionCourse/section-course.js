@@ -110,18 +110,14 @@ const SectionCourses = (props) => {
 
   return (
     <View>
-      <View style={styles.header}>
-        <Text>{props.title}</Text>
-        <TouchableOpacity>
-          <Text>See all ></Text>
-        </TouchableOpacity>
-      </View>
       {(props.title === title.ContinueLearning ||
         props.title === title.CourseList) && (
         <View>
           <View style={styles.header}>
             <Text>{props.title}</Text>
-            <TouchableOpacity onPress={()=>props.navigation.navigate('ListCourse')}>
+            <TouchableOpacity
+              onPress={() => props.navigation.push('ListCourse')}
+            >
               <Text>See all ></Text>
             </TouchableOpacity>
           </View>
@@ -133,25 +129,53 @@ const SectionCourses = (props) => {
         </View>
       )}
       {(props.title === title.FeaturePath || props.title === title.MyPath) && (
-        <FlatList
-          horizontal={true}
-          data={featurePaths}
-          renderItem={({ item }) => <SectionFeaturePath item={item} />}
-        ></FlatList>
+        <View>
+          <View style={styles.header}>
+            <Text>{props.title}</Text>
+            <TouchableOpacity
+              onPress={() => props.navigation.push('ListPaths')}
+            >
+              <Text>See all ></Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            horizontal={true}
+            data={featurePaths}
+            renderItem={({ item }) => <SectionFeaturePath item={item} />}
+          ></FlatList>
+        </View>
       )}
       {props.title === title.FeaturedChannels && (
-        <FlatList
-          horizontal={true}
-          data={featureChannels}
-          renderItem={({ item }) => <SectionFeatureChannel item={item} />}
-        ></FlatList>
+        <View>
+          <View style={styles.header}>
+            <Text>{props.title}</Text>
+            <TouchableOpacity
+              onPress={() => props.navigation.push('ListChannels')}
+            >
+              <Text>See all ></Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            horizontal={true}
+            data={featureChannels}
+            renderItem={({ item }) => <SectionFeatureChannel item={item} />}
+          ></FlatList>
+        </View>
       )}
       {props.title === title.MyChannel && (
-        <FlatList
-          horizontal={true}
-          data={myChannel}
-          renderItem={({ item }) => <SectionMyChannel item={item} />}
-        ></FlatList>
+        <View>
+          <View style={styles.header}>
+            <Text>{props.title}</Text>
+            <TouchableOpacity>
+              <Text>See all ></Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            horizontal={true}
+            data={myChannel}
+            renderItem={({ item }) => <SectionMyChannel item={item} />}
+          ></FlatList>
+        </View>
       )}
     </View>
   );

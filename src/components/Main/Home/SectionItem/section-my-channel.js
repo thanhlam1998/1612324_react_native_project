@@ -1,16 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import itemStyle from '../../../../globals/style';
+import DefaultStyle from '../../../../globals/style';
 
 const SectionMyChannel = (props) => {
   return (
-    <View style={itemStyle.item}>
+    <View style={DefaultStyle.item}>
       <Image
         source={require('../../../../../assets/ic_course.jpg')}
-        style={itemStyle.image}
+        style={DefaultStyle.image}
       />
-      <View style={itemStyle.contentMargin}>
-        <Text style={itemStyle.title}>{props.item.title}</Text>
+      <View style={DefaultStyle.contentMargin}>
+        <Text style={DefaultStyle.title}>{props.item.title}</Text>
       </View>
     </View>
   );

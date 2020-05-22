@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/components/Main/Home/home'
 import Constants from 'expo-constants'
 import ListCourses from './src/components/Courses/ListCourses/list-courses';
+import ListPaths from './src/components/Paths/ListPaths/list-paths'
+import ListChannels from './src/components/Channels/ListChannels/list_channels'
 import NavigationContainer from '@react-navigation/native/src/NavigationContainer'
 import Download from './src/components/Main/Download/download'
 import Browse from './src/components/Main/Browse/browse'
@@ -18,6 +20,8 @@ function HomeStack(){
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home}/>
       <Stack.Screen name="ListCourse" component={ListCourses}/>
+      <Stack.Screen name="ListPaths" component={ListPaths}/>
+      <Stack.Screen name="ListChannels" component={ListChannels}/>
     </Stack.Navigator>
   )
 }
