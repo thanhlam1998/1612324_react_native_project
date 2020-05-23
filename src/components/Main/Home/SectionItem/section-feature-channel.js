@@ -4,7 +4,7 @@ import DefaultStyle from '../../../../globals/style';
 
 const SectionFeatureChannel= (props) => {
   return (
-    <View style={DefaultStyle.item}>
+    <TouchableOpacity style={DefaultStyle.item}>
       <Image
         source={require('../../../../../assets/ic_course.jpg')}
         style={DefaultStyle.image}
@@ -17,7 +17,7 @@ const SectionFeatureChannel= (props) => {
           {props.item.total > 0 ? <Text>members</Text> : <Text>member</Text>}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

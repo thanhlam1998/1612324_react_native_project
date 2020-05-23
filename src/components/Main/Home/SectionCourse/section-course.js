@@ -116,7 +116,9 @@ const SectionCourses = (props) => {
           <View style={styles.header}>
             <Text>{props.title}</Text>
             <TouchableOpacity
-              onPress={() => props.navigation.push('ListCourse')}
+              onPress={() => {
+                props.navigation.navigate('ListCourse', { name: props.title });
+              }}
             >
               <Text>See all ></Text>
             </TouchableOpacity>
@@ -133,7 +135,9 @@ const SectionCourses = (props) => {
           <View style={styles.header}>
             <Text>{props.title}</Text>
             <TouchableOpacity
-              onPress={() => props.navigation.push('ListPaths')}
+              onPress={() =>
+                props.navigation.navigate('ListPaths', { name: props.title })
+              }
             >
               <Text>See all ></Text>
             </TouchableOpacity>
@@ -150,7 +154,9 @@ const SectionCourses = (props) => {
           <View style={styles.header}>
             <Text>{props.title}</Text>
             <TouchableOpacity
-              onPress={() => props.navigation.push('ListChannels')}
+              onPress={() =>
+                props.navigation.navigate('ListChannels', { name: props.title })
+              }
             >
               <Text>See all ></Text>
             </TouchableOpacity>

@@ -28,8 +28,8 @@ export default StyleSheet.create({
 
   /* ------------------------ Default margin for layout with status bar ----------------------- */
   marginForLayout: {
-    marginTop: Constants.statusBarHeight,
-    margin: 10,
+    marginLeft: 10,
+    marginRight: 10,
   },
 
   /* -- Default style for item in FlatView, SectionView with horizontal view -- */

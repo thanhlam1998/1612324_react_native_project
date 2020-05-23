@@ -4,7 +4,7 @@ import DefaultStyle from '../../../../globals/style';
 
 const SectionMyChannel = (props) => {
   return (
-    <View style={DefaultStyle.item}>
+    <TouchableOpacity style={DefaultStyle.item}>
       <Image
         source={require('../../../../../assets/ic_course.jpg')}
         style={DefaultStyle.image}
@@ -12,7 +12,7 @@ const SectionMyChannel = (props) => {
       <View style={DefaultStyle.contentMargin}>
         <Text style={DefaultStyle.title}>{props.item.title}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

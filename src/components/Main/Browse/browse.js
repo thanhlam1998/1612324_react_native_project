@@ -14,7 +14,8 @@ const Browse = () => {
         'Top Authors'
     ]   
     return (
-        <ScrollView style={DefaultStyle.marginForLayout}>
+        <ScrollView style={DefaultStyle.marginForLayout}
+                    showsVerticalScrollIndicator={false}>
             <ImageButton title="NEW RELEASE" url={"https://www.conceptdata.co.uk/images/blog/blog-flat-wallpapers.gif"}/>
             <ImageButton title="RECOMMEND FOR YOU" url={"https://hd-background.com/wp-content/uploads/2019/12/blue-vector-wallpaper-7216-hd-wallpapers.jpg"}/>
             {titles.map((title, key) => (

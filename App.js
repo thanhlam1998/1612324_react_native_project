@@ -19,9 +19,33 @@ function HomeStack(){
   return(
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home}/>
-      <Stack.Screen name="ListCourse" component={ListCourses}/>
-      <Stack.Screen name="ListPaths" component={ListPaths}/>
-      <Stack.Screen name="ListChannels" component={ListChannels}/>
+      <Stack.Screen name="ListCourse" component={ListCourses} options={({route}) => ({title: route.params.name})}/>
+      <Stack.Screen name="ListPaths" component={ListPaths} options={({route}) => ({title: route.params.name})}/>
+      <Stack.Screen name="ListChannels" component={ListChannels} options={({route}) => ({title: route.params.name})}/>
+    </Stack.Navigator>
+  )
+}
+
+function DownLoadStack(){
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="Download" component={Download}/>
+    </Stack.Navigator>
+  )
+}
+
+function BrowseStack(){
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="Browse" component={Browse}/>
+    </Stack.Navigator>
+  )
+}
+
+function SearchStack(){
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="Search" component={Search}/>
     </Stack.Navigator>
   )
 }
@@ -31,9 +55,9 @@ export default function App() {
     <NavigationContainer>
       <BottomTab.Navigator>
         <BottomTab.Screen name="Home" component = {HomeStack} />
-        <BottomTab.Screen name="Download" component = {Download} />
-        <BottomTab.Screen name="Browse" component = {Browse} />
-        <BottomTab.Screen name="Search" component = {Search} />
+        <BottomTab.Screen name="Download" component = {DownLoadStack} />
+        <BottomTab.Screen name="Browse" component = {BrowseStack} />
+        <BottomTab.Screen name="Search" component = {SearchStack} />
       </BottomTab.Navigator>
     </NavigationContainer>
 

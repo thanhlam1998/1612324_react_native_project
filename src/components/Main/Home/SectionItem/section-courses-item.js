@@ -4,7 +4,7 @@ import DefaultStyle from '../../../../globals/style'
 
 const SectionCoursesItem = (props) => {
   return (
-    <View style={DefaultStyle.item}>
+    <TouchableOpacity style={DefaultStyle.item}>
       <Image
         source={require('../../../../../assets/ic_course.jpg')}
         style={DefaultStyle.image}
@@ -16,7 +16,7 @@ const SectionCoursesItem = (props) => {
           style={DefaultStyle.darkText}
         >{`${props.item.level}  .  ${props.item.release}  .  ${props.item.duration}`}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

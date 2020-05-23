@@ -4,7 +4,7 @@ import DefaultStyle from '../../../../globals/style';
 
 const SectionFeaturePath = (props) => {
   return (
-    <View style={DefaultStyle.item}>
+    <TouchableOpacity style={DefaultStyle.item}>
       <Image
         source={require('../../../../../assets/ic_course.jpg')}
         style={DefaultStyle.image}
@@ -16,7 +16,7 @@ const SectionFeaturePath = (props) => {
           {props.item.total > 0 ? <Text>courses</Text> : <Text>course</Text>}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
