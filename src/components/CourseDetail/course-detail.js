@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Button } from 'react-native';
 import { Video } from 'expo-av';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import DefaultStyle from '../../globals/style';
-import CircleImageButton from './CourseDetailItem/circle-image-button'
-import Content from './CourseDetailItem/text-content-and-related-button'
+import CircleImageButton from './CourseDetailItem/circle-image-button';
+import Content from './CourseDetailItem/text-content-and-related-button';
 
 const CourseDetail = (props) => {
   return (
@@ -17,30 +17,42 @@ const CourseDetail = (props) => {
         volume={1.0}
         isMuted={false}
         resizeMode="cover"
-        shouldPlay
         isLooping
         style={styles.video}
         useNativeControls
       />
-      <View
-        style={styles.marginView}
-      >
+      <View style={styles.marginView}>
+        {/* title */}
         <Text style={[styles.title, styles.marginTop]}>
           {props.route.params.item.title}
         </Text>
 
+        {/* author */}
         <TouchableOpacity style={[styles.touchable, styles.marginTop]}>
           <Text style={styles.text_color_white}>
             {props.route.params.item.author}
           </Text>
         </TouchableOpacity>
 
+        {/* detail */}
         <Text
           style={[DefaultStyle.darkText, styles.marginTop]}
         >{`${props.route.params.item.level}  .  ${props.route.params.item.release}  .  ${props.route.params.item.duration}`}</Text>
-        
+
+        {/* Bookmark - Add To Channel - Download Button */}
         <CircleImageButton style={styles.marginTop}></CircleImageButton>
-        <Content></Content>
+
+        {/* Expandable content */}
+        <Content style={styles.marginTop}></Content>
+
+        {/* Take learning check Button & View related path button */}
+        <View style={styles.marginTop}>
+        <Button title="Take a learning check" color="#636e72"/>
+        </View>
+        <View style={styles.marginTop}>
+        <Button title="View related paths &amp; courses" color="#636e72"/>
+        </View>
+
       </View>
     </ScrollView>
   );

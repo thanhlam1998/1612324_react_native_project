@@ -9,7 +9,9 @@ const AccordionHeaderContentStyleExample = () => {
         return (
           <View style={{
             flexDirection: "row",
-            padding: 10,
+            padding: 5,
+            paddingLeft: 10,
+            paddingRight: 10,
             justifyContent: "space-between",
             alignItems: "center" ,
             backgroundColor: "#636e72" }}>
@@ -36,7 +38,7 @@ const AccordionHeaderContentStyleExample = () => {
         );
       }
     return (
-        <Content padder>
+        <View style={styles.marginTop}>
           <Accordion
             dataArray={dataArray}
             animation={true}
@@ -44,9 +46,15 @@ const AccordionHeaderContentStyleExample = () => {
             renderHeader =  {_renderHeader}
             renderContent = {_renderContent}
           />
-        </Content>
+        </View>
     );
 }
 
 
 export default AccordionHeaderContentStyleExample
+
+const styles = StyleSheet.create({
+  marginTop: {
+    marginTop: 15,
+  }
+})
