@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/components/Main/Home/home'
 import Constants from 'expo-constants'
 import ListCourses from './src/components/Courses/ListCourses/list-courses';
+import ListCourseDetail from './src/components/CourseDetail/course-detail';
 import ListPaths from './src/components/Paths/ListPaths/list-paths'
 import ListChannels from './src/components/Channels/ListChannels/list_channels'
 import NavigationContainer from '@react-navigation/native/src/NavigationContainer'
@@ -15,6 +16,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+
+/* -------------------------------------------------------------------------- */
+/*                      4 stacks in Bottom Tab Navigation                     */
+/* -------------------------------------------------------------------------- */
+
 function HomeStack(){
   return(
     <Stack.Navigator>
@@ -22,10 +28,10 @@ function HomeStack(){
       <Stack.Screen name="ListCourse" component={ListCourses} options={({route}) => ({title: route.params.name})}/>
       <Stack.Screen name="ListPaths" component={ListPaths} options={({route}) => ({title: route.params.name})}/>
       <Stack.Screen name="ListChannels" component={ListChannels} options={({route}) => ({title: route.params.name})}/>
+      <Stack.Screen name="CourseDetail" component={ListCourseDetail}/>
     </Stack.Navigator>
   )
 }
-
 function DownLoadStack(){
   return(
     <Stack.Navigator>
@@ -33,7 +39,6 @@ function DownLoadStack(){
     </Stack.Navigator>
   )
 }
-
 function BrowseStack(){
   return(
     <Stack.Navigator>
@@ -41,7 +46,6 @@ function BrowseStack(){
     </Stack.Navigator>
   )
 }
-
 function SearchStack(){
   return(
     <Stack.Navigator>
@@ -49,6 +53,11 @@ function SearchStack(){
     </Stack.Navigator>
   )
 }
+
+
+/* -------------------------------------------------------------------------- */
+/*                          Main Bottom tab navigaton                         */
+/* -------------------------------------------------------------------------- */
 
 export default function App() {
   return (

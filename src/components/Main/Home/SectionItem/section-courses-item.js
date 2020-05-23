@@ -4,7 +4,8 @@ import DefaultStyle from '../../../../globals/style'
 
 const SectionCoursesItem = (props) => {
   return (
-    <TouchableOpacity style={DefaultStyle.item}>
+    <TouchableOpacity style={DefaultStyle.item}
+    onPress={()=>props.navigation.navigate('CourseDetail', {item: props.item})}>
       <Image
         source={require('../../../../../assets/ic_course.jpg')}
         style={DefaultStyle.image}

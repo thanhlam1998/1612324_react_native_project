@@ -126,7 +126,7 @@ const SectionCourses = (props) => {
           <FlatList
             horizontal={true}
             data={courses}
-            renderItem={({ item }) => <SectionCoursesItem item={item} />}
+            renderItem={({ item }) => <SectionCoursesItem navigation={props.navigation} item={item} />}
           ></FlatList>
         </View>
       )}
