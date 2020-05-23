@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Video } from 'expo-av';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import DefaultStyle from '../../globals/style';
+import CircleImageButton from './CourseDetailItem/circle-image-button'
+import Content from './CourseDetailItem/text-content-and-related-button'
 
 const CourseDetail = (props) => {
   return (
-    <View>
+    <ScrollView>
       <Video
         source={{
           uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
@@ -20,18 +22,27 @@ const CourseDetail = (props) => {
         style={styles.video}
         useNativeControls
       />
-      <View style={styles.marginView}>
-        <Text style={[styles.title, styles.marginTop]}>{props.route.params.item.title}</Text>
+      <View
+        style={styles.marginView}
+      >
+        <Text style={[styles.title, styles.marginTop]}>
+          {props.route.params.item.title}
+        </Text>
+
         <TouchableOpacity style={[styles.touchable, styles.marginTop]}>
           <Text style={styles.text_color_white}>
             {props.route.params.item.author}
           </Text>
         </TouchableOpacity>
+
         <Text
           style={[DefaultStyle.darkText, styles.marginTop]}
         >{`${props.route.params.item.level}  .  ${props.route.params.item.release}  .  ${props.route.params.item.duration}`}</Text>
+        
+        <CircleImageButton style={styles.marginTop}></CircleImageButton>
+        <Content></Content>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -63,6 +74,6 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   marginTop: {
-      marginTop: 5
-  }
+    marginTop: 5,
+  },
 });
