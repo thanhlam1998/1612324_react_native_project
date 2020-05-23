@@ -1,22 +1,23 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import itemStyle from '../../../../globals/style'
+import DefaultStyle from '../../../../globals/style'
 
 const SectionCoursesItem = (props) => {
   return (
-    <View style={itemStyle.item}>
+    <TouchableOpacity style={DefaultStyle.item}
+    onPress={()=>props.navigation.navigate('CourseDetail', {item: props.item})}>
       <Image
         source={require('../../../../../assets/ic_course.jpg')}
-        style={itemStyle.image}
+        style={DefaultStyle.image}
       />
-      <View style={itemStyle.contentMargin}>
-        <Text style={itemStyle.title}>{props.item.title}</Text>
-        <Text style={itemStyle.darkText}>{props.item.author}</Text>
+      <View style={DefaultStyle.contentMargin}>
+        <Text style={DefaultStyle.title}>{props.item.title}</Text>
+        <Text style={DefaultStyle.darkText}>{props.item.author}</Text>
         <Text
-          style={itemStyle.darkText}
+          style={DefaultStyle.darkText}
         >{`${props.item.level}  .  ${props.item.release}  .  ${props.item.duration}`}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

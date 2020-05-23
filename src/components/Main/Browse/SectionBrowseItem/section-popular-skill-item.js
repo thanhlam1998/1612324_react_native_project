@@ -13,15 +13,16 @@ export default PopularSkillItem;
 
 const styles = StyleSheet.create({
     touchable:{
-        backgroundColor: "#000000",
-        opacity: 0.2,
+        backgroundColor: "#636e72",
         borderRadius: 15,
+        opacity: 1,
         padding: 5,
         paddingLeft: 10,
         paddingRight: 10,
-        marginRight: 10
+        marginRight: 10,
+        alignItems: "center"
     },
     text: {
-        color: "#ffffff"
+        color: '#fff',
     }
 });

@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 export default StyleSheet.create({
-
-/* ------------ Default style for item in FlatView or SectionView ----------- */
+  /* ------------ Default style for item in FlatView or SectionView ----------- */
   item: {
-    margin: 5,
+    marginRight: 10,
+    marginTop: 10,
     width: 200,
     height: 200,
     backgroundColor: '#F4F4F4',
@@ -26,9 +26,22 @@ export default StyleSheet.create({
     margin: 5,
   },
 
-/* ------------------------ Default margin for layout with status bar ----------------------- */
+  /* ------------------------ Default margin for layout with status bar ----------------------- */
   marginForLayout: {
-    marginTop: Constants.statusBarHeight,
-    margin: 10
+    marginLeft: 10,
+    marginRight: 10,
+  },
+
+  /* -- Default style for item in FlatView, SectionView with horizontal view -- */
+  item_horizontal: {
+    flexDirection: 'row',
+    margin: 5,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 1,
+  },
+  item_horizontal_image: {
+    width: 100,
+    height: 50,
+    resizeMode: 'cover',
   },
 });

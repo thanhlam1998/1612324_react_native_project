@@ -110,41 +110,78 @@ const SectionCourses = (props) => {
 
   return (
     <View>
-      <View style={styles.header}>
-        <Text>{props.title}</Text>
-        <TouchableOpacity>
-          <Text>See all ></Text>
-        </TouchableOpacity>
-      </View>
-
       {(props.title === title.ContinueLearning ||
         props.title === title.CourseList) && (
-        <FlatList
-          horizontal={true}
-          data={courses}
-          renderItem={({ item }) => <SectionCoursesItem item={item} />}
-        ></FlatList>
+        <View>
+          <View style={styles.header}>
+            <Text>{props.title}</Text>
+            <TouchableOpacity
+              onPress={() => {
+                props.navigation.navigate('ListCourse', { name: props.title });
+              }}
+            >
+              <Text>See all ></Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            horizontal={true}
+            data={courses}
+            renderItem={({ item }) => <SectionCoursesItem navigation={props.navigation} item={item} />}
+          ></FlatList>
+        </View>
       )}
       {(props.title === title.FeaturePath || props.title === title.MyPath) && (
-        <FlatList
-          horizontal={true}
-          data={featurePaths}
-          renderItem={({ item }) => <SectionFeaturePath item={item} />}
-        ></FlatList>
+        <View>
+          <View style={styles.header}>
+            <Text>{props.title}</Text>
+            <TouchableOpacity
+              onPress={() =>
+                props.navigation.navigate('ListPaths', { name: props.title })
+              }
+            >
+              <Text>See all ></Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            horizontal={true}
+            data={featurePaths}
+            renderItem={({ item }) => <SectionFeaturePath item={item} />}
+          ></FlatList>
+        </View>
       )}
       {props.title === title.FeaturedChannels && (
-        <FlatList
-          horizontal={true}
-          data={featureChannels}
-          renderItem={({ item }) => <SectionFeatureChannel item={item} />}
-        ></FlatList>
+        <View>
+          <View style={styles.header}>
+            <Text>{props.title}</Text>
+            <TouchableOpacity
+              onPress={() =>
+                props.navigation.navigate('ListChannels', { name: props.title })
+              }
+            >
+              <Text>See all ></Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            horizontal={true}
+            data={featureChannels}
+            renderItem={({ item }) => <SectionFeatureChannel item={item} />}
+          ></FlatList>
+        </View>
       )}
       {props.title === title.MyChannel && (
-        <FlatList
-          horizontal={true}
-          data={myChannel}
-          renderItem={({ item }) => <SectionMyChannel item={item} />}
-        ></FlatList>
+        <View>
+          <View style={styles.header}>
+            <Text>{props.title}</Text>
+            <TouchableOpacity>
+              <Text>See all ></Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            horizontal={true}
+            data={myChannel}
+            renderItem={({ item }) => <SectionMyChannel item={item} />}
+          ></FlatList>
+        </View>
       )}
     </View>
   );

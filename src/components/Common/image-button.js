@@ -29,7 +29,7 @@ export default ImageButton;
 const styles = StyleSheet.create({
   button: {
     height: 100,
-    margin: 5,
+    marginBottom: 5,
   },
   touchable: {
     flex: 1,

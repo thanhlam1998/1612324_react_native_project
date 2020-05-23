@@ -1,14 +1,14 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import SearchView from '../../Common/search-view';
+import DefaultStyle from '../../../globals/style'
 
 const Search = () => {
-    return (
-        <View>
-            <Text></Text>
-        </View>
-    )
-}
+  return <View style={DefaultStyle.marginForLayout}>
+      <SearchView onPress={()=>alert("Search clicked!!!")}/>
+  </View>;
+};
 
-export default Search
+export default Search;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
