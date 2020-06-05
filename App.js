@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import Home from './src/components/Main/Home/home';
 import Constants from 'expo-constants';
 import ListCourses from './src/components/Courses/ListCourses/list-courses';
@@ -15,6 +15,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ScreenKey } from './src/globals/constants';
 import SplashScreen from './src/components/SplashScreen/SplashScreen';
 import LoginScreen from './src/components/LoginScreen/LoginScreen';
+import Profile from './src/components/AccountManagement/Account/profile'
 
 /* ----------------------------------- -- ----------------------------------- */
 const BottomTab = createBottomTabNavigator();
@@ -70,6 +71,11 @@ function SearchStack() {
   );
 }
 
+
+/* -------------------------------------------------------------------------- */
+/*                          Main bottom tab navigator                         */
+/* -------------------------------------------------------------------------- */
+
 const MainTabNavigator = () => {
   return (
     <BottomTab.Navigator>
@@ -80,6 +86,11 @@ const MainTabNavigator = () => {
     </BottomTab.Navigator>
   );
 };
+
+
+/* -------------------------------------------------------------------------- */
+/*     Navigator for all app include: splash screen, login and main screen    */
+/* -------------------------------------------------------------------------- */
 
 const MainNavigation = () => {
   return (
@@ -99,13 +110,16 @@ const MainNavigation = () => {
         component={MainTabNavigator}
         options={{ headerShown: false }}
       />
+      <MainNavigationStack.Screen
+        name={ScreenKey.ProfileScreen}
+        component={Profile}
+        options={{title: "Profile"}}/>
     </MainNavigationStack.Navigator>
   );
 };
 
-/* -------------------------------------------------------------------------- */
-/*                          Main Bottom tab navigaton                         */
-/* -------------------------------------------------------------------------- */
+
+
 
 export default function App() {
   return (

@@ -12,7 +12,7 @@ const Login = (props) => {
     if(status && status.status === 200){
         props.navigation.navigate(ScreenKey.MainTabScreen)
     } 
-  })
+  }, [status])
 
   const renderLoginStatus = (status) => {
     if(!status){
