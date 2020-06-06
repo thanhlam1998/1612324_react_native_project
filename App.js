@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import Home from './src/components/Main/Home/home';
 import Constants from 'expo-constants';
 import ListCourses from './src/components/Courses/ListCourses/list-courses';
@@ -16,6 +16,8 @@ import { ScreenKey } from './src/globals/constants';
 import SplashScreen from './src/components/SplashScreen/SplashScreen';
 import LoginScreen from './src/components/LoginScreen/LoginScreen';
 import Profile from './src/components/AccountManagement/Account/profile'
+import style from './src/globals/style';
+import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 /* ----------------------------------- -- ----------------------------------- */
 const BottomTab = createBottomTabNavigator();
@@ -79,10 +81,14 @@ function SearchStack() {
 const MainTabNavigator = () => {
   return (
     <BottomTab.Navigator>
-      <BottomTab.Screen name="Home" component={HomeStack} />
-      <BottomTab.Screen name="Download" component={DownLoadStack} />
-      <BottomTab.Screen name="Browse" component={BrowseStack} />
-      <BottomTab.Screen name="Search" component={SearchStack} />
+      <BottomTab.Screen name="Home" component={HomeStack} 
+        options={{tabBarIcon: () => (<MaterialcomunnityIcons name="home-outline" color={"#222222"} size={25}/>)}}/>
+      <BottomTab.Screen name="Download" component={DownLoadStack} 
+       options={{ tabBarIcon: () => (<MaterialcomunnityIcons name="download" color={"#222222"} size={25}/>)}}/>
+      <BottomTab.Screen name="Browse" component={BrowseStack} 
+      options={{tabBarIcon: () => (<MaterialcomunnityIcons name="grid" color={"#222222"} size={25}/>)}}/>
+      <BottomTab.Screen name="Search" component={SearchStack} 
+      options={{tabBarIcon: () => (<MaterialcomunnityIcons name="magnify" color={"#222222"} size={25}/>)}}/>
     </BottomTab.Navigator>
   );
 };
@@ -95,7 +101,7 @@ const MainTabNavigator = () => {
 const MainNavigation = () => {
   return (
     <MainNavigationStack.Navigator>
-      <MainNavigationStack.Screen
+      {/* <MainNavigationStack.Screen
         name={ScreenKey.SplashScreen}
         component={SplashScreen}
         options={{ headerShown: false }}
@@ -104,7 +110,7 @@ const MainNavigation = () => {
         name={ScreenKey.LoginScreen}
         component={LoginScreen}
         options={{ headerShown: false }}
-      />
+      /> */}
       <MainNavigationStack.Screen
         name={ScreenKey.MainTabScreen}
         component={MainTabNavigator}
@@ -118,14 +124,27 @@ const MainNavigation = () => {
   );
 };
 
+export const themes = {
+  light: {
+    foreground: '#000000',
+    background: '#eeeeee'
+  },
+  dark: {
+    foreground: "#ffffff",
+    background: '#222222'
+  }
+}
 
-
+export const themeContext = React.createContext();
 
 export default function App() {
+  const [theme, setTheme] = useState(themes.light);
   return (
-    <NavigationContainer>
-      <MainNavigation/>
-    </NavigationContainer>
+    <themeContext.Provider value={{theme, setTheme}}>
+      <NavigationContainer>
+        <MainNavigation/>
+      </NavigationContainer>
+    </themeContext.Provider>
   );
 }
 

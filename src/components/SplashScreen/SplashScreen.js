@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { ScreenKey } from '../../globals/constants';
+import { themeContext } from '../../../App';
 
 const SplashScreen = (props) => {
+
+  const context = useContext(themeContext)
   const [loading, setLoading] = useState(0);
   useEffect(() => {
     if(loading <100){

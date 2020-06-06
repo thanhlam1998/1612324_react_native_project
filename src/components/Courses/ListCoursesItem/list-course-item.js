@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import DefaultStyle from '../../../globals/style'
 
+// require('../../../../assets/ic_course.jpg')
 const ListCourseItem = (props) => {
   return (
     <TouchableOpacity style={DefaultStyle.item_horizontal}>
