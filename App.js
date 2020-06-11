@@ -21,6 +21,7 @@ import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 /* ----------------------------- Import context ----------------------------- */
 import {CoursesContext, courses} from './data/ListCourseDetail'
+import {themeContext, themes} from './data/Theme'
 
 /* -------------------------------------------------------------------------- */
 const BottomTab = createBottomTabNavigator();
@@ -126,19 +127,6 @@ const MainNavigation = () => {
     </MainNavigationStack.Navigator>
   );
 };
-
-export const themes = {
-  light: {
-    foreground: '#000000',
-    background: '#eeeeee'
-  },
-  dark: {
-    foreground: "#ffffff",
-    background: '#222222'
-  }
-}
-
-export const themeContext = React.createContext();
 
 export default function App() {
   const [theme, setTheme] = useState(themes.light);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,58 +10,10 @@ import {
 import ListCourseItem from '../ListCoursesItem/list-course-item';
 import DefaultStyle from '../../../globals/style';
 import { FlatList } from 'react-native-gesture-handler';
+import {CoursesContext} from '../../../../data/ListCourseDetail'
 
 const ListCourses = (props) => {
-  const courses = [
-    {
-      id: 1,
-      title: 'React native',
-      author: 'Thanh Lam',
-      level: 'Advance',
-      release: 'May 11, 2020',
-      duration: '10 hours',
-    },
-    {
-      id: 2,
-      title: 'iOs',
-      author: 'Thanh Lam',
-      level: 'Intermediate',
-      release: 'May 12, 2020',
-      duration: '5 hours',
-    },
-    {
-      id: 3,
-      title: 'Android',
-      author: 'Kianto',
-      level: 'Intermediate',
-      release: 'May 12, 2020',
-      duration: '15 hours',
-    },
-    {
-      id: 4,
-      title: 'React native',
-      author: 'Thanh Lam',
-      level: 'Advance',
-      release: 'May 11, 2020',
-      duration: '10 hours',
-    },
-    {
-      id: 5,
-      title: 'iOs',
-      author: 'Thanh Lam',
-      level: 'Intermediate',
-      release: 'May 12, 2020',
-      duration: '5 hours',
-    },
-    {
-      id: 6,
-      title: 'Android',
-      author: 'Kianto',
-      level: 'Intermediate',
-      release: 'May 12, 2020',
-      duration: '15 hours',
-    },
-  ];
+  const courses = useContext(CoursesContext)
 
   return (
     <View style={DefaultStyle.marginForLayout}>

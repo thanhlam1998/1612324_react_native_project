@@ -6,8 +6,8 @@ import DefaultStyle from '../../../globals/style'
 const ListCourseItem = (props) => {
   return (
     <TouchableOpacity style={DefaultStyle.item_horizontal}>
-      <Image source={require('../../../../assets/ic_course.jpg')} style={DefaultStyle.item_horizontal_image} />
-      <View style={DefaultStyle.contentMargin}>
+      <Image source={props.item.imageUrl ? {uri: props.item.imageUrl}: require('../../../../assets/ic_course.jpg')} style={DefaultStyle.item_horizontal_image} />
+      <View style={styles.container}>
         <Text style={DefaultStyle.title}>{props.item.title}</Text>
         <Text style={DefaultStyle.darkText}>{props.item.author}</Text>
         <Text
@@ -21,4 +21,10 @@ const ListCourseItem = (props) => {
 export default ListCourseItem;
 
 const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    flex: 1,
+    marginLeft:5,
+    marginBottom: 5 
+  }
 });

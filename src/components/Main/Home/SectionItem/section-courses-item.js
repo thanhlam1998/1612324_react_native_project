@@ -15,7 +15,7 @@ const SectionCoursesItem = (props) => {
         <Text style={DefaultStyle.darkText}>{props.item.author}</Text>
         <Text
           style={DefaultStyle.darkText}
-        >{`${props.item.level}  .  ${props.item.release}  .  ${props.item.duration}`}</Text>
+        >{`${props.item.level} . ${props.item.release} . ${props.item.duration}`}</Text>
       </View>
     </TouchableOpacity>
   );
