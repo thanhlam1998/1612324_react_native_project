@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import ListCourseItem from '../../../components/Courses/ListCoursesItem/list-course-item';
 import { FlatList } from 'react-native-gesture-handler';
 import DefaultStyle from '../../../globals/style'
+import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-const Download = () => {
+
+const Download = (props) => {
+
+  useLayoutEffect(() => {
+    props.navigation.setOptions({
+      headerRight: () => 
+      <View style = {styles.iconContainer}>
+        <TouchableOpacity >
+          <MaterialcomunnityIcons name="account-circle" size={25}/>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <MaterialcomunnityIcons name="settings" size={25}/>
+        </TouchableOpacity>
+      </View>
+    })
+  })
+
   const courses = [
     {
       id: 1,
@@ -80,4 +97,9 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5
   },
+  iconContainer:{
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    width: 120
+  }
 });

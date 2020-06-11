@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import Home from './src/components/Main/Home/home';
 import Constants from 'expo-constants';
 import ListCourses from './src/components/Courses/ListCourses/list-courses';
@@ -19,7 +19,10 @@ import Profile from './src/components/AccountManagement/Account/profile'
 import style from './src/globals/style';
 import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-/* ----------------------------------- -- ----------------------------------- */
+/* ----------------------------- Import context ----------------------------- */
+import {CoursesContext, courses} from './data/ListCourseDetail'
+
+/* -------------------------------------------------------------------------- */
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const MainNavigationStack = createStackNavigator();
@@ -31,7 +34,7 @@ const MainNavigationStack = createStackNavigator();
 function HomeStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Home" component={Home}/>
       <Stack.Screen
         name="ListCourse"
         component={ListCourses}
@@ -141,9 +144,11 @@ export default function App() {
   const [theme, setTheme] = useState(themes.light);
   return (
     <themeContext.Provider value={{theme, setTheme}}>
-      <NavigationContainer>
-        <MainNavigation/>
-      </NavigationContainer>
+      <CoursesContext.Provider value={courses}>
+        <NavigationContainer>
+          <MainNavigation/>
+        </NavigationContainer>
+      </CoursesContext.Provider>
     </themeContext.Provider>
   );
 }
