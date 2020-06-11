@@ -1,6 +1,6 @@
 # Đồ án môn phát triển thiết bị di động nâng cao
 ***
-###**Nguyễn Thanh Lâm** 
+### **Nguyễn Thanh Lâm** 
 **1612324**
 
 ***Hướng dẫn cài đặt và chạy ứng dụng:***
