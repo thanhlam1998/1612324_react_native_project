@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   View,
   Text,
@@ -12,9 +12,10 @@ import SectionCoursesItem from '../SectionItem/section-courses-item';
 import SectionFeaturePath from '../SectionItem/section-feature-path';
 import SectionFeatureChannel from '../SectionItem/section-feature-channel';
 import SectionMyChannel from '../SectionItem/section-my-channel';
-import { render } from 'react-dom';
+import {CoursesContext} from '../../../../../data/ListCourseDetail'
 
 const SectionCourses = (props) => {
+  const courseList = useContext(CoursesContext)
   const courses = [
     {
       id: 1,
@@ -125,7 +126,7 @@ const SectionCourses = (props) => {
           </View>
           <FlatList
             horizontal={true}
-            data={courses}
+            data={props.title === title.CourseList ? courseList : null}
             renderItem={({ item }) => <SectionCoursesItem navigation={props.navigation} item={item} />}
           ></FlatList>
         </View>

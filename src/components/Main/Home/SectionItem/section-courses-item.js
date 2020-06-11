@@ -7,7 +7,7 @@ const SectionCoursesItem = (props) => {
     <TouchableOpacity style={DefaultStyle.item}
     onPress={()=>props.navigation.navigate('CourseDetail', {item: props.item})}>
       <Image
-        source={require('../../../../../assets/ic_course.jpg')}
+        source={props.item.imageUrl ? {uri: props.item.imageUrl} : require('../../../../../assets/ic_course.jpg')}
         style={DefaultStyle.image}
       />
       <View style={DefaultStyle.contentMargin}>
@@ -15,7 +15,7 @@ const SectionCoursesItem = (props) => {
         <Text style={DefaultStyle.darkText}>{props.item.author}</Text>
         <Text
           style={DefaultStyle.darkText}
-        >{`${props.item.level}  .  ${props.item.release}  .  ${props.item.duration}`}</Text>
+        >{`${props.item.level} . ${props.item.release} . ${props.item.duration}`}</Text>
       </View>
     </TouchableOpacity>
   );
