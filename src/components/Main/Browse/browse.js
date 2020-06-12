@@ -5,6 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import ImageButton from '../../Common/image-button';
 import SectionBrowse from '../Browse/SectionBrowse/section-browse';
 import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import {BrowseTitle} from '../../../globals/constants'
 
 const Browse = (props) => {
 
@@ -24,7 +25,7 @@ const Browse = (props) => {
     });
   });
 
-  const titles = ['', 'Popular Skills', 'Paths', 'Top Authors'];
+  const titles = ['', BrowseTitle.PopularSkills, BrowseTitle.Paths, BrowseTitle.TopAuthors];
   return (
     <ScrollView
       style={DefaultStyle.marginForLayout}

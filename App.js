@@ -22,7 +22,9 @@ import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityI
 /* ----------------------------- Import context ----------------------------- */
 import {CoursesContext, courses} from './data/ListCourseDetail'
 import {themeContext, themes} from './data/Theme'
-import {bigTopicsContext, softwareDevelopment, ITOperations} from './data/BigTopics'
+import {bigTopicsContext, softwareDevelopment, ITOperations, DataProfessional, Conferences, InformationSecurity, BusinessProfessional, CreatetiveProfessional, 
+  ManufactoringAndDesign, ArchitectureAndConstruction, Certifications} from './data/BigTopics'
+import {skillsContext, skills, popularSkills} from './data/Skills'
 
 /* -------------------------------------------------------------------------- */
 const BottomTab = createBottomTabNavigator();
@@ -52,7 +54,7 @@ function HomeStack() {
         component={ListChannels}
         options={({ route }) => ({ title: route.params.name })}
       />
-      <Stack.Screen name="CourseDetail" component={ListCourseDetail} />
+      <Stack.Screen name="CourseDetail" component={ListCourseDetail} options={{headerTransparent: true, headerTitle: false}} />
     </Stack.Navigator>
   );
 }
@@ -134,10 +136,13 @@ export default function App() {
   return (
     <themeContext.Provider value={{theme, setTheme}}>
       <CoursesContext.Provider value={courses}>
-        <bigTopicsContext.Provider value={{softwareDevelopment, ITOperations}}>
-          <NavigationContainer>
-            <MainNavigation/>
-          </NavigationContainer>
+        <bigTopicsContext.Provider value={{Conferences, ITOperations, DataProfessional, CreatetiveProfessional, ArchitectureAndConstruction,
+        softwareDevelopment, InformationSecurity, BusinessProfessional, ManufactoringAndDesign, Certifications}}>
+          <skillsContext.Provider value = {{skills, popularSkills}}>
+            <NavigationContainer>
+              <MainNavigation/>
+            </NavigationContainer>
+          </skillsContext.Provider>
         </bigTopicsContext.Provider>
       </CoursesContext.Provider>
     </themeContext.Provider>

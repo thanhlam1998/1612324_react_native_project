@@ -5,7 +5,7 @@ import ImageButton from '../../../Common/image-button'
 const SectionCategoryItem = (props) => {
     return (
         <View style={styles.item}>
-            <ImageButton url={props.item.url} />
+            <ImageButton url={props.item.imageUrl} title={props.title}/>
         </View>
     )
 }

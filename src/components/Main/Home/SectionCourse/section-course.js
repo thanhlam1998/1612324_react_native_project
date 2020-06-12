@@ -25,6 +25,8 @@ const SectionCourses = (props) => {
   const softwareDev = courses.filter(item => softwareDevelopment.trending.includes(item.id))
   var ITOperations = bigsTopic.ITOperations;
   ITOperations = courses.filter(item=> ITOperations.trending.includes(item.id))
+  var DataProfessional = bigsTopic.DataProfessional;
+  DataProfessional = courses.filter(item=> DataProfessional.trending.includes(item.id))
   const courseList = courses.slice(0,5)
   var data;
   switch (props.title){
@@ -36,6 +38,9 @@ const SectionCourses = (props) => {
       break;
     case HomeTitle.ITOperation:
       data = ITOperations;
+      break;
+    case HomeTitle.DataProfessional:
+      data = DataProfessional;
       break;
   }
 
@@ -50,7 +55,7 @@ const SectionCourses = (props) => {
             <Text>{props.title}</Text>
             <TouchableOpacity
               onPress={() => {
-                props.navigation.navigate('ListCourse', { name: props.title });
+                props.navigation.navigate('ListCourse', { name: props.title, data: data });
               }}
             >
               <Text>See all ></Text>

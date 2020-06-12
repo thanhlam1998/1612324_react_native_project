@@ -564,6 +564,189 @@ export const courses = [
       },
     ],
   },
+  {
+    id: 12,
+    title: 'Python: The Big Picture',
+    imageUrl: "https://pluralsight.imgix.net/course-images/audience/software-development.jpg",
+    author: 'Jason Olson',
+    level: 'Beginner',
+    release: 'jan 26, 2018',
+    duration: '1h 5m',
+    rate: 4,
+    summary:"At the heart of creating software is being able to use the right tool for the right job. In this course, Python: The Big Picture, you'll learn about the Python programming language. First, you'll learn what Python is, what makes it different, and why you should care. Next, you'll explore the different ways Python is being used to develop different types of applications today. Finally, you'll discover how to get started working with Python code and what next steps you can take in your Python journey. When you're finished with this course, you'll have a foundational knowledge of Python that will help you as you move forward to recognizing when Python is the right tool for any future jobs you are faced with as a software developer.",
+    contents: [
+      {
+        topic: 1,
+        title: 'Course Overview',
+        duration: '1m 26s',
+        lessons: [
+          {
+            title: 'Course Overview',
+            video: '',
+            duration: '1m 26s',
+          },
+        ],
+      },
+      {
+        topic: 2,
+        title: 'What Is Python?',
+        duration: '15m 50s',
+        lessons: [
+          {
+            title: 'Introduction',
+            video: '',
+            duration: '48s',
+          },
+          {
+            title: 'Getting the Most from This Course',
+            video: '',
+            duration: '1m 0s',
+          },
+          {
+            title: 'What Is Python?',
+            video: '',
+            duration: '4m 55s',
+          },
+          {
+            title: 'Why Should Developers Care?',
+            video: '',
+            duration: '5m 54s',
+          },
+          {
+            title: 'What Makes Python Different?',
+            video: '',
+            duration: '2m 50s',
+          },
+          {
+            title: 'Summary',
+            video: '',
+            duration: '21s',
+          },
+        ],
+      },
+      {
+        topic: 3,
+        title: 'When and Where Is Python Being Used?',
+        duration: '23m 30s',
+        lessons: [
+          {
+            title: 'Introduction',
+            video: '',
+            duration: '43s',
+          },
+          {
+            title: 'Linux Scripting and Administration',
+            video: '',
+            duration: '6m 13s',
+          },
+          {
+            title: 'Web Development',
+            video: '',
+            duration: '6m 12s',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 13,
+    title: 'Google Cloud Platform Big Data and Machine Learning Fundamentals',
+    imageUrl: "https://pluralsight.imgix.net/course-images/google-cloud-platform-big-data-machine-learning-fundamentals-v2.png",
+    author: 'Google Cloud',
+    level: 'Intermediate',
+    release: 'Aug 3, 2019',
+    duration: '4h 54m',
+    rate: 5,
+    summary:"This 1-week accelerated on-demand course introduces participants to the Big Data and Machine Learning capabilities of Google Cloud Platform (GCP). It provides a quick overview of the Google Cloud Platform and a deeper dive of the data processing capabilities.",
+    contents: [
+      {
+        topic: 1,
+        title: 'Course Overview',
+        duration: '9m 47s',
+        lessons: [
+          {
+            title: 'Google Cloud Platform Big Data Machine Learning Fundamentals M00 01',
+            video: '',
+            duration: '5m 58s',
+          },
+          {
+            title: 'Getting Started With GCP And Qwiklabs',
+            video: '',
+            duration: '3m 48s',
+          },
+        ],
+      },
+      {
+        topic: 2,
+        title: 'Introduction to Google Cloud Platform',
+        duration: '1h 8m 33s',
+        lessons: [
+          {
+            title: 'Introduction to Google Cloud Platform',
+            video: '',
+            duration: '3m 52s',
+          },
+          {
+            title: 'Compute Power for Analytic and ML Workloads',
+            video: '',
+            duration: '9m 41s',
+          },
+          {
+            title: 'Demo - Creating a VM on Compute Engine',
+            video: '',
+            duration: '13m 58s',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 14,
+    title: 'Programming with R',
+    imageUrl: "https://pluralsight.imgix.net/course-images/programming-with-r-v1.jpg",
+    author: 'Mihaela Danci',
+    level: 'Beginner',
+    release: 'Feb 28, 2020',
+    duration: '2h 2m',
+    rate: 0,
+    summary:"At the core of data analysis is a thorough knowledge of R programming. In this course, Programming with R, you will learn how to manipulate different objects. First, you will learn the basic syntax. Next, you will explore data types and data structures available in R. Finally, you will discover how to write your own functions by implementing control flow statements. When you are finished with this course, you will have a foundational knowledge of R programming that will help you as you move forward to data science.",
+    contents: [
+      {
+        topic: 1,
+        title: 'Course Overview',
+        duration: '1m 25s',
+        lessons: [
+          {
+            title: 'Google Cloud Platform Big Data Machine Learning Fundamentals M00 01',
+            video: '',
+            duration: '1m 25s',
+          },
+        ],
+      },
+      {
+        topic: 2,
+        title: 'Getting Started with R',
+        duration: '36m 42s',
+        lessons: [
+          {
+            title: 'Introduction',
+            video: '',
+            duration: '3m 50s',
+          },
+          {
+            title: 'Why R?',
+            video: '',
+            duration: '4m 31s',
+          },
+          {
+            title: 'Integrated Development Environment',
+            video: '',
+            duration: '5m 30s',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const CoursesContext = React.createContext(courses);

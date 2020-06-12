@@ -1,81 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import SectionCategoryItem from '../SectionBrowseItem/section-category-item';
 import SectionPopularSkillItem from '../SectionBrowseItem/section-popular-skill-item';
 import SectionPathItem from '../SectionBrowseItem/section-path-item';
 import SectionTopAuthorItem from '../SectionBrowseItem/section-top-author-item';
+import {skillsContext} from '../../../../../data/Skills'
+import {bigTopicsContext} from '../../../../../data/BigTopics'
 
 const SectionBrowse = (props) => {
-  const categories = [
-    {
-      url:
-        'https://media-s3-us-east-1.ceros.com/pluralsight/images/2019/02/21/c383cb821a3f063d7d5eea48ba811b3a/13.png',
-    },
-    {
-      url:
-        'https://media-s3-us-east-1.ceros.com/pluralsight/images/2019/02/21/c383cb821a3f063d7d5eea48ba811b3a/13.png',
-    },
-    {
-      url:
-        'https://media-s3-us-east-1.ceros.com/pluralsight/images/2019/02/21/c383cb821a3f063d7d5eea48ba811b3a/13.png',
-    },
-    {
-      url:
-        'https://media-s3-us-east-1.ceros.com/pluralsight/images/2019/02/21/c383cb821a3f063d7d5eea48ba811b3a/13.png',
-    },
-    {
-      url:
-        'https://media-s3-us-east-1.ceros.com/pluralsight/images/2019/02/21/c383cb821a3f063d7d5eea48ba811b3a/13.png',
-    },
-    {
-      url:
-        'https://media-s3-us-east-1.ceros.com/pluralsight/images/2019/02/21/c383cb821a3f063d7d5eea48ba811b3a/13.png',
-    },
-    {
-      url:
-        'https://media-s3-us-east-1.ceros.com/pluralsight/images/2019/02/21/c383cb821a3f063d7d5eea48ba811b3a/13.png',
-    },
-    {
-      url:
-        'https://media-s3-us-east-1.ceros.com/pluralsight/images/2019/02/21/c383cb821a3f063d7d5eea48ba811b3a/13.png',
-    },
-    {
-      url:
-        'https://media-s3-us-east-1.ceros.com/pluralsight/images/2019/02/21/c383cb821a3f063d7d5eea48ba811b3a/13.png',
-    },
-    {
-      url:
-        'https://media-s3-us-east-1.ceros.com/pluralsight/images/2019/02/21/c383cb821a3f063d7d5eea48ba811b3a/13.png',
-    },
-  ];
+  const skillContext = useContext(skillsContext)
+  const skills = skillContext.skills;
+  var popularSkills = skillContext.popularSkills;
+  popularSkills = skills.filter(item => popularSkills.includes(item.id))
 
-  const skills = [
-    {
-      name: 'Javascript',
-    },
-    {
-      name: 'Node.js',
-    },
-    {
-      name: 'React',
-    },
-    {
-      name: 'Android',
-    },
-    {
-      name: 'Angular',
-    },
-    {
-      name: 'C#',
-    },
-    {
-      name: 'Java',
-    },
-    {
-      name: 'Data Analysis',
-    },
-  ];
+  var categoriesContext = useContext(bigTopicsContext)
+  categoriesContext = Object.keys(categoriesContext).map(function(key){
+    return key, categoriesContext[key]
+  })
 
   const paths = [
     {
@@ -148,11 +90,11 @@ const SectionBrowse = (props) => {
           showsHorizontalScrollIndicator={false}>
             <FlatList
               contentContainerStyle={{ alignSelf: 'flex-start' }}
-              data={categories}
-              numColumns={categories.length / 2}
+              data={categoriesContext}
+              numColumns={categoriesContext.length / 2}
               showsVerticalScrollIndicator={false}
               renderItem={({ item }) => (
-                <SectionCategoryItem item={item}></SectionCategoryItem>
+                <SectionCategoryItem item={item} title={item.name}></SectionCategoryItem>
               )}
             />
           </ScrollView>
