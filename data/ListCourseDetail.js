@@ -270,6 +270,179 @@ export const courses = [
       },
     ],
   },
+  {
+    id: 6,
+    title: 'Angular Fundamentals',
+    imageUrl: "https://pluralsight.imgix.net/course-images/angular-fundamentals-v1.jpg",
+    author: 'Jim Cooper',
+    level: 'Intermediate',
+    release: 'Feb 1, 2019',
+    duration: '9h 35m',
+    rate: 4.5,
+    summary:
+      "Angular has become one of the most widely used web development frameworks. This course, Angular Fundamentals, will teach you the fundamentals of writing applications with Angular - whether or not you've had past experience with Angular 1. You will learn how to bootstrap an application and how to build pages and reusable elements using Angular Components and the new Angular syntax. You'll also learn the fundamentals of: routing, creating reusable services and dependency injection, building forms with validation, and communicating with the server using HTTP and observables. You'll even learn how to test all of this using unit tests and end-to-end UI tests. When you finish this course, you will have the fundamental knowledge necessary to create professional and personal websites using Angular.",
+    contents: [
+      {
+        topic: 1,
+        title: 'Course Overview',
+        duration: '2m 4s',
+        lessons: [
+          {
+            title: 'Course Overview',
+            video: '',
+            duration: '2m 4s',
+          },
+        ],
+      },
+      {
+        topic: 2,
+        title: 'Getting Started with Angular',
+        duration: '38m 44s',
+        lessons: [
+          {
+            title: 'Introduction',
+            video: '',
+            duration: '2m 54s',
+          },
+          {
+            title: 'Practice Exercises',
+            video: '',
+            duration: '2m 24s',
+          },
+          {
+            title: 'Introduction to TypeScript',
+            video: '',
+            duration: '7m 9s',
+          },
+          {
+            title: 'Comparing Angular to AngularJS',
+            video: '',
+            duration: '2m 17s',
+          },
+          {
+            title: 'A Conceptual Overview of Angular',
+            video: '',
+            duration: '3m 2s',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 7,
+    title: 'C# Fundamentals',
+    imageUrl: "https://pluralsight.imgix.net/course-images/csharp-fundamentals-dev-v1.png",
+    author: 'Scott Allen',
+    level: 'Beginner',
+    release: 'Apr 16, 2019',
+    duration: '6h 5m',
+    rate: 4.5,
+    summary:
+      "C# has consistently been one of the top three programming languages to learn as it's used widely throughout the industry. This course, C# Fundamentals, will help you be comfortable with fundamental programming concepts on any platform. First, you will learn about the syntax of the C# language. Next, you will discover the built-in features of .NET. Finally, you will explore how to solve problems using object-oriented programming techniques. When you are finished with this course, you will have the skills and knowledge you need for real-world solutions.",
+    contents: [
+      {
+        topic: 1,
+        title: 'Course Overview',
+        duration: '1m 27s',
+        lessons: [
+          {
+            title: 'Course Overview',
+            video: '',
+            duration: '1m 27s',
+          },
+        ],
+      },
+      {
+        topic: 2,
+        title: 'Introducing C# and .NET',
+        duration: '38m 44s',
+        lessons: [
+          {
+            title: 'Introduction',
+            video: '',
+            duration: '1m 0s',
+          },
+          {
+            title: 'Downloading .NET for Windows, macOS, and Linux',
+            video: '',
+            duration: '2m 34s',
+          },
+          {
+            title: 'Understanding .NET and .NET Core',
+            video: '',
+            duration: '1m 43s',
+          },
+          {
+            title: 'Understanding the .NET Runtime and Framework',
+            video: '',
+            duration: '2m 37s',
+          },
+          {
+            title: 'Using the .NET Command Line Interface',
+            video: '',
+            duration: '3m 54s',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 8,
+    title: 'Managing AWS Operations',
+    imageUrl: "https://pluralsight.imgix.net/course-images/aws-operations-managing-v5.png",
+    author: 'Andru Estes',
+    level: 'Intermediate',
+    release: 'May 15, 2020',
+    duration: '3h 50m',
+    rate: 4.5,
+    summary:"With a seemingly endless amount of different AWS services, how do you know which ones will help you better manage your resources more efficiently? In this course, Managing AWS Operations, you will learn how to optimize your daily operations within your AWS cloud account better than before. First, you will learn the ins and outs of AWS Systems Manager and what you can use it for in terms of automation and operations. Next, you will discover the several services built around monitoring and maintaining compliance requirements for your accounts. Finally, you will explore how to optimize your S3 storage usage by incorporating numerous tools built-in to the service itself. When you are finished with this course, you will have the skills and knowledge of AWS services needed to optimize all of your AWS operations fully.",
+    contents: [
+      {
+        topic: 1,
+        title: 'Course Overview',
+        duration: '1m 37s',
+        lessons: [
+          {
+            title: 'Course Overview',
+            video: '',
+            duration: '1m 37s',
+          },
+        ],
+      },
+      {
+        topic: 2,
+        title: 'Planning and Configuring AWS System Manager',
+        duration: '1h 54m 52s',
+        lessons: [
+          {
+            title: 'Module Introduction',
+            video: '',
+            duration: '1m 24s',
+          },
+          {
+            title: 'Operations Management Overview',
+            video: '',
+            duration: '2m 48s',
+          },
+          {
+            title: 'Exploring Explorer Capabilities',
+            video: '',
+            duration: '4m 50s',
+          },
+          {
+            title: 'Centralizing Ops Tasks via OpsCenter',
+            video: '',
+            duration: '3m 51s',
+          },
+          {
+            title: 'CloudWatch Dashboards, Trusted Advisor, and Personal Health Dashboard',
+            video: '',
+            duration: '5m 2s',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const CoursesContext = React.createContext(courses);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { ScreenKey } from '../../globals/constants';
-import { themeContext } from '../../../App';
+import { themeContext } from '../../../data/Theme';
 
 const SplashScreen = (props) => {
 

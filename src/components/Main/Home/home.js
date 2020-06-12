@@ -5,6 +5,7 @@ import ImageButton from '../../Common/image-button';
 import DefaultStyle from '../../../globals/style'
 import { ScreenKey } from '../../../globals/constants';
 import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import {HomeTitle} from '../../../globals/constants'
 
 
 const Home = (props) => {
@@ -23,12 +24,12 @@ const Home = (props) => {
   })
 
   const titles = [
-    'Continue learning',
-    'Featured Paths',
-    'Featured Channels',
-    'Course List',
-    'My paths',
-    'My channels',
+    HomeTitle.SoftwareDevelopment,
+    HomeTitle.ITOperation,
+    HomeTitle.DataProfessional,
+    HomeTitle.CourseList,
+    HomeTitle.MyPath,
+    HomeTitle.MyChannel,
   ];
   const onPressNewReleases = () => {
     alert('Press on new release');
