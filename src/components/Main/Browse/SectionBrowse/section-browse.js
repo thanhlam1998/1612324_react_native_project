@@ -138,9 +138,9 @@ const SectionBrowse = (props) => {
       {props.title !== '' && (
         <View style={styles.header}>
           <Text>{props.title}</Text>
-          <TouchableOpacity>
+          {props.title !== titles.PopularSkills && <TouchableOpacity>
             <Text>See all ></Text>
-          </TouchableOpacity>
+          </TouchableOpacity>}
         </View>
       )}
         {!props.title && (
