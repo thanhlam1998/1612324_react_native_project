@@ -22,7 +22,7 @@ import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityI
 /* ----------------------------- Import context ----------------------------- */
 import {CoursesContext, courses} from './data/ListCourseDetail'
 import {themeContext, themes} from './data/Theme'
-import {bigTopicsContext, softwareDevelopment} from './data/BigTopics'
+import {bigTopicsContext, softwareDevelopment, ITOperations} from './data/BigTopics'
 
 /* -------------------------------------------------------------------------- */
 const BottomTab = createBottomTabNavigator();
@@ -134,7 +134,7 @@ export default function App() {
   return (
     <themeContext.Provider value={{theme, setTheme}}>
       <CoursesContext.Provider value={courses}>
-        <bigTopicsContext.Provider value={{softwareDevelopment}}>
+        <bigTopicsContext.Provider value={{softwareDevelopment, ITOperations}}>
           <NavigationContainer>
             <MainNavigation/>
           </NavigationContainer>

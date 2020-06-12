@@ -443,6 +443,127 @@ export const courses = [
       },
     ],
   },
+  {
+    id: 9,
+    title: 'Architecting for Reliability on AWS',
+    imageUrl: "https://pluralsight.imgix.net/course-images/aws-architecting-reliability-v1.png",
+    author: 'Mike Pfeiffer',
+    level: 'Intermediate',
+    release: 'May 16, 2018',
+    duration: '3h 34m',
+    rate: 5,
+    summary:"Learn how to implement a highly available and reliable application architecture using the patterns and best practices recommended by AWS. In this course, Architecting for Reliability on AWS, you will first explore the key concepts and core services of AWS. Next, you will follow along step-by-step to implement a real-world application that is built with the reliability principles defined within the AWS Well Architected Framework. Finally, you will learn how to further increase the reliability of an application architecture on AWS by implementing multi-region solutions. By the end of this course, you will have a variety of AWS architecture skills for the real world.",
+    contents: [
+      {
+        topic: 1,
+        title: 'Course Overview',
+        duration: '1m 37s',
+        lessons: [
+          {
+            title: 'Course Overview',
+            video: '',
+            duration: '1m 37s',
+          },
+        ],
+      },
+      {
+        topic: 2,
+        title: 'Course Introduction',
+        duration: '6m 24s',
+        lessons: [
+          {
+            title: 'Getting Started',
+            video: '',
+            duration: '6m 24s',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 10,
+    title: 'Architecting for Security on AWS',
+    imageUrl: "https://pluralsight.imgix.net/course-images/architecting-security-aws-v1.png",
+    author: 'Ben Piper',
+    level: 'Intermediate',
+    release: 'Mar 9, 2020',
+    duration: '4h 13m',
+    rate: 5,
+    summary:"AWS security architects need to understand how to build security into every AWS deployment at every level. In this course, Architecting for Security on AWS, you’ll learn how to secure your data and your AWS services and resources at multiple levels using a defense-in-depth approach. First, you'll learn how to protect your AWS credentials using identity and access management. Next, you'll see how to capture and analyze logs using CloudTrail, CloudWatch, and Athena. Finally, you'll learn how to implement network and instance security, encrypt data at rest and in-transit, and set up data backup, replication, and recovery. After finishing this course, you'll be ready to granularly control access to your AWS resources.",
+    contents: [
+      {
+        topic: 1,
+        title: 'Course Overview',
+        duration: '1m 37s',
+        lessons: [
+          {
+            title: 'Course Overview',
+            video: '',
+            duration: '1m 37s',
+          },
+        ],
+      },
+      {
+        topic: 2,
+        title: 'Protecting AWS Credentials',
+        duration: '52m 27s',
+        lessons: [
+          {
+            title: 'Getting Started',
+            video: '',
+            duration: '6m 24s',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 11,
+    title: 'Designing Infrastructure Deployment on AWS',
+    imageUrl: "https://pluralsight.imgix.net/course-images/aws-operations-designing-infrastructure-deployment-v1.png",
+    author: 'Brian Harrison',
+    level: 'Intermediate',
+    release: 'Mar 20, 2019',
+    duration: '1h 36m',
+    rate: 0,
+    summary:"How do you know what infrastructure services you need for your project on AWS? In this course, Designing Infrastructure Deployment on AWS, you'll gain the ability to define your project’s infrastructure requirements. First, you’ll learn how to select the the infrastructure services on AWS. Then, you'll discover the metrics that will help you scale. Finally, you'll see how to monitor your infrastructure's efficiency. When you’re finished with this course, you’ll be able to move onto deploying your infrastructure design on AWS and feel secure that the architecture you designed will work the way you expect.",
+    contents: [
+      {
+        topic: 1,
+        title: 'Course Overview',
+        duration: '1m 37s',
+        lessons: [
+          {
+            title: 'Course Overview',
+            video: '',
+            duration: '1m 37s',
+          },
+        ],
+      },
+      {
+        topic: 2,
+        title: 'Gathering Requirements',
+        duration: '56m 49s',
+        lessons: [
+          {
+            title: 'Gathering Requirements',
+            video: '',
+            duration: '2m 52s',
+          },
+          {
+            title: 'Requirements Detail',
+            video: '',
+            duration: '7m 21s',
+          },
+          {
+            title: 'Requirement Architectures',
+            video: '',
+            duration: '3m 32s',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const CoursesContext = React.createContext(courses);

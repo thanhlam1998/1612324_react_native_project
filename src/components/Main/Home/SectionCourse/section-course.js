@@ -23,6 +23,8 @@ const SectionCourses = (props) => {
   const bigsTopic = useContext(bigTopicsContext)
   const softwareDevelopment = bigsTopic.softwareDevelopment;
   const softwareDev = courses.filter(item => softwareDevelopment.trending.includes(item.id))
+  var ITOperations = bigsTopic.ITOperations;
+  ITOperations = courses.filter(item=> ITOperations.trending.includes(item.id))
   const courseList = courses.slice(0,5)
   var data;
   switch (props.title){
@@ -31,6 +33,9 @@ const SectionCourses = (props) => {
       break;
     case HomeTitle.CourseList:
       data = courseList;
+      break;
+    case HomeTitle.ITOperation:
+      data = ITOperations;
       break;
   }
 

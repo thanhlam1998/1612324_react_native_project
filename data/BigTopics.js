@@ -5,4 +5,13 @@ export const softwareDevelopment = {
     new:[],
     trending:[6, 7, 8],
 }
+
+export const ITOperations = {
+    skills:[],
+    paths:[],
+    new:[],
+    trending:[9, 10, 11],
+}
+
+
 export const bigTopicsContext = React.createContext();
