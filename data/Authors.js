@@ -1,5 +1,5 @@
 import React from 'react';
-export const Authors = [
+export const authors = [
     {
         id: 1,
         name: "Tim Caliaway",
@@ -13,7 +13,7 @@ export const Authors = [
     {
         id: 3,
         name: "Scott Allen",
-        imageUrl:"",
+        imageUrl:"https://pluralsight.imgix.net/author/lg/44cb43b3-83e4-4458-9b39-a7ded3411616.jpg?w=50",
     },
     {
         id: 4,
@@ -28,7 +28,7 @@ export const Authors = [
     {
         id: 6,
         name: "Jim Cooper",
-        imageUrl:"",
+        imageUrl:"https://pluralsight.imgix.net/author/lg/jim-cooper-v1.jpg?w=50",
     },
     {
         id: 7,
@@ -69,4 +69,4 @@ export const Authors = [
 
 export const topAuthors = [1, 2, 3, 4, 5, 6, 7, 13, 8, 9, 10]
 
-export const AuthorsContext = React.createContext();
+export const authorsContext = React.createContext();

@@ -30,7 +30,7 @@ export const ITOperations = {
 }
 
 export const InformationSecurity = {
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-j1B99xBz8x0eTlG9ycYdzCLyHx10wk5jU7Novdf4KeB0sHL_&usqp=CAU",
+    imageUrl: "https://cdn.hipwallpaper.com/i/92/55/F38NZ5.jpg",
     name: "Information Security",
     skills:[],
     paths:[],
@@ -60,7 +60,7 @@ export const BusinessProfessional = {
 }
 
 export const CreatetiveProfessional = {
-    imageUrl: "https://www.macmillandictionary.com/external/slideshow/full/Purple_full.png",
+    imageUrl: "https://t3.ftcdn.net/jpg/03/34/23/00/240_F_334230086_BWzQmPaiZyJk5ImnIRixEcq3qcaSEY2G.jpg",
     name: "Creative Professional",
     skills:[],
     paths:[],

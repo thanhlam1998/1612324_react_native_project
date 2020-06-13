@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView} from 'react-native';
 import ListCourseItem from '../../../components/Courses/ListCoursesItem/list-course-item';
 import { FlatList } from 'react-native-gesture-handler';
 import DefaultStyle from '../../../globals/style'
@@ -73,7 +73,7 @@ const Download = (props) => {
     },
   ];
   return (
-    <View style={DefaultStyle.marginForLayout}>
+    <ScrollView style={DefaultStyle.marginForLayout}>
       <View style={styles.header}>
         <Text>{courses.length > 1 ? courses.length + " courses" : courses.length + " course"}</Text>
         <TouchableOpacity onPress={() => alert('Removed')}>
@@ -84,7 +84,7 @@ const Download = (props) => {
         data={courses}
         renderItem={({ item }) => <ListCourseItem item={item} />}
       ></FlatList>
-    </View>
+    </ScrollView>
   );
 };
 

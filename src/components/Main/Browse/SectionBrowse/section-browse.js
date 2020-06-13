@@ -7,6 +7,7 @@ import SectionPathItem from '../SectionBrowseItem/section-path-item';
 import SectionTopAuthorItem from '../SectionBrowseItem/section-top-author-item';
 import {skillsContext} from '../../../../../data/Skills'
 import {bigTopicsContext} from '../../../../../data/BigTopics'
+import {authorsContext} from '../../../../../data/Authors'
 
 const SectionBrowse = (props) => {
   const skillContext = useContext(skillsContext)
@@ -18,6 +19,9 @@ const SectionBrowse = (props) => {
   categoriesContext = Object.keys(categoriesContext).map(function(key){
     return key, categoriesContext[key]
   })
+  
+  const allAuthors = useContext(authorsContext)
+  const topAuthors = allAuthors.authors.filter(item => allAuthors.topAuthors.includes(item.id))
 
   const paths = [
     {
@@ -42,32 +46,6 @@ const SectionBrowse = (props) => {
     },
   ];
 
-  const topAuthors=[
-      {
-          url: "https://mymodernmet.com/wp/wp-content/uploads/2019/09/100k-ai-faces-3.jpg",
-          name:"Dr. Sunny Wear"
-      },
-      {
-          url: "https://images-na.ssl-images-amazon.com/images/I/61I7fMiSpTL._AC_SL1000_.jpg",
-          name: "Leonardo Di Carprio"
-      },
-      {
-          url: "https://manofmany.com/wp-content/uploads/2019/06/50-Long-Haircuts-Hairstyle-Tips-for-Men-5.jpg",
-          name: "Jindo"
-      },
-      {
-          url: "https://post.healthline.com/wp-content/uploads/2019/09/man-city-urban-walking-serious-732x549-thumbnail.jpg",
-          name: "Jim Cook"
-      },
-      {
-          url: "https://manofmany.com/wp-content/uploads/2019/06/50-Long-Haircuts-Hairstyle-Tips-for-Men-2.jpg",
-          name: "Michael Teske"
-      },
-      {
-          url: "https://companynewheroes.com/files/2019/09/Lucas-De-Man-Fotograaf-Anne-Harbers-2-1024x683-960x514.jpg?x54139",
-          name: " Mark"
-      },
-  ]
 
   const titles = {
     none: '',
@@ -80,7 +58,7 @@ const SectionBrowse = (props) => {
       {props.title !== '' && (
         <View style={styles.header}>
           <Text>{props.title}</Text>
-          {props.title !== titles.PopularSkills && <TouchableOpacity>
+          {props.title !== titles.PopularSkills && props.title !== titles.TopAuthors && <TouchableOpacity>
             <Text>See all ></Text>
           </TouchableOpacity>}
         </View>

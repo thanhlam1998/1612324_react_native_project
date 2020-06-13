@@ -28,20 +28,23 @@ const SectionCourses = (props) => {
   var DataProfessional = bigsTopic.DataProfessional;
   DataProfessional = courses.filter(item=> DataProfessional.trending.includes(item.id))
   const courseList = courses.slice(0,5)
-  var data;
+  var data, allData;
   switch (props.title){
     case HomeTitle.SoftwareDevelopment:
-      data = softwareDev;
+      allData = softwareDev;
       break;
     case HomeTitle.CourseList:
-      data = courseList;
+      allData = courseList;
       break;
     case HomeTitle.ITOperation:
-      data = ITOperations;
+      allData = ITOperations;
       break;
     case HomeTitle.DataProfessional:
-      data = DataProfessional;
+      allData = DataProfessional;
       break;
+  }
+  if(allData){
+    data = allData.slice(0,5)
   }
 
   return (
@@ -55,7 +58,7 @@ const SectionCourses = (props) => {
             <Text>{props.title}</Text>
             <TouchableOpacity
               onPress={() => {
-                props.navigation.navigate('ListCourse', { name: props.title, data: data });
+                props.navigation.navigate('ListCourse', { name: props.title, data: props.title!==HomeTitle.CourseList ? data : courses});
               }}
             >
               <Text>See all ></Text>
