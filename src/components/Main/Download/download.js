@@ -73,7 +73,7 @@ const Download = (props) => {
     },
   ];
   return (
-    <ScrollView style={DefaultStyle.marginForLayout}>
+    <ScrollView style={DefaultStyle.marginForLayout} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
         <Text>{courses.length > 1 ? courses.length + " courses" : courses.length + " course"}</Text>
         <TouchableOpacity onPress={() => alert('Removed')}>

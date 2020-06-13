@@ -11,6 +11,7 @@ const ImageButton = (props) => {
   return (
     <ImageBackground
       style={styles.button}
+      resizeMethod={'resize'}
       source={{
         uri: !props.url
           ? 'https://image.freepik.com/free-vector/futuristic-technology-background-with-honeycombs_23-2148481277.jpg'

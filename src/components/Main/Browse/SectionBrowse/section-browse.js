@@ -4,10 +4,10 @@ import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import SectionCategoryItem from '../SectionBrowseItem/section-category-item';
 import SectionPopularSkillItem from '../SectionBrowseItem/section-popular-skill-item';
 import SectionPathItem from '../SectionBrowseItem/section-path-item';
-import SectionTopAuthorItem from '../SectionBrowseItem/section-top-author-item';
 import {skillsContext} from '../../../../../data/Skills'
 import {bigTopicsContext} from '../../../../../data/BigTopics'
 import {authorsContext} from '../../../../../data/Authors'
+import ListAuthors from '../../../Authors/ListAuthors/list-authors'
 
 const SectionBrowse = (props) => {
   const skillContext = useContext(skillsContext)
@@ -94,12 +94,7 @@ const SectionBrowse = (props) => {
           ></FlatList>
         )}
         {props.title === titles.TopAuthors && (
-          <FlatList
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={topAuthors}
-            renderItem={({ item }) => <SectionTopAuthorItem item={item} />}
-          ></FlatList>
+          <ListAuthors data={topAuthors}/>
         )}
     </View>
   );

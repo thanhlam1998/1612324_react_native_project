@@ -65,6 +65,7 @@ const SectionCourses = (props) => {
             </TouchableOpacity>
           </View>
           <FlatList
+            showsHorizontalScrollIndicator={false}
             horizontal={true}
             data={data}
             renderItem={({ item }) => <SectionCoursesItem navigation={props.navigation} item={item} />}

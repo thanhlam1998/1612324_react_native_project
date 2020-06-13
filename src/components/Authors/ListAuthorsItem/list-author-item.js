@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-const SectionTopAuthorItem = (props) => {
+const ListAuthorItem = (props) => {
     return (
         <TouchableOpacity style={styles.touchableView}>
             <Image style={styles.circleImage} source={{uri: props.item.imageUrl || "https://w7.pngwing.com/pngs/340/956/png-transparent-profile-user-icon-computer-icons-user-profile-head-ico-miscellaneous-black-desktop-wallpaper.png"}}></Image>
@@ -11,7 +11,7 @@ const SectionTopAuthorItem = (props) => {
     )
 }
 
-export default SectionTopAuthorItem
+export default ListAuthorItem
 
 const styles = StyleSheet.create({
     touchableView:{
