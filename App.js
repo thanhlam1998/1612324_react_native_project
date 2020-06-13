@@ -20,12 +20,13 @@ import style from './src/globals/style';
 import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 /* ----------------------------- Import context ----------------------------- */
-import {CoursesContext, courses} from './data/ListCourseDetail'
+import {CoursesContext, courses} from './data/Courses'
 import {themeContext, themes} from './data/Theme'
 import {bigTopicsContext, softwareDevelopment, ITOperations, DataProfessional, Conferences, InformationSecurity, BusinessProfessional, CreatetiveProfessional, 
   ManufactoringAndDesign, ArchitectureAndConstruction, Certifications} from './data/BigTopics'
 import {skillsContext, skills, popularSkills} from './data/Skills'
 import {authorsContext, authors, topAuthors} from './data/Authors'
+import {pathContext, paths} from './data/Paths'
 
 /* -------------------------------------------------------------------------- */
 const BottomTab = createBottomTabNavigator();
@@ -141,9 +142,11 @@ export default function App() {
           <bigTopicsContext.Provider value={{Conferences, ITOperations, DataProfessional, CreatetiveProfessional, ArchitectureAndConstruction,
           softwareDevelopment, InformationSecurity, BusinessProfessional, ManufactoringAndDesign, Certifications}}>
             <skillsContext.Provider value = {{skills, popularSkills}}>
-              <NavigationContainer>
-                <MainNavigation/>
-              </NavigationContainer>
+              <pathContext.Provider value={paths}>
+                <NavigationContainer>
+                  <MainNavigation/>
+                </NavigationContainer>
+              </pathContext.Provider>
             </skillsContext.Provider>
           </bigTopicsContext.Provider>
         </authorsContext.Provider>

@@ -15,7 +15,7 @@ import SectionMyChannel from '../SectionItem/section-my-channel';
 import {HomeTitle} from '../../../../globals/constants'
 
 /* ----------------------------- Import Context ----------------------------- */
-import {CoursesContext} from '../../../../../data/ListCourseDetail'
+import {CoursesContext} from '../../../../../data/Courses'
 import {bigTopicsContext} from '../../../../../data/BigTopics'
 
 const SectionCourses = (props) => {

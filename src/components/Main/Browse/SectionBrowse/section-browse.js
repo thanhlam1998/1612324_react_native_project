@@ -7,6 +7,7 @@ import SectionPathItem from '../SectionBrowseItem/section-path-item';
 import {skillsContext} from '../../../../../data/Skills'
 import {bigTopicsContext} from '../../../../../data/BigTopics'
 import {authorsContext} from '../../../../../data/Authors'
+import {pathContext} from '../../../../../data/Paths'
 import ListAuthors from '../../../Authors/ListAuthors/list-authors'
 
 const SectionBrowse = (props) => {
@@ -23,29 +24,8 @@ const SectionBrowse = (props) => {
   const allAuthors = useContext(authorsContext)
   const topAuthors = allAuthors.authors.filter(item => allAuthors.topAuthors.includes(item.id))
 
-  const paths = [
-    {
-      title: 'Security in Google Cloud',
-      total: 3,
-    },
-    {
-      title: 'Apllication Development on Microsoft Azure',
-      total: 9,
-    },
-    {
-      title: 'Angular',
-      total: 14,
-    },
-    {
-      title: 'Designing Microsoft Azure Applications',
-      total: 8,
-    },
-    {
-      title: 'C# Development Fundamental',
-      total: 14,
-    },
-  ];
-
+  const allPaths = useContext(pathContext)
+  const paths = allPaths.slice(0,8)
 
   const titles = {
     none: '',
