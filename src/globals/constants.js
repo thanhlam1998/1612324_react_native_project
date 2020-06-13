@@ -13,3 +13,9 @@ export const HomeTitle = {
     MyPath: 'My paths',
     MyChannel: 'My channels',
 }
+
+export const BrowseTitle = {
+    PopularSkills: "Popular Skills",
+    Paths: "Paths",
+    TopAuthors: "Top Authors"
+}

@@ -15,7 +15,7 @@ import SectionMyChannel from '../SectionItem/section-my-channel';
 import {HomeTitle} from '../../../../globals/constants'
 
 /* ----------------------------- Import Context ----------------------------- */
-import {CoursesContext} from '../../../../../data/ListCourseDetail'
+import {CoursesContext} from '../../../../../data/Courses'
 import {bigTopicsContext} from '../../../../../data/BigTopics'
 
 const SectionCourses = (props) => {
@@ -23,15 +23,28 @@ const SectionCourses = (props) => {
   const bigsTopic = useContext(bigTopicsContext)
   const softwareDevelopment = bigsTopic.softwareDevelopment;
   const softwareDev = courses.filter(item => softwareDevelopment.trending.includes(item.id))
+  var ITOperations = bigsTopic.ITOperations;
+  ITOperations = courses.filter(item=> ITOperations.trending.includes(item.id))
+  var DataProfessional = bigsTopic.DataProfessional;
+  DataProfessional = courses.filter(item=> DataProfessional.trending.includes(item.id))
   const courseList = courses.slice(0,5)
-  var data;
+  var data, allData;
   switch (props.title){
     case HomeTitle.SoftwareDevelopment:
-      data = softwareDev;
+      allData = softwareDev;
       break;
     case HomeTitle.CourseList:
-      data = courseList;
+      allData = courseList;
       break;
+    case HomeTitle.ITOperation:
+      allData = ITOperations;
+      break;
+    case HomeTitle.DataProfessional:
+      allData = DataProfessional;
+      break;
+  }
+  if(allData){
+    data = allData.slice(0,5)
   }
 
   return (
@@ -45,13 +58,14 @@ const SectionCourses = (props) => {
             <Text>{props.title}</Text>
             <TouchableOpacity
               onPress={() => {
-                props.navigation.navigate('ListCourse', { name: props.title });
+                props.navigation.navigate('ListCourse', { name: props.title, data: props.title!==HomeTitle.CourseList ? data : courses});
               }}
             >
               <Text>See all ></Text>
             </TouchableOpacity>
           </View>
           <FlatList
+            showsHorizontalScrollIndicator={false}
             horizontal={true}
             data={data}
             renderItem={({ item }) => <SectionCoursesItem navigation={props.navigation} item={item} />}

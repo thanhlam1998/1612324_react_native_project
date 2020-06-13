@@ -9,7 +9,8 @@ const SectionCoursesItem = (props) => {
       <Image
         source={props.item.imageUrl ? {uri: props.item.imageUrl} : require('../../../../../assets/ic_course.jpg')}
         style={DefaultStyle.image}
-      />
+        resizeMethod={'resize'}
+      />  
       <View style={DefaultStyle.contentMargin}>
         <Text style={DefaultStyle.title}>{props.item.title}</Text>
         <Text style={DefaultStyle.darkText}>{props.item.author}</Text>

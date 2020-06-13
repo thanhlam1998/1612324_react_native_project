@@ -20,9 +20,13 @@ import style from './src/globals/style';
 import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 /* ----------------------------- Import context ----------------------------- */
-import {CoursesContext, courses} from './data/ListCourseDetail'
+import {CoursesContext, courses} from './data/Courses'
 import {themeContext, themes} from './data/Theme'
-import {bigTopicsContext, softwareDevelopment} from './data/BigTopics'
+import {bigTopicsContext, softwareDevelopment, ITOperations, DataProfessional, Conferences, InformationSecurity, BusinessProfessional, CreatetiveProfessional, 
+  ManufactoringAndDesign, ArchitectureAndConstruction, Certifications} from './data/BigTopics'
+import {skillsContext, skills, popularSkills} from './data/Skills'
+import {authorsContext, authors, topAuthors} from './data/Authors'
+import {pathContext, paths} from './data/Paths'
 
 /* -------------------------------------------------------------------------- */
 const BottomTab = createBottomTabNavigator();
@@ -52,7 +56,7 @@ function HomeStack() {
         component={ListChannels}
         options={({ route }) => ({ title: route.params.name })}
       />
-      <Stack.Screen name="CourseDetail" component={ListCourseDetail} />
+      <Stack.Screen name="CourseDetail" component={ListCourseDetail} options={{headerTransparent: true, headerTitle: false}} />
     </Stack.Navigator>
   );
 }
@@ -134,11 +138,18 @@ export default function App() {
   return (
     <themeContext.Provider value={{theme, setTheme}}>
       <CoursesContext.Provider value={courses}>
-        <bigTopicsContext.Provider value={{softwareDevelopment}}>
-          <NavigationContainer>
-            <MainNavigation/>
-          </NavigationContainer>
-        </bigTopicsContext.Provider>
+        <authorsContext.Provider value={{authors, topAuthors}}>
+          <bigTopicsContext.Provider value={{Conferences, ITOperations, DataProfessional, CreatetiveProfessional, ArchitectureAndConstruction,
+          softwareDevelopment, InformationSecurity, BusinessProfessional, ManufactoringAndDesign, Certifications}}>
+            <skillsContext.Provider value = {{skills, popularSkills}}>
+              <pathContext.Provider value={paths}>
+                <NavigationContainer>
+                  <MainNavigation/>
+                </NavigationContainer>
+              </pathContext.Provider>
+            </skillsContext.Provider>
+          </bigTopicsContext.Provider>
+        </authorsContext.Provider>
       </CoursesContext.Provider>
     </themeContext.Provider>
   );

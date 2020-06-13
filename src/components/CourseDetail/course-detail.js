@@ -43,7 +43,7 @@ const CourseDetail = (props) => {
         <CircleImageButton style={styles.marginTop}></CircleImageButton>
 
         {/* Expandable content */}
-        <Content style={styles.marginTop}></Content>
+        <Content style={styles.marginTop} content={props.route.params.item.summary}></Content>
 
         {/* Take learning check Button & View related path button */}
         <View style={styles.marginTop}>

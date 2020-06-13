@@ -31,13 +31,10 @@ const Home = (props) => {
     HomeTitle.MyPath,
     HomeTitle.MyChannel,
   ];
-  const onPressNewReleases = () => {
-    alert('Press on new release');
-  };
   return (
     <ScrollView style={DefaultStyle.marginForLayout}
     showsVerticalScrollIndicator={false}>
-      <ImageButton title="Visual Studio" onPress={onPressNewReleases} />
+      <ImageButton url="https://www.pluralsight.com/content/pluralsight/en/jcr:content/image-res/file.transform/share-image/image.img.adf92adc-acea-4580-b408-a1d727cfbfaf.jpg"/>
       {titles.map((title, key) => (
         <SectionCourse navigation={props.navigation} key={key} title={title} />
       ))}
