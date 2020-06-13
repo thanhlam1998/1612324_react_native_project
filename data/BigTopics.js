@@ -12,7 +12,7 @@ export const Conferences = {
 export const softwareDevelopment = {
     imageUrl: "https://i.pinimg.com/originals/ff/89/62/ff8962804b20adfa99e3d67334d7e00a.jpg",
     name: "Software Development",
-    skills:[],
+    skills:[1, 2, 3, 4, 5,6 ,7, 8, 9, 10],
     paths:[],
     new:[],
     trending:[6, 7, 8],
