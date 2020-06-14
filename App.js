@@ -16,6 +16,7 @@ import { ScreenKey } from './src/globals/constants';
 import SplashScreen from './src/components/SplashScreen/SplashScreen';
 import LoginScreen from './src/components/LoginScreen/LoginScreen';
 import Profile from './src/components/AccountManagement/Account/profile'
+import Topics from './src/components/Topics/Topics'
 import style from './src/globals/style';
 import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
@@ -71,6 +72,7 @@ function BrowseStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Browse" component={Browse} />
+      <Stack.Screen name="Topics"  component={Topics} options={{headerTransparent: true, headerTitle: false}}/>
     </Stack.Navigator>
   );
 }

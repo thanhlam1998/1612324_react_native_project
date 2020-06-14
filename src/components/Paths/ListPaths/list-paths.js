@@ -5,34 +5,12 @@ import DefaultStyle from '../../../globals/style';
 import { FlatList } from 'react-native-gesture-handler';
 
 const ListPath = (props) => {
-  const featurePaths = [
-    {
-      title: 'Visual Studio',
-      total: 10,
-    },
-    {
-      title: 'Apllication Development on Microsoft Azure',
-      total: 9,
-    },
-    {
-      title: 'Angular',
-      total: 14,
-    },
-    {
-      title: 'Designing Microsoft Azure Applications',
-      total: 8,
-    },
-    {
-      title: 'C# Development Fundamental',
-      total: 14,
-    },
-  ];
 
   return (
     <View style={DefaultStyle.marginForLayout}>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={featurePaths}
+        data={props.route.params.data}
         renderItem={({ item }) => <ListPathItem item={item} />}
       />
     </View>

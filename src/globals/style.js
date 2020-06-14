@@ -42,6 +42,5 @@ export default StyleSheet.create({
   item_horizontal_image: {
     width: 100,
     height: 50,
-    resizeMode: 'cover',
   },
 });
