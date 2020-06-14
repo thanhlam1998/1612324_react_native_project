@@ -5,7 +5,7 @@ import itemStyle from '../../../../globals/style';
 const SectionPathItem = (props) => {
     return (
         <TouchableOpacity style={itemStyle.item}>
-          <View style={{backgroundColor: "#000000"}}>
+          <View style={{backgroundColor: "#222222"}}>
             <Image
               source={props.item.imageUrl ? {uri: props.item.imageUrl} : require('../../../../../assets/ic_course.jpg')}
               style={itemStyle.image}

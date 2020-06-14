@@ -6,7 +6,7 @@ const ListPathItem = (props) => {
   return (
     <TouchableOpacity style={DefaultStyle.item_horizontal}>
       <View>
-        <View style={{backgroundColor:"#000000"}}>
+        <View style={{backgroundColor:"#222222"}}>
           <Image
             source={props.item.imageUrl ? {uri: props.item.imageUrl} : require('../../../../assets/ic_course.jpg')}
             style={DefaultStyle.item_horizontal_image}

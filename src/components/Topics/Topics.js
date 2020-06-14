@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import SectionTopics from './SectionTopics/SectionTopics'
 
 const Topics = (props) => {
   const data = props.route.params.data;
@@ -17,7 +18,7 @@ const Topics = (props) => {
           <Text style={styles.text}>{data.name}</Text>
         </View>
       </ImageBackground>
-        
+        <SectionTopics data={data} navigation={props.navigation}/>
     </ScrollView>
   );
 };
