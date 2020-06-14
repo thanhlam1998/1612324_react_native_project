@@ -1,9 +1,11 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useContext } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView} from 'react-native';
 import ListCourseItem from '../../../components/Courses/ListCoursesItem/list-course-item';
 import { FlatList } from 'react-native-gesture-handler';
 import DefaultStyle from '../../../globals/style'
 import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import {myAccountContext} from '../../../../data/MyAccount'
+import {CoursesContext} from '../../../../data/Courses'
 
 
 const Download = (props) => {
@@ -22,66 +24,21 @@ const Download = (props) => {
     })
   })
 
-  const courses = [
-    {
-      id: 1,
-      title: 'React native',
-      author: 'Thanh Lam',
-      level: 'Advance',
-      release: 'May 11, 2020',
-      duration: '10 hours',
-    },
-    {
-      id: 2,
-      title: 'iOs',
-      author: 'Thanh Lam',
-      level: 'Intermediate',
-      release: 'May 12, 2020',
-      duration: '5 hours',
-    },
-    {
-      id: 3,
-      title: 'Android',
-      author: 'Kianto',
-      level: 'Intermediate',
-      release: 'May 12, 2020',
-      duration: '15 hours',
-    },
-    {
-      id: 4,
-      title: 'React native',
-      author: 'Thanh Lam',
-      level: 'Advance',
-      release: 'May 11, 2020',
-      duration: '10 hours',
-    },
-    {
-      id: 5,
-      title: 'iOs',
-      author: 'Thanh Lam',
-      level: 'Intermediate',
-      release: 'May 12, 2020',
-      duration: '5 hours',
-    },
-    {
-      id: 6,
-      title: 'Android',
-      author: 'Kianto',
-      level: 'Intermediate',
-      release: 'May 12, 2020',
-      duration: '15 hours',
-    },
-  ];
+/* -------------------------- Get data from context ------------------------- */
+  const courses = useContext(CoursesContext)
+  const {download, setDownload} = useContext(myAccountContext);
+  const myDownload = courses.filter(item => download.includes(item.id))
+
   return (
     <ScrollView style={DefaultStyle.marginForLayout} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
-        <Text>{courses.length > 1 ? courses.length + " courses" : courses.length + " course"}</Text>
-        <TouchableOpacity onPress={() => alert('Removed')}>
+        <Text>{myDownload.length}{myDownload.length > 1 ? " courses" :" course"}</Text>
+        <TouchableOpacity onPress={() => setDownload([])}>
           <Text>REMOVE ALL ></Text>
         </TouchableOpacity>
       </View>
       <FlatList
-        data={courses}
+        data={myDownload}
         renderItem={({ item }) => <ListCourseItem item={item} />}
       ></FlatList>
     </ScrollView>

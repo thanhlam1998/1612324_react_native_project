@@ -28,6 +28,7 @@ import {bigTopicsContext, softwareDevelopment, ITOperations, DataProfessional, C
 import {skillsContext, skills, popularSkills} from './data/Skills'
 import {authorsContext, authors, topAuthors} from './data/Authors'
 import {pathContext, paths} from './data/Paths'
+import {myAccountContext, myPaths, myChanels, myBookmarks, myDownload} from './data/MyAccount'
 
 /* -------------------------------------------------------------------------- */
 const BottomTab = createBottomTabNavigator();
@@ -137,6 +138,9 @@ const MainNavigation = () => {
 
 export default function App() {
   const [theme, setTheme] = useState(themes.light);
+  const [download, setDownload] = useState(myDownload)
+  const [myPath, setMyPath] = useState(myPaths)
+  const [myBookmark, setMyBookmark] = useState(myBookmarks)
   return (
     <themeContext.Provider value={{theme, setTheme}}>
       <CoursesContext.Provider value={courses}>
@@ -145,9 +149,11 @@ export default function App() {
           softwareDevelopment, InformationSecurity, BusinessProfessional, ManufactoringAndDesign, Certifications}}>
             <skillsContext.Provider value = {{skills, popularSkills}}>
               <pathContext.Provider value={paths}>
-                <NavigationContainer>
-                  <MainNavigation/>
-                </NavigationContainer>
+                <myAccountContext.Provider value={{download, setDownload, myPath, setMyPath, myBookmark, setMyBookmark}}>
+                  <NavigationContainer>
+                    <MainNavigation/>
+                  </NavigationContainer>
+                </myAccountContext.Provider>
               </pathContext.Provider>
             </skillsContext.Provider>
           </bigTopicsContext.Provider>

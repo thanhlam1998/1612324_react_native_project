@@ -7,6 +7,7 @@ import CircleImageButton from './CourseDetailItem/circle-image-button';
 import Content from './CourseDetailItem/text-content-and-related-button';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs'
 import Contents from './Contents/Contents';
+import ExpandableText from '../Others/ExpandableText'
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -59,10 +60,10 @@ const CourseDetail = (props) => {
         >{`${props.route.params.item.level}  .  ${props.route.params.item.release}  .  ${props.route.params.item.duration}`}</Text>
 
         {/* Bookmark - Add To Channel - Download Button */}
-        <CircleImageButton style={styles.marginTop}></CircleImageButton>
+        <CircleImageButton style={styles.marginTop} item={props.route.params.item}></CircleImageButton>
 
         {/* Expandable content */}
-        <Content style={styles.marginTop} content={props.route.params.item.summary}></Content>
+        <ExpandableText style={{marginTop: 20}} content={props.route.params.item.summary} minLines={3}></ExpandableText>
 
         {/* Take learning check Button & View related path button */}
         <View style={styles.marginTop}>
