@@ -25,8 +25,6 @@ const ImageButton = (props) => {
   );
 };
 
-export default ImageButton;
-
 const styles = StyleSheet.create({
   button: {
     height: 100,
@@ -44,3 +42,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+export default ImageButton;
+

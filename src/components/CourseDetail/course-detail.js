@@ -5,8 +5,27 @@ import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import DefaultStyle from '../../globals/style';
 import CircleImageButton from './CourseDetailItem/circle-image-button';
 import Content from './CourseDetailItem/text-content-and-related-button';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs'
+import Contents from './Contents/Contents';
+
+const Tab = createMaterialTopTabNavigator();
 
 const CourseDetail = (props) => {
+  function ContentScreen() {
+    return (
+      <View style={styles.marginView}>
+        <Contents data={props.route.params.item.contents}/>
+      </View>
+    );
+  }
+  
+  function TranscriptScreen() {
+    return (
+      <View style={styles.marginView}>
+        <Text>{props.route.params.item.transcript}</Text>
+      </View>
+    );
+  }
   return (
     <ScrollView>
       <Video
@@ -47,13 +66,16 @@ const CourseDetail = (props) => {
 
         {/* Take learning check Button & View related path button */}
         <View style={styles.marginTop}>
-        <Button title="Take a learning check" color="#636e72"/>
+        <Button title="Take a learning check" color="#636e72" onPress={() => {}}/>
         </View>
         <View style={styles.marginTop}>
-        <Button title="View related paths &amp; courses" color="#636e72"/>
+        <Button title="View related paths &amp; courses" color="#636e72" onPress={() => {}}/>
         </View>
-
       </View>
+      <Tab.Navigator>
+            <Tab.Screen name ="contents" component={ContentScreen} options={{title: "CONTENTS"}}/>
+            <Tab.Screen name ="transcript" component={TranscriptScreen} options={{title: "TRANSCRIPT"}}/>
+      </Tab.Navigator>
     </ScrollView>
   );
 };

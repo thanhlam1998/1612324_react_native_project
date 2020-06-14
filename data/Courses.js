@@ -95,6 +95,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
   {
     id: 3,
@@ -173,6 +174,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
   {
     id: 4,
@@ -211,6 +213,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
   {
     id: 5,
@@ -269,6 +272,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
   {
     id: 6,
@@ -327,6 +331,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
   {
     id: 7,
@@ -385,6 +390,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
   {
     id: 8,
@@ -442,6 +448,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
   {
     id: 9,
@@ -479,6 +486,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
   {
     id: 10,
@@ -516,6 +524,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
   {
     id: 11,
@@ -563,6 +572,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
   {
     id: 12,
@@ -647,6 +657,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
   {
     id: 13,
@@ -699,6 +710,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
   {
     id: 14,
@@ -746,6 +758,7 @@ export const courses = [
         ],
       },
     ],
+    transcript: 'This is a transcript for this course',
   },
 ];
 
