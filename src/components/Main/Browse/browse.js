@@ -43,7 +43,7 @@ const Browse = (props) => {
         }
       />
       {titles.map((title, key) => (
-        <SectionBrowse key={key} title={title} />
+        <SectionBrowse navigation={props.navigation} key={key} title={title} />
       ))}
     </ScrollView>
   );

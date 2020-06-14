@@ -16,6 +16,7 @@ import { ScreenKey } from './src/globals/constants';
 import SplashScreen from './src/components/SplashScreen/SplashScreen';
 import LoginScreen from './src/components/LoginScreen/LoginScreen';
 import Profile from './src/components/AccountManagement/Account/profile'
+import Topics from './src/components/Topics/Topics'
 import style from './src/globals/style';
 import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
@@ -27,6 +28,7 @@ import {bigTopicsContext, softwareDevelopment, ITOperations, DataProfessional, C
 import {skillsContext, skills, popularSkills} from './data/Skills'
 import {authorsContext, authors, topAuthors} from './data/Authors'
 import {pathContext, paths} from './data/Paths'
+import {myAccountContext, myPaths, myChanels, myBookmarks, myDownload} from './data/MyAccount'
 
 /* -------------------------------------------------------------------------- */
 const BottomTab = createBottomTabNavigator();
@@ -71,6 +73,7 @@ function BrowseStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Browse" component={Browse} />
+      <Stack.Screen name="Topics"  component={Topics} options={{headerTransparent: true, headerTitle: false}}/>
     </Stack.Navigator>
   );
 }
@@ -110,7 +113,7 @@ const MainTabNavigator = () => {
 const MainNavigation = () => {
   return (
     <MainNavigationStack.Navigator>
-      {/* <MainNavigationStack.Screen
+      <MainNavigationStack.Screen
         name={ScreenKey.SplashScreen}
         component={SplashScreen}
         options={{ headerShown: false }}
@@ -119,7 +122,7 @@ const MainNavigation = () => {
         name={ScreenKey.LoginScreen}
         component={LoginScreen}
         options={{ headerShown: false }}
-      /> */}
+      />
       <MainNavigationStack.Screen
         name={ScreenKey.MainTabScreen}
         component={MainTabNavigator}
@@ -135,6 +138,9 @@ const MainNavigation = () => {
 
 export default function App() {
   const [theme, setTheme] = useState(themes.light);
+  const [download, setDownload] = useState(myDownload)
+  const [myPath, setMyPath] = useState(myPaths)
+  const [myBookmark, setMyBookmark] = useState(myBookmarks)
   return (
     <themeContext.Provider value={{theme, setTheme}}>
       <CoursesContext.Provider value={courses}>
@@ -143,9 +149,11 @@ export default function App() {
           softwareDevelopment, InformationSecurity, BusinessProfessional, ManufactoringAndDesign, Certifications}}>
             <skillsContext.Provider value = {{skills, popularSkills}}>
               <pathContext.Provider value={paths}>
-                <NavigationContainer>
-                  <MainNavigation/>
-                </NavigationContainer>
+                <myAccountContext.Provider value={{download, setDownload, myPath, setMyPath, myBookmark, setMyBookmark}}>
+                  <NavigationContainer>
+                    <MainNavigation/>
+                  </NavigationContainer>
+                </myAccountContext.Provider>
               </pathContext.Provider>
             </skillsContext.Provider>
           </bigTopicsContext.Provider>

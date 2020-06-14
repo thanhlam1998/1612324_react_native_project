@@ -30,6 +30,7 @@ const Home = (props) => {
     HomeTitle.CourseList,
     HomeTitle.MyPath,
     HomeTitle.MyChannel,
+    HomeTitle.MyBookmark
   ];
   return (
     <ScrollView style={DefaultStyle.marginForLayout}

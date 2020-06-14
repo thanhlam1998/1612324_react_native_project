@@ -1,12 +1,13 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import ImageButton from '../../../Common/image-button'
 
 const SectionCategoryItem = (props) => {
     return (
-        <View style={styles.item}>
-            <ImageButton url={props.item.imageUrl} title={props.title}/>
-        </View>
+        <ScrollView style={styles.item}>
+            <ImageButton url={props.item.imageUrl} title={props.item.name} 
+            onPress={() => props.navigation.navigate("Topics", {data: props.item})}/>
+        </ScrollView>
     )
 }
 

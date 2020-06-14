@@ -12,6 +12,7 @@ export const HomeTitle = {
     CourseList: 'Course List',
     MyPath: 'My paths',
     MyChannel: 'My channels',
+    MyBookmark: "Bookmarks"
 }
 
 export const BrowseTitle = {

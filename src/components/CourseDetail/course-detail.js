@@ -5,8 +5,28 @@ import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import DefaultStyle from '../../globals/style';
 import CircleImageButton from './CourseDetailItem/circle-image-button';
 import Content from './CourseDetailItem/text-content-and-related-button';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs'
+import Contents from './Contents/Contents';
+import ExpandableText from '../Others/ExpandableText'
+
+const Tab = createMaterialTopTabNavigator();
 
 const CourseDetail = (props) => {
+  function ContentScreen() {
+    return (
+      <View style={styles.marginView}>
+        <Contents data={props.route.params.item.contents}/>
+      </View>
+    );
+  }
+  
+  function TranscriptScreen() {
+    return (
+      <View style={styles.marginView}>
+        <Text>{props.route.params.item.transcript}</Text>
+      </View>
+    );
+  }
   return (
     <ScrollView>
       <Video
@@ -40,20 +60,23 @@ const CourseDetail = (props) => {
         >{`${props.route.params.item.level}  .  ${props.route.params.item.release}  .  ${props.route.params.item.duration}`}</Text>
 
         {/* Bookmark - Add To Channel - Download Button */}
-        <CircleImageButton style={styles.marginTop}></CircleImageButton>
+        <CircleImageButton style={styles.marginTop} item={props.route.params.item}></CircleImageButton>
 
         {/* Expandable content */}
-        <Content style={styles.marginTop} content={props.route.params.item.summary}></Content>
+        <ExpandableText style={{marginTop: 20}} content={props.route.params.item.summary} minLines={3}></ExpandableText>
 
         {/* Take learning check Button & View related path button */}
         <View style={styles.marginTop}>
-        <Button title="Take a learning check" color="#636e72"/>
+        <Button title="Take a learning check" color="#636e72" onPress={() => {}}/>
         </View>
         <View style={styles.marginTop}>
-        <Button title="View related paths &amp; courses" color="#636e72"/>
+        <Button title="View related paths &amp; courses" color="#636e72" onPress={() => {}}/>
         </View>
-
       </View>
+      <Tab.Navigator>
+            <Tab.Screen name ="contents" component={ContentScreen} options={{title: "CONTENTS"}}/>
+            <Tab.Screen name ="transcript" component={TranscriptScreen} options={{title: "TRANSCRIPT"}}/>
+      </Tab.Navigator>
     </ScrollView>
   );
 };

@@ -20,5 +20,5 @@ Deadline 1: Mock-up UI/UX cho toàn bộ ứng dụng
 
 Deadline 2: Xây dựng ứng dụng offline cho toàn bộ ứng dụng:
 - Commit ID: da382e1
-- Video demo: *Đang cập nhật*
+- Video demo: https://youtu.be/d0DafG5NW0Y
 

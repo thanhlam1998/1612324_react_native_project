@@ -9,7 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 import SectionCoursesItem from '../SectionItem/section-courses-item';
-import SectionFeaturePath from '../SectionItem/section-feature-path';
+import SectionPathItem from '../../Browse/SectionBrowseItem/section-path-item'
 import SectionFeatureChannel from '../SectionItem/section-feature-channel';
 import SectionMyChannel from '../SectionItem/section-my-channel';
 import {HomeTitle} from '../../../../globals/constants'
@@ -17,30 +17,48 @@ import {HomeTitle} from '../../../../globals/constants'
 /* ----------------------------- Import Context ----------------------------- */
 import {CoursesContext} from '../../../../../data/Courses'
 import {bigTopicsContext} from '../../../../../data/BigTopics'
+import {myAccountContext} from '../../../../../data/MyAccount'
+import {pathContext} from '../../../../../data/Paths'
 
 const SectionCourses = (props) => {
+
+
   const courses = useContext(CoursesContext)
   const bigsTopic = useContext(bigTopicsContext)
+  const paths = useContext(pathContext)
+  const {myPath, myBookmark} = useContext(myAccountContext)
+
+  const pathData = paths.filter(item => myPath.includes(item.id))
+  const bookmarkData = courses.filter(item => myBookmark.includes(item.id))
+
   const softwareDevelopment = bigsTopic.softwareDevelopment;
   const softwareDev = courses.filter(item => softwareDevelopment.trending.includes(item.id))
+
   var ITOperations = bigsTopic.ITOperations;
   ITOperations = courses.filter(item=> ITOperations.trending.includes(item.id))
+
   var DataProfessional = bigsTopic.DataProfessional;
   DataProfessional = courses.filter(item=> DataProfessional.trending.includes(item.id))
-  const courseList = courses.slice(0,5)
+
   var data, allData;
   switch (props.title){
     case HomeTitle.SoftwareDevelopment:
       allData = softwareDev;
       break;
     case HomeTitle.CourseList:
-      allData = courseList;
+      allData = courses;
       break;
     case HomeTitle.ITOperation:
       allData = ITOperations;
       break;
     case HomeTitle.DataProfessional:
       allData = DataProfessional;
+      break;
+    case HomeTitle.MyPath:
+      allData = pathData
+      break;
+    case HomeTitle.MyBookmark:
+      allData = bookmarkData
       break;
   }
   if(allData){
@@ -52,13 +70,14 @@ const SectionCourses = (props) => {
       {(props.title === HomeTitle.SoftwareDevelopment ||
         props.title === HomeTitle.CourseList || 
         props.title === HomeTitle.ITOperation ||
-        props. title === HomeTitle.DataProfessional) && (
+        props. title === HomeTitle.DataProfessional || 
+        props.title === HomeTitle.MyBookmark) && (
         <View>
           <View style={styles.header}>
             <Text>{props.title}</Text>
             <TouchableOpacity
               onPress={() => {
-                props.navigation.navigate('ListCourse', { name: props.title, data: props.title!==HomeTitle.CourseList ? data : courses});
+                props.navigation.navigate('ListCourse', { name: props.title, data: allData});
               }}
             >
               <Text>See all ></Text>
@@ -78,7 +97,7 @@ const SectionCourses = (props) => {
             <Text>{props.title}</Text>
             <TouchableOpacity
               onPress={() =>
-                props.navigation.navigate('ListPaths', { name: props.title })
+                props.navigation.navigate('ListPaths', { name: props.title, data: allData})
               }
             >
               <Text>See all ></Text>
@@ -86,12 +105,12 @@ const SectionCourses = (props) => {
           </View>
           <FlatList
             horizontal={true}
-            data={courseList}
-            renderItem={({ item }) => <SectionFeaturePath item={item} />}
+            data={data} 
+            renderItem={({ item }) => <SectionPathItem item={item} />}
           ></FlatList>
         </View>
       )}
-      {props.title === HomeTitle.MyChannel && (
+      {/* {props.title === HomeTitle.MyChannel && (
         <View>
           <View style={styles.header}>
             <Text>{props.title}</Text>
@@ -101,11 +120,11 @@ const SectionCourses = (props) => {
           </View>
           <FlatList
             horizontal={true}
-            data={courseList}
+            data={data}
             renderItem={({ item }) => <SectionMyChannel item={item} />}
           ></FlatList>
         </View>
-      )}
+      )} */}
     </View>
   );
 };

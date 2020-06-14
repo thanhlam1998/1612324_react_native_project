@@ -18,7 +18,7 @@ const ListCourses = (props) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         data={props.route.params.data}
-        renderItem={({ item }) => <ListCourseItem item={item} />}
+        renderItem={({ item }) => <ListCourseItem item={item} navigation={props.navigation}/>}
       />
     </View>
   );

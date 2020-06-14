@@ -38,9 +38,10 @@ const SectionBrowse = (props) => {
       {props.title !== '' && (
         <View style={styles.header}>
           <Text>{props.title}</Text>
-          {props.title !== titles.PopularSkills && props.title !== titles.TopAuthors && <TouchableOpacity>
+          {props.title === titles.Paths && 
+          <TouchableOpacity onPress={() => props.navigation.navigate("ListPaths", {name: props.title, data: allPaths})}>
             <Text>See all ></Text>
-          </TouchableOpacity>}
+          </TouchableOpacity>}  
         </View>
       )}
         {!props.title && (
@@ -52,7 +53,7 @@ const SectionBrowse = (props) => {
               numColumns={categoriesContext.length / 2}
               showsVerticalScrollIndicator={false}
               renderItem={({ item }) => (
-                <SectionCategoryItem item={item} title={item.name}></SectionCategoryItem>
+                <SectionCategoryItem item={item} navigation={props.navigation}></SectionCategoryItem>
               )}
             />
           </ScrollView>
