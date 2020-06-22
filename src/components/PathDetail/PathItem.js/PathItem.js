@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import DefaultStyle from '../../../globals/style';
 
-const ListPathItem = (props) => {
+const PathItem = (props) => {
   return (
-    <TouchableOpacity style={DefaultStyle.item_horizontal} onPress={() => props.navigation.navigate('PathDetail', {item: props.item})}>
+    <View style={DefaultStyle.item_horizontal}>
       <View>
         <View style={{backgroundColor:"#222222"}}>
           <Image
@@ -22,11 +22,11 @@ const ListPathItem = (props) => {
           {props.item.courses.length > 0 ? <Text>courses</Text> : <Text>course</Text>}
         </Text>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 
-export default ListPathItem;
+export default PathItem;
 
 const styles = StyleSheet.create({
   container: {

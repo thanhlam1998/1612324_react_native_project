@@ -71,7 +71,7 @@ const SectionBrowse = (props) => {
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             data={paths}
-            renderItem={({ item }) => <SectionPathItem item={item} />}
+            renderItem={({ item }) => <SectionPathItem item={item} navigation={props.navigation}/>}
           ></FlatList>
         )}
         {props.title === titles.TopAuthors && (

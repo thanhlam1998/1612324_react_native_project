@@ -5,6 +5,7 @@ import Constants from 'expo-constants';
 import ListCourses from './src/components/Courses/ListCourses/list-courses';
 import ListCourseDetail from './src/components/CourseDetail/course-detail';
 import ListPaths from './src/components/Paths/ListPaths/list-paths';
+import PathDetail from './src/components/PathDetail/PathDetail';
 import ListChannels from './src/components/Channels/ListChannels/list_channels';
 import NavigationContainer from '@react-navigation/native/src/NavigationContainer';
 import Download from './src/components/Main/Download/download';
@@ -52,13 +53,14 @@ function HomeStack() {
         name="ListPaths"
         component={ListPaths}
         options={({ route }) => ({ title: route.params.name })}
-      />
+      />  
       <Stack.Screen
         name="ListChannels"
         component={ListChannels}
         options={({ route }) => ({ title: route.params.name })}
       />
       <Stack.Screen name="CourseDetail" component={ListCourseDetail} options={{headerTransparent: true, headerTitle: false}} />
+      <Stack.Screen name="PathDetail" component={PathDetail}/>
     </Stack.Navigator>
   );
 }
@@ -113,7 +115,7 @@ const MainTabNavigator = () => {
 const MainNavigation = () => {
   return (
     <MainNavigationStack.Navigator>
-      <MainNavigationStack.Screen
+      {/* <MainNavigationStack.Screen
         name={ScreenKey.SplashScreen}
         component={SplashScreen}
         options={{ headerShown: false }}
@@ -122,7 +124,7 @@ const MainNavigation = () => {
         name={ScreenKey.LoginScreen}
         component={LoginScreen}
         options={{ headerShown: false }}
-      />
+      /> */}
       <MainNavigationStack.Screen
         name={ScreenKey.MainTabScreen}
         component={MainTabNavigator}

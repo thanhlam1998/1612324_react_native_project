@@ -106,7 +106,7 @@ const SectionCourses = (props) => {
           <FlatList
             horizontal={true}
             data={data} 
-            renderItem={({ item }) => <SectionPathItem item={item} />}
+            renderItem={({ item }) => <SectionPathItem item={item} navigation={props.navigation}/>}
           ></FlatList>
         </View>
       )}

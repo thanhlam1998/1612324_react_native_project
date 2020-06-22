@@ -11,7 +11,7 @@ const ListPath = (props) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         data={props.route.params.data}
-        renderItem={({ item }) => <ListPathItem item={item} />}
+        renderItem={({ item }) => <ListPathItem item={item} navigation ={props.navigation}/>}
       />
     </View>
   );
