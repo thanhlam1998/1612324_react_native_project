@@ -4,7 +4,7 @@ import DefaultStyle from '../../../globals/style';
 
 const PathItem = (props) => {
   return (
-    <View style={DefaultStyle.item_horizontal}>
+    <View >
       <View>
         <View style={{backgroundColor:"#222222"}}>
           <Image

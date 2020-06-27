@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import PathItem from './PathItem/PathItem'
 
-const PathDetail = () => {
+const PathDetail = (props) => {
     return (
         <View>
-            <Text></Text>
+            <PathItem item={props.route.params.item}/>
         </View>
     )
 }

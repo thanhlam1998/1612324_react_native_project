@@ -110,7 +110,7 @@ const SectionCourses = (props) => {
           ></FlatList>
         </View>
       )}
-      {/* {props.title === HomeTitle.MyChannel && (
+      {props.title === HomeTitle.MyChannel && (
         <View>
           <View style={styles.header}>
             <Text>{props.title}</Text>
@@ -124,7 +124,7 @@ const SectionCourses = (props) => {
             renderItem={({ item }) => <SectionMyChannel item={item} />}
           ></FlatList>
         </View>
-      )} */}
+      )}
     </View>
   );
 };
