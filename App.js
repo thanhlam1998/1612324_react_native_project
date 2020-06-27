@@ -59,8 +59,6 @@ function HomeStack() {
         component={ListChannels}
         options={({ route }) => ({ title: route.params.name })}
       />
-      <Stack.Screen name="CourseDetail" component={ListCourseDetail} options={{headerTransparent: true, headerTitle: false}} />
-      <Stack.Screen name="PathDetail" component={PathDetail}/>
     </Stack.Navigator>
   );
 }
@@ -76,6 +74,16 @@ function BrowseStack() {
     <Stack.Navigator>
       <Stack.Screen name="Browse" component={Browse} />
       <Stack.Screen name="Topics"  component={Topics} options={{headerTransparent: true, headerTitle: false}}/>
+      <Stack.Screen
+        name="ListPathsBrowse"
+        component={ListPaths}
+        options={({ route }) => ({ title: route.params.name })}
+      />  
+      <Stack.Screen
+        name="ListCourseBrowse"
+        component={ListCourses}
+        options={({ route }) => ({ title: route.params.name })}
+      />
     </Stack.Navigator>
   );
 }
@@ -130,6 +138,8 @@ const MainNavigation = () => {
         component={MainTabNavigator}
         options={{ headerShown: false }}
       />
+      <MainNavigationStack.Screen name="CourseDetail" component={ListCourseDetail} options={{headerTransparent: true, headerTitle: false}} />
+      <MainNavigationStack.Screen name="PathDetail" component={PathDetail} options={({ route }) => ({ title: route.params.name })}/>
       <MainNavigationStack.Screen
         name={ScreenKey.ProfileScreen}
         component={Profile}

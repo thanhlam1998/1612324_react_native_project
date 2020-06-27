@@ -6,7 +6,7 @@ import DefaultStyle from '../../../globals/style'
 const ListCourseItem = (props) => {
   return (
     <TouchableOpacity style={DefaultStyle.item_horizontal} 
-                      onPress ={() => {props.navigation.navigate('CourseDetail', { item: props.item});}}>
+                      onPress ={() => {props.navigation.navigate('CourseDetail', {item: props.item});}}>
       <Image source={props.item.imageUrl ? {uri: props.item.imageUrl}: require('../../../../assets/ic_course.jpg')} 
               style={[DefaultStyle.item_horizontal_image, {alignSelf: 'center'}]} 
               resizeMethod={"resize"}/>

@@ -6,7 +6,7 @@ const SectionCategoryItem = (props) => {
     return (
         <ScrollView style={styles.item}>
             <ImageButton url={props.item.imageUrl} title={props.item.name} 
-            onPress={() => props.navigation.navigate("Topics", {data: props.item})}/>
+            onPress={() => props.navigation.navigate("Topics", {data: props.item, navigation: props.navigation})}/>
         </ScrollView>
     )
 }

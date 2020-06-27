@@ -39,7 +39,7 @@ const SectionBrowse = (props) => {
         <View style={styles.header}>
           <Text>{props.title}</Text>
           {props.title === titles.Paths && 
-          <TouchableOpacity onPress={() => props.navigation.navigate("ListPaths", {name: props.title, data: allPaths})}>
+          <TouchableOpacity onPress={() => props.navigation.navigate("ListPathsBrowse", {name: props.title, data: allPaths})}>
             <Text>See all ></Text>
           </TouchableOpacity>}  
         </View>

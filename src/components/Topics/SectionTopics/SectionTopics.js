@@ -66,7 +66,9 @@ const SectionTopics = (props) => {
         <View style={styles.marginForView}>
           <View style={styles.header}>
             <Text>{title.paths}</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+                props.navigation.navigate('ListPathsBrowse', { name: title.paths, data: paths})
+              }>
               <Text>See all ></Text>
             </TouchableOpacity>
           </View>
@@ -74,7 +76,7 @@ const SectionTopics = (props) => {
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             data={paths}
-            renderItem={({ item }) => <SectionPathItem item={item} />}
+            renderItem={({ item }) => <SectionPathItem item={item} navigation={props.navigation}/>}
           ></FlatList>
         </View>
       )}
@@ -82,7 +84,10 @@ const SectionTopics = (props) => {
         <View style={styles.marginForView}>
           <View style={styles.header}>
             <Text>{title.new}</Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('ListCourseBrowse', { name: title.new, data: news});
+            }}>
               <Text>See all ></Text>
             </TouchableOpacity>
           </View>
@@ -98,7 +103,10 @@ const SectionTopics = (props) => {
         <View style={styles.marginForView}>
           <View style={styles.header}>
             <Text>{title.trending}</Text>
-            <TouchableOpacity>
+            <TouchableOpacity 
+            onPress={() => {
+              props.navigation.navigate('ListCourseBrowse', { name: title.trending, data: trendings});
+            }}>
               <Text>See all ></Text>
             </TouchableOpacity>
           </View>

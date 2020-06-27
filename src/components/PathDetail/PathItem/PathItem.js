@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import DefaultStyle from '../../../globals/style';
+import style from '../../../globals/style';
 
 const PathItem = (props) => {
   return (
-    <View >
+    <View style={[DefaultStyle.item_horizontal, styles.noBorder]}>
       <View>
         <View style={{backgroundColor:"#222222"}}>
           <Image
@@ -16,7 +17,7 @@ const PathItem = (props) => {
         </View>
       </View>
       <View style={styles.container}>
-        <Text style={DefaultStyle.title}>{props.item.name}</Text>
+        <Text style={styles.title}>{props.item.name}</Text>
         <Text style={DefaultStyle.darkText}>
           {props.item.courses.length}{' '}
           {props.item.courses.length > 0 ? <Text>courses</Text> : <Text>course</Text>}
@@ -32,7 +33,15 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     flex: 1,
-    marginLeft:5,
+    marginLeft:10,
     marginBottom: 5 
+  }, 
+  noBorder :{
+    borderBottomWidth: 0,
+    marginLeft: 0,
+    marginRight: 0
+  },
+  title: {
+    fontSize: 20
   }
 });
