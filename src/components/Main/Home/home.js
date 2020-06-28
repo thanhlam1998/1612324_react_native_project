@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useContext } from 'react';
 import { StyleSheet, Text, View, ScrollView, Button, TouchableOpacity } from 'react-native';
 import SectionCourse from './SectionCourse/section-course';
 import ImageButton from '../../Common/image-button';
@@ -32,8 +32,10 @@ const Home = (props) => {
     HomeTitle.MyChannel,
     HomeTitle.MyBookmark
   ];
+
+  const {theme} = useContext(themeContext)
   return (
-    <ScrollView style={DefaultStyle.marginForLayout}
+    <ScrollView style={[DefaultStyle.marginForLayout,]}
     showsVerticalScrollIndicator={false}>
       <ImageButton url="https://www.pluralsight.com/content/pluralsight/en/jcr:content/image-res/file.transform/share-image/image.img.adf92adc-acea-4580-b408-a1d727cfbfaf.jpg"/>
       {titles.map((title, key) => (

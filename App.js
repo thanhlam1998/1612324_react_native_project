@@ -154,7 +154,7 @@ export default function App() {
   const [myPath, setMyPath] = useState(myPaths)
   const [myBookmark, setMyBookmark] = useState(myBookmarks)
   return (
-    <themeContext.Provider value={{theme, setTheme}}>
+    <themeContext.Provider value={{themes, theme, setTheme}}>
       <CoursesContext.Provider value={courses}>
         <authorsContext.Provider value={{authors, topAuthors}}>
           <bigTopicsContext.Provider value={{Conferences, ITOperations, DataProfessional, CreatetiveProfessional, ArchitectureAndConstruction,
