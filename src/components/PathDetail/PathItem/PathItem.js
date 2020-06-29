@@ -7,7 +7,7 @@ const PathItem = (props) => {
   return (
     <View style={[DefaultStyle.item_horizontal, styles.noBorder]}>
       <View>
-        <View style={{backgroundColor:"#222222"}}>
+        <View style={{backgroundColor:"#000000"}}>
           <Image
             source={props.item.imageUrl ? {uri: props.item.imageUrl} : require('../../../../assets/ic_course.jpg')}
             style={DefaultStyle.item_horizontal_image}

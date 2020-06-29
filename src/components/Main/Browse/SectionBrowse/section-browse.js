@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 10
+    marginBottom: 5
   }, 
   marginForView: {
       marginBottom: 10

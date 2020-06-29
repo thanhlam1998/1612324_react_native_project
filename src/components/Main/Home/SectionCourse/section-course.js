@@ -19,6 +19,8 @@ import {CoursesContext} from '../../../../../data/Courses'
 import {bigTopicsContext} from '../../../../../data/BigTopics'
 import {myAccountContext} from '../../../../../data/MyAccount'
 import {pathContext} from '../../../../../data/Paths'
+import {themeContext} from '../../../../../data/Theme'
+import style from '../../../../globals/style';
 
 const SectionCourses = (props) => {
 
@@ -27,6 +29,19 @@ const SectionCourses = (props) => {
   const bigsTopic = useContext(bigTopicsContext)
   const paths = useContext(pathContext)
   const {myPath, myBookmark} = useContext(myAccountContext)
+  const {theme} = useContext(themeContext)
+  
+  const styles = StyleSheet.create({
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    textThemeColor: {
+      color: theme.foreground,
+      marginTop: 10
+    }
+  });
+  
 
   const pathData = paths.filter(item => myPath.includes(item.id))
   const bookmarkData = courses.filter(item => myBookmark.includes(item.id))
@@ -74,13 +89,13 @@ const SectionCourses = (props) => {
         props.title === HomeTitle.MyBookmark) && (
         <View>
           <View style={styles.header}>
-            <Text>{props.title}</Text>
+            <Text style={styles.textThemeColor}>{props.title}</Text>
             <TouchableOpacity
               onPress={() => {
                 props.navigation.navigate('ListCourse', { name: props.title, data: allData});
               }}
             >
-              <Text>See all ></Text>
+              <Text style={styles.textThemeColor}>See all ></Text>
             </TouchableOpacity>
           </View>
           <FlatList
@@ -94,13 +109,13 @@ const SectionCourses = (props) => {
       {(props.title === HomeTitle.MyPath) && (
         <View>
           <View style={styles.header}>
-            <Text>{props.title}</Text>
+            <Text style={styles.textThemeColor}>{props.title}</Text>
             <TouchableOpacity
               onPress={() =>
                 props.navigation.navigate('ListPaths', { name: props.title, data: allData})
               }
             >
-              <Text>See all ></Text>
+              <Text style={styles.textThemeColor}>See all ></Text>
             </TouchableOpacity>
           </View>
           <FlatList
@@ -113,9 +128,9 @@ const SectionCourses = (props) => {
       {props.title === HomeTitle.MyChannel && (
         <View>
           <View style={styles.header}>
-            <Text>{props.title}</Text>
+            <Text style={styles.textThemeColor}>{props.title}</Text>
             <TouchableOpacity>
-              <Text>See all ></Text>
+              <Text style={styles.textThemeColor}>See all ></Text>
             </TouchableOpacity>
           </View>
           <FlatList
@@ -130,9 +145,3 @@ const SectionCourses = (props) => {
 };
 
 export default SectionCourses;
-const styles = StyleSheet.create({
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-});
