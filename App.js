@@ -149,7 +149,7 @@ const MainNavigation = () => {
 };
 
 export default function App() {
-  const [theme, setTheme] = useState(themes.light);
+  const [theme, setTheme] = useState(themes.dark);
   const [download, setDownload] = useState(myDownload)
   const [myPath, setMyPath] = useState(myPaths)
   const [myBookmark, setMyBookmark] = useState(myBookmarks)

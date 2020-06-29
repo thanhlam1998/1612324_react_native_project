@@ -6,6 +6,7 @@ import DefaultStyle from '../../../globals/style'
 import { ScreenKey } from '../../../globals/constants';
 import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import {HomeTitle} from '../../../globals/constants'
+import {themeContext} from '../../../../data/Theme'
 
 
 const Home = (props) => {
@@ -35,12 +36,14 @@ const Home = (props) => {
 
   const {theme} = useContext(themeContext)
   return (
-    <ScrollView style={[DefaultStyle.marginForLayout,]}
-    showsVerticalScrollIndicator={false}>
-      <ImageButton url="https://www.pluralsight.com/content/pluralsight/en/jcr:content/image-res/file.transform/share-image/image.img.adf92adc-acea-4580-b408-a1d727cfbfaf.jpg"/>
-      {titles.map((title, key) => (
-        <SectionCourse navigation={props.navigation} key={key} title={title} />
-      ))}
+    <ScrollView style={{backgroundColor: theme.background}}>
+      <ScrollView style={[DefaultStyle.marginForLayout]}
+      showsVerticalScrollIndicator={false}>
+        <ImageButton url="https://www.pluralsight.com/content/pluralsight/en/jcr:content/image-res/file.transform/share-image/image.img.adf92adc-acea-4580-b408-a1d727cfbfaf.jpg"/>
+        {titles.map((title, key) => (
+          <SectionCourse navigation={props.navigation} key={key} title={title} />
+        ))}
+      </ScrollView>
     </ScrollView>
   );
 };
