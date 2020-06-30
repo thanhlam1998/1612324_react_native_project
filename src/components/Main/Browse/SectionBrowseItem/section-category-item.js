@@ -4,10 +4,10 @@ import ImageButton from '../../../Common/image-button'
 
 const SectionCategoryItem = (props) => {
     return (
-        <ScrollView style={styles.item}>
+        <View style={styles.item}>
             <ImageButton url={props.item.imageUrl} title={props.item.name} 
             onPress={() => props.navigation.navigate("Topics", {data: props.item, navigation: props.navigation})}/>
-        </ScrollView>
+        </View>
     )
 }
 
