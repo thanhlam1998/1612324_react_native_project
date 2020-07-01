@@ -11,6 +11,7 @@ import NavigationContainer from '@react-navigation/native/src/NavigationContaine
 import Download from './src/components/Main/Download/download';
 import Browse from './src/components/Main/Browse/browse';
 import Search from './src/components/Main/Search/search';
+import Settings from './src/components/Settings/Settings'
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ScreenKey } from './src/globals/constants';
@@ -138,6 +139,7 @@ const MainNavigation = () => {
         component={MainTabNavigator}
         options={{ headerShown: false }}
       />
+      <MainNavigationStack.Screen name={ScreenKey.SettingScreen} component={Settings} options={{title: "Settings"}} />
       <MainNavigationStack.Screen name="CourseDetail" component={ListCourseDetail} options={{headerTransparent: true, headerTitle: false}} />
       <MainNavigationStack.Screen name="PathDetail" component={PathDetail} options={({ route }) => ({ title: route.params.name })}/>
       <MainNavigationStack.Screen

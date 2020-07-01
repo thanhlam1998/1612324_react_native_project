@@ -2,7 +2,8 @@ export const ScreenKey = {
     MainTabScreen: "mainTabScreen",
     SplashScreen: "splashScreen",
     LoginScreen: "loginScreen",
-    ProfileScreen: "profileScreen"
+    ProfileScreen: "profileScreen",
+    SettingScreen: "settingScreen"
 }
 
 export const HomeTitle = {

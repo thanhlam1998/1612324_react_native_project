@@ -5,6 +5,7 @@ import ImageButton from '../../Common/image-button';
 import DefaultStyle from '../../../globals/style'
 import { ScreenKey } from '../../../globals/constants';
 import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import MainToolBar from '../../ToolBar/MainToolBar'
 import {HomeTitle} from '../../../globals/constants'
 import {themeContext} from '../../../../data/Theme'
 
@@ -13,14 +14,7 @@ const Home = (props) => {
   useLayoutEffect(() => {
     props.navigation.setOptions({
       headerRight: () => 
-      <View style = {styles.iconContainer}>
-        <TouchableOpacity>
-          <MaterialcomunnityIcons name="account-circle" size={25}/>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <MaterialcomunnityIcons name="settings" size={25}/>
-        </TouchableOpacity>
-      </View>
+      <MainToolBar navigation={props.navigation}/>
     })
   })
 

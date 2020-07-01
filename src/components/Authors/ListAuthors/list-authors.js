@@ -15,7 +15,7 @@ const ListAuthors = (props) => {
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             data={props.data}
-            renderItem={({ item }) => <ListAuthorItem item={item} />}
+            renderItem={({ item }) => <ListAuthorItem item={item}/>}
           />
     </View>
   );

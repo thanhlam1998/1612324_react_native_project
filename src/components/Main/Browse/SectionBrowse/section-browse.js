@@ -9,8 +9,10 @@ import {bigTopicsContext} from '../../../../../data/BigTopics'
 import {authorsContext} from '../../../../../data/Authors'
 import {pathContext} from '../../../../../data/Paths'
 import ListAuthors from '../../../Authors/ListAuthors/list-authors'
+import {themeContext} from '../../../../../data/Theme'
 
 const SectionBrowse = (props) => {
+  const {theme} = useContext(themeContext)
   const skillContext = useContext(skillsContext)
   const skills = skillContext.skills;
   var popularSkills = skillContext.popularSkills;
@@ -27,6 +29,20 @@ const SectionBrowse = (props) => {
   const allPaths = useContext(pathContext)
   const paths = allPaths.slice(0,8)
 
+  const styles = StyleSheet.create({
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 5
+    }, 
+    marginForView: {
+        marginBottom: 10
+    },
+    textColorTheme: {
+      color: theme.foreground
+    }
+  });
+
   const titles = {
     none: '',
     PopularSkills: 'Popular Skills',
@@ -37,10 +53,10 @@ const SectionBrowse = (props) => {
     <View style={styles.marginForView}>
       {props.title !== '' && (
         <View style={styles.header}>
-          <Text>{props.title}</Text>
+          <Text style={styles.textColorTheme}>{props.title}</Text>
           {props.title === titles.Paths && 
           <TouchableOpacity onPress={() => props.navigation.navigate("ListPathsBrowse", {name: props.title, data: allPaths})}>
-            <Text>See all ></Text>
+            <Text style={styles.textColorTheme}>See all ></Text>
           </TouchableOpacity>}  
         </View>
       )}
@@ -82,14 +98,3 @@ const SectionBrowse = (props) => {
 };
 
 export default SectionBrowse;
-
-const styles = StyleSheet.create({
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 5
-  }, 
-  marginForView: {
-      marginBottom: 10
-  }
-});
