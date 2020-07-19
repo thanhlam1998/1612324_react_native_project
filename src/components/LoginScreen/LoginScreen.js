@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, Image, Alert, TouchableOpacity, TextInput } from 'react-native';
 import {login} from '../../core/services/authentication_services'
 import { ScreenKey } from '../../globals/constants';
+import {AuthenticationContext} from '../../provider/authentication-provider'
 
 const Login = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [status, setStatus] = useState();
+  const authContext  = useContext(AuthenticationContext)
 
   useEffect(() => {
-    if(status && status.status === 200){
+    if(authContext.state.isAuthenticated){
         props.navigation.navigate(ScreenKey.MainTabScreen)
     } 
-  }, [status])
+  }, [authContext.state.isAuthenticated])
 
   const renderLoginStatus = (status) => {
     if(!status){
@@ -45,7 +47,7 @@ const Login = (props) => {
       {renderLoginStatus(status)}
       <TouchableOpacity style={styles.button}
       onPress={() => {
-          setStatus(login(username, password));
+          authContext.login(username, password)
       }}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>

@@ -31,6 +31,7 @@ import {skillsContext, skills, popularSkills} from './data/Skills'
 import {authorsContext, authors, topAuthors} from './data/Authors'
 import {pathContext, paths} from './data/Paths'
 import {myAccountContext, myPaths, myChanels, myBookmarks, myDownload} from './data/MyAccount'
+import AuthenticationProvider from './src/provider/authentication-provider';
 
 /* -------------------------------------------------------------------------- */
 const BottomTab = createBottomTabNavigator();
@@ -124,7 +125,7 @@ const MainTabNavigator = () => {
 const MainNavigation = () => {
   return (
     <MainNavigationStack.Navigator>
-      {/* <MainNavigationStack.Screen
+      <MainNavigationStack.Screen
         name={ScreenKey.SplashScreen}
         component={SplashScreen}
         options={{ headerShown: false }}
@@ -133,7 +134,7 @@ const MainNavigation = () => {
         name={ScreenKey.LoginScreen}
         component={LoginScreen}
         options={{ headerShown: false }}
-      /> */}
+      />
       <MainNavigationStack.Screen
         name={ScreenKey.MainTabScreen}
         component={MainTabNavigator}
@@ -157,22 +158,24 @@ export default function App() {
   const [myBookmark, setMyBookmark] = useState(myBookmarks)
   return (
     <themeContext.Provider value={{themes, theme, setTheme}}>
-      <CoursesContext.Provider value={courses}>
-        <authorsContext.Provider value={{authors, topAuthors}}>
-          <bigTopicsContext.Provider value={{Conferences, ITOperations, DataProfessional, CreatetiveProfessional, ArchitectureAndConstruction,
-          softwareDevelopment, InformationSecurity, BusinessProfessional, ManufactoringAndDesign, Certifications}}>
-            <skillsContext.Provider value = {{skills, popularSkills}}>
-              <pathContext.Provider value={paths}>
-                <myAccountContext.Provider value={{download, setDownload, myPath, setMyPath, myBookmark, setMyBookmark}}>
-                  <NavigationContainer>
-                    <MainNavigation/>
-                  </NavigationContainer>
-                </myAccountContext.Provider>
-              </pathContext.Provider>
-            </skillsContext.Provider>
-          </bigTopicsContext.Provider>
-        </authorsContext.Provider>
-      </CoursesContext.Provider>
+      <AuthenticationProvider>
+        <CoursesContext.Provider value={courses}>
+          <authorsContext.Provider value={{authors, topAuthors}}>
+            <bigTopicsContext.Provider value={{Conferences, ITOperations, DataProfessional, CreatetiveProfessional, ArchitectureAndConstruction,
+            softwareDevelopment, InformationSecurity, BusinessProfessional, ManufactoringAndDesign, Certifications}}>
+              <skillsContext.Provider value = {{skills, popularSkills}}>
+                <pathContext.Provider value={paths}>
+                  <myAccountContext.Provider value={{download, setDownload, myPath, setMyPath, myBookmark, setMyBookmark}}>
+                    <NavigationContainer>
+                      <MainNavigation/>
+                    </NavigationContainer>
+                  </myAccountContext.Provider>
+                </pathContext.Provider>
+              </skillsContext.Provider>
+            </bigTopicsContext.Provider>
+          </authorsContext.Provider>
+        </CoursesContext.Provider>
+      </AuthenticationProvider>
     </themeContext.Provider>
   );
 }
