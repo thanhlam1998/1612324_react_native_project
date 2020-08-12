@@ -18,6 +18,7 @@ import { ScreenKey } from './src/globals/constants';
 import SplashScreen from './src/components/SplashScreen/SplashScreen';
 import LoginScreen from './src/components/LoginScreen/LoginScreen';
 import RegisterScreen from './src/components/RegisterScreen/RegisterScreen';
+import ForgotPasswordScreen from './src/components/ForgotPasswordScreen/ForgotPasswordScreen';
 import Profile from './src/components/AccountManagement/Account/profile'
 import Topics from './src/components/Topics/Topics'
 import style from './src/globals/style';
@@ -140,6 +141,11 @@ const MainNavigation = () => {
         name={ScreenKey.RegisterScreen}
         component={RegisterScreen}
         options={{ headerTitle: "Register", headerTransparent: true }}
+      />
+      <MainNavigationStack.Screen
+        name={ScreenKey.ForgotPasswordScreen}
+        component={ForgotPasswordScreen}
+        options={{ headerTitle: "Forgot Password", headerTransparent: true }}
       />
       <MainNavigationStack.Screen
         name={ScreenKey.MainTabScreen}

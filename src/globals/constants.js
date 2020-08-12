@@ -2,6 +2,7 @@ export const ScreenKey = {
     MainTabScreen: "mainTabScreen",
     SplashScreen: "splashScreen",
     LoginScreen: "loginScreen",
+    ForgotPasswordScreen: "forgotPasswordScreen",
     RegisterScreen: "registerScreen",
     ProfileScreen: "profileScreen",
     SettingScreen: "settingScreen"
