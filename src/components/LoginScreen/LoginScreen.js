@@ -51,6 +51,18 @@ const Login = (props) => {
       }}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.registerButton}
+      onPress={() => {
+         props.navigation.navigate(ScreenKey.RegisterScreen)
+      }}>
+        <Text style={styles.buttonText}>Register</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.forgotButton}
+      onPress={() => {
+         
+      }}>
+        <Text style={styles.buttonText}>Forgot password</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -86,6 +98,22 @@ const styles = StyleSheet.create({
     alignSelf:"center",
     width: '100%',
     backgroundColor: 'red',
+  },
+  registerButton: {
+    height: 48,
+    marginTop: 20,
+    justifyContent: 'center',
+    alignSelf:"center",
+    width: '100%',
+    backgroundColor: 'gray',
+  },
+  forgotButton: {
+    height: 48,
+    marginTop: 20,
+    justifyContent: 'center',
+    alignSelf:"center",
+    width: '100%',
+    backgroundColor: 'lightgray',
   },
   buttonText: {
     color: '#ffffff',

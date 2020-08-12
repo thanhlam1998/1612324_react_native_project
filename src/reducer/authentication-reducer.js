@@ -12,6 +12,18 @@ export const reducer = (prevState, action) => {
                 ...prevState,
                 isAuthenticated: false,
             }
+        case "REGISTER_SUCCESSED":
+            return {
+                ...prevState,
+                isRegisterSuccess: true,
+                data: action.data,
+            }
+        case "REGISTER_FAILED":
+            return {
+                ...prevState,
+                isRegisterSuccess: false,
+                data: action.data
+            }
         default: 
             throw new Error();
     }

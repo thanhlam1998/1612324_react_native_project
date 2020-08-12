@@ -17,6 +17,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ScreenKey } from './src/globals/constants';
 import SplashScreen from './src/components/SplashScreen/SplashScreen';
 import LoginScreen from './src/components/LoginScreen/LoginScreen';
+import RegisterScreen from './src/components/RegisterScreen/RegisterScreen';
 import Profile from './src/components/AccountManagement/Account/profile'
 import Topics from './src/components/Topics/Topics'
 import style from './src/globals/style';
@@ -125,15 +126,20 @@ const MainTabNavigator = () => {
 const MainNavigation = () => {
   return (
     <MainNavigationStack.Navigator>
-      <MainNavigationStack.Screen
+      {/* <MainNavigationStack.Screen
         name={ScreenKey.SplashScreen}
         component={SplashScreen}
         options={{ headerShown: false }}
-      />
+      /> */}
       <MainNavigationStack.Screen
         name={ScreenKey.LoginScreen}
         component={LoginScreen}
         options={{ headerShown: false }}
+      />
+      <MainNavigationStack.Screen
+        name={ScreenKey.RegisterScreen}
+        component={RegisterScreen}
+        options={{ headerTitle: "Register", headerTransparent: true }}
       />
       <MainNavigationStack.Screen
         name={ScreenKey.MainTabScreen}
