@@ -113,7 +113,8 @@ const SectionCourses = (props) => {
     <View>
       {(props.title === HomeTitle.TopSell ||
         props.title === HomeTitle.TopNew || 
-        props.title === HomeTitle.TopRate ||
+        props.title === HomeTitle.TopRate ||  
+        props.title === HomeTitle.MyCourse ||  
         props. title === HomeTitle.DataProfessional || 
         props.title === HomeTitle.MyBookmark) && (
         <View>

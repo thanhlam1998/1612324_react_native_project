@@ -1,6 +1,25 @@
 import axios from "axios";
 import {config} from "../config/config";
 
+import AsyncStorage from "@react-native-community/async-storage";
+
+AsyncStorage.setItem(
+  "@access_token",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4ZTA0OWQ4LTY4MzctNDQxYi1hOGUzLThkNTkxZDU3ZDEwZSIsImlhdCI6MTU5NzM5NDY4NSwiZXhwIjoxNTk3NDAxODg1fQ.KeENOnhV8LTqrA7bqiVVkfnggCmF8ucLyNlwmHUMYWk"
+);
+
+var token
+
+const getData = async () => {
+  try {
+    token = await AsyncStorage.getItem('@access_token')
+  } catch(e) {
+    // error reading value
+  }
+}
+
+getData();
+
 const baseApi = config.baseApi;
 
 /* -------------------------- get top sell courses -------------------------- */
@@ -78,5 +97,30 @@ export const getTopRateCourse = (dispatch) => (limit, page=1) => {
       })
       .catch((error) => {
         dispatch({ type: "GET_TOP_RATE_FAILED", data: error.response });
+      });
+  };
+
+/* --------------------------- get top rate courses -------------------------- */
+export const getProcessCourse = (dispatch) => () => {
+    var config = {
+      method: "get",
+      url: `${baseApi}/course/process-course`,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": `Bearer ${token}`
+      },
+    };
+    dispatch({
+      type: "GET_PROCESS_COURSE_LOADING"
+    })
+    axios(config)
+      .then((res) => {
+        if (res.status === 200) {
+          dispatch({ type: "GET_PROCESS_COURSE_SUCCESSED", data: res.data });
+        }
+      })
+      .catch((error) => {
+        dispatch({ type: "GET_PROCESS_COURSE_FAILED", data: error.response });
       });
   };

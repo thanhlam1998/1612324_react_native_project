@@ -1,5 +1,5 @@
 export const reducer = (prevState, action) => {
-    switch (action.type){
+    switch (action.type){   
         // Top sell courses
         case "GET_TOP_SELL_LOADING":
             return{
@@ -57,14 +57,14 @@ export const reducer = (prevState, action) => {
                 ...prevState,
                 getTopRateLoading: false,
                 getTopRateSuccess: true,
-                topRate: action.data
+                topRate: action.data,
             }
         case "GET_TOP_RATE_FAILED":
             return {
                 ...prevState,
                 getTopRateLoading: false,
                 getTopRateSuccess: false,
-                topSRate: action.data
+                topRate: action.data
             }
         default: 
             throw new Error();

@@ -1,3 +1,5 @@
+import AsyncStorage from '@react-native-community/async-storage'
+
 export const reducer = (prevState, action) => {
     switch (action.type){
         case "LOGIN_LOADING":
@@ -7,12 +9,13 @@ export const reducer = (prevState, action) => {
                 isAuthenticated: false,
             }
         case "LOGIN_SUCCESSED":
+            AsyncStorage.setItem('@access_token', action.data.token)
             return {
                 ...prevState,
                 isLoginLoading: false,
                 isAuthenticated: true,
                 token: action.data.token,
-                userInfo: action.data.userInfo
+                userInfo: action.data.userInfo,
             }
         case "LOGIN_FAILED":
             return {
