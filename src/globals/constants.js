@@ -9,8 +9,8 @@ export const ScreenKey = {
 }
 
 export const HomeTitle = {
-    SoftwareDevelopment: 'Software Development',
-    ITOperation: 'IT Operation',
+    TopSell: 'Khóa học nổi bật',
+    TopNew: 'Khóa học mới',
     DataProfessional: 'Data Professional',
     CourseList: 'Course List',
     MyPath: 'My paths',

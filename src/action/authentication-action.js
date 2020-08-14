@@ -20,7 +20,7 @@ export const login = (dispatch) => (username, password) => {
   axios(config)
     .then((res) => {
       if (res.status === 200) {
-        dispatch({ type: "LOGIN_SUCCESSED", data: JSON.stringify(res.data) });
+        dispatch({ type: "LOGIN_SUCCESSED", data: res.data });
       } else {
         dispatch({ type: "LOGIN_FAILED" });
       }

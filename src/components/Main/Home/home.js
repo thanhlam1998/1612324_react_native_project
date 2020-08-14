@@ -10,6 +10,7 @@ import {HomeTitle} from '../../../globals/constants'
 import {themeContext} from '../../../../data/Theme'
 
 
+
 const Home = (props) => {
   useLayoutEffect(() => {
     props.navigation.setOptions({
@@ -19,8 +20,8 @@ const Home = (props) => {
   })
 
   const titles = [
-    HomeTitle.SoftwareDevelopment,
-    HomeTitle.ITOperation,
+    HomeTitle.TopSell,
+    HomeTitle.TopNew,
     HomeTitle.DataProfessional,
     HomeTitle.CourseList,
     HomeTitle.MyPath,

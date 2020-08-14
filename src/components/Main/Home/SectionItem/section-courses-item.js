@@ -15,10 +15,10 @@ const SectionCoursesItem = (props) => {
       />  
       <View style={DefaultStyle.contentMargin}>
         <Text style={[DefaultStyle.title, {color: theme.foreground}]}>{props.item.title}</Text>
-        <Text style={DefaultStyle.darkText}>{props.item.author}</Text>
+        <Text style={DefaultStyle.darkText}>{props.item["instructor.user.name"] || "unknown"}</Text>
         <Text
           style={DefaultStyle.darkText}
-        >{`${props.item.level} . ${props.item.release} . ${props.item.duration}`}</Text>
+        >{`${props.item.updatedAt} . ${props.item.totalHours}h`}</Text>
       </View>
     </TouchableOpacity>
   );

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef, useLayoutEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -22,9 +22,13 @@ import {pathContext} from '../../../../../data/Paths'
 import {themeContext} from '../../../../../data/Theme'
 import style from '../../../../globals/style';
 
+import {CourseContext} from '../../../../provider/course-provider'
+
 const SectionCourses = (props) => {
+  var data, allData;
+  const courseContext = useContext(CourseContext)
 
-
+  const [topSell, setTopSell] = useState()
   const courses = useContext(CoursesContext)
   const bigsTopic = useContext(bigTopicsContext)
   const paths = useContext(pathContext)
@@ -41,7 +45,18 @@ const SectionCourses = (props) => {
       marginTop: 10
     }
   });
-  
+
+  useEffect(() => {
+    if(props.title === HomeTitle.TopSell){
+      courseContext.getTopSell(100)
+    }
+  }, [])
+
+  useEffect(() => {
+    if(courseContext.state.getTopSellSuccess === true){
+      setTopSell(courseContext.state.topSell.payload)
+    }
+  }, [courseContext.state.getTopSellLoading])  
 
   const pathData = paths.filter(item => myPath.includes(item.id))
   const bookmarkData = courses.filter(item => myBookmark.includes(item.id))
@@ -55,12 +70,11 @@ const SectionCourses = (props) => {
   var DataProfessional = bigsTopic.DataProfessional;
   DataProfessional = courses.filter(item=> DataProfessional.trending.includes(item.id))
 
-  var data, allData;
   switch (props.title){
-    case HomeTitle.SoftwareDevelopment:
-      allData = softwareDev;
+    case HomeTitle.TopSell:
+      allData = topSell;
       break;
-    case HomeTitle.CourseList:
+    case HomeTitle.TopNew:
       allData = courses;
       break;
     case HomeTitle.ITOperation:
@@ -82,8 +96,8 @@ const SectionCourses = (props) => {
 
   return (
     <View>
-      {(props.title === HomeTitle.SoftwareDevelopment ||
-        props.title === HomeTitle.CourseList || 
+      {(props.title === HomeTitle.TopSell ||
+        props.title === HomeTitle.TopNew || 
         props.title === HomeTitle.ITOperation ||
         props. title === HomeTitle.DataProfessional || 
         props.title === HomeTitle.MyBookmark) && (
@@ -95,7 +109,7 @@ const SectionCourses = (props) => {
                 props.navigation.navigate('ListCourse', { name: props.title, data: allData});
               }}
             >
-              <Text style={styles.textThemeColor}>See all ></Text>
+              <Text style={styles.textThemeColor}>Xem thêm ></Text>
             </TouchableOpacity>
           </View>
           <FlatList
@@ -115,7 +129,7 @@ const SectionCourses = (props) => {
                 props.navigation.navigate('ListPaths', { name: props.title, data: allData})
               }
             >
-              <Text style={styles.textThemeColor}>See all ></Text>
+              <Text style={styles.textThemeColor}>Xem thêm ></Text>
             </TouchableOpacity>
           </View>
           <FlatList
@@ -130,7 +144,7 @@ const SectionCourses = (props) => {
           <View style={styles.header}>
             <Text style={styles.textThemeColor}>{props.title}</Text>
             <TouchableOpacity>
-              <Text style={styles.textThemeColor}>See all ></Text>
+              <Text style={styles.textThemeColor}>Xem thêm ></Text>
             </TouchableOpacity>
           </View>
           <FlatList
