@@ -5,7 +5,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 AsyncStorage.setItem(
   "@access_token",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4ZTA0OWQ4LTY4MzctNDQxYi1hOGUzLThkNTkxZDU3ZDEwZSIsImlhdCI6MTU5NzM5NDY4NSwiZXhwIjoxNTk3NDAxODg1fQ.KeENOnhV8LTqrA7bqiVVkfnggCmF8ucLyNlwmHUMYWk"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4ZTA0OWQ4LTY4MzctNDQxYi1hOGUzLThkNTkxZDU3ZDEwZSIsImlhdCI6MTU5NzQxMTkwOSwiZXhwIjoxNTk3NDE5MTA5fQ.W6yZsDi4Dtw0mfzw39eQBQVMrUUTFtasIl-0TdOtXc8"
 );
 
 var token
@@ -104,7 +104,7 @@ export const getTopRateCourse = (dispatch) => (limit, page=1) => {
 export const getProcessCourse = (dispatch) => () => {
     var config = {
       method: "get",
-      url: `${baseApi}/course/process-course`,
+      url: `${baseApi}/user/get-process-courses`,
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -112,15 +112,15 @@ export const getProcessCourse = (dispatch) => () => {
       },
     };
     dispatch({
-      type: "GET_PROCESS_COURSE_LOADING"
+      type: "GET_MY_COURSE_LOADING"
     })
     axios(config)
       .then((res) => {
         if (res.status === 200) {
-          dispatch({ type: "GET_PROCESS_COURSE_SUCCESSED", data: res.data });
+          dispatch({ type: "GET_MY_COURSE_SUCCESSED", data: res.data });
         }
       })
       .catch((error) => {
-        dispatch({ type: "GET_PROCESS_COURSE_FAILED", data: error.response });
+        dispatch({ type: "GET_MY_COURSE_FAILED", data: error.response });
       });
   };

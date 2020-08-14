@@ -48,7 +48,7 @@ export const reducer = (prevState, action) => {
         case "GET_TOP_RATE_LOADING":
             return{
                 ...prevState,
-                getTopRateoading: true,
+                getTopRateLoading: true,
                 getTopRateSuccess: false,
                 topRate: null
             }
@@ -65,6 +65,29 @@ export const reducer = (prevState, action) => {
                 getTopRateLoading: false,
                 getTopRateSuccess: false,
                 topRate: action.data
+            }
+       
+            // top rate courses
+        case "GET_MY_COURSE_LOADING":
+            return{
+                ...prevState,
+                getMyCourseLoading: true,
+                getMyCourseSuccess: false,
+                myCourse: null
+            }
+        case "GET_MY_COURSE_SUCCESSED":
+            return {
+                ...prevState,
+                getMyCourseLoading: false,
+                getMyCourseSuccess: true,
+                myCourse: action.data,
+            }
+        case "GET_MY_COURSE_FAILED":
+            return {
+                ...prevState,
+                getMyCourseLoading: false,
+                getMyCourseSuccess: false,
+                myCourse: action.data
             }
         default: 
             throw new Error();
