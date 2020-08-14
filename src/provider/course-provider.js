@@ -1,19 +1,27 @@
 import React, { useState, useReducer } from 'react'
 import {reducer} from '../reducer/course-reducer'
-import {getTopSellCourse} from '../action/course-action'
+import {getTopSellCourse, getTopNewCourse, getTopRateCourse} from '../action/course-action'
 
 export const CourseContext = React.createContext()
 
 const initialState = {
     getTopSellLoading: false,
     getTopSellSuccess: false,
-    topSell: null
+    topSell: null,
+
+    getTopNewLoading: false,
+    getTopNewSuccess: false,
+    topNew: null,
+
+    getTopRateLoading: false,
+    getTopRateSuccess: false,
+    topRate: null
 }
 
 const CourseProvider = (props) => {
     // const [authentication, setAuthentication] = useState()
     const [state, dispatch] = useReducer(reducer, initialState)
-    return <CourseContext.Provider value = {{state, getTopSell: getTopSellCourse(dispatch)}}>
+    return <CourseContext.Provider value = {{state, getTopSell: getTopSellCourse(dispatch), getTopNew: getTopNewCourse(dispatch), getTopRate: getTopRateCourse(dispatch)}}>
         {props.children}
     </CourseContext.Provider>
 }

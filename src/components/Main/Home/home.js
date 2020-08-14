@@ -22,7 +22,7 @@ const Home = (props) => {
   const titles = [
     HomeTitle.TopSell,
     HomeTitle.TopNew,
-    HomeTitle.DataProfessional,
+    HomeTitle.TopRate,
     HomeTitle.CourseList,
     HomeTitle.MyPath,
     HomeTitle.MyChannel,

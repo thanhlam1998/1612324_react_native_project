@@ -11,7 +11,7 @@ export const ScreenKey = {
 export const HomeTitle = {
     TopSell: 'Khóa học nổi bật',
     TopNew: 'Khóa học mới',
-    DataProfessional: 'Data Professional',
+    TopRate: 'Khóa học được đánh giá cao',
     CourseList: 'Course List',
     MyPath: 'My paths',
     MyChannel: 'My channels',

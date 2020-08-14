@@ -23,12 +23,15 @@ import {themeContext} from '../../../../../data/Theme'
 import style from '../../../../globals/style';
 
 import {CourseContext} from '../../../../provider/course-provider'
+const defaultLimit = 100
 
 const SectionCourses = (props) => {
   var data, allData;
   const courseContext = useContext(CourseContext)
 
   const [topSell, setTopSell] = useState()
+  const [topNew, setTopNew] = useState()
+  const [topRate, setTopRate] = useState()
   const courses = useContext(CoursesContext)
   const bigsTopic = useContext(bigTopicsContext)
   const paths = useContext(pathContext)
@@ -48,13 +51,25 @@ const SectionCourses = (props) => {
 
   useEffect(() => {
     if(props.title === HomeTitle.TopSell){
-      courseContext.getTopSell(100)
+      courseContext.getTopSell(defaultLimit)
+    }
+    if(props.title === HomeTitle.TopNew){
+      courseContext.getTopNew(defaultLimit)
+    }
+    if(props.title === HomeTitle.TopRate){
+      courseContext.getTopRate(defaultLimit)
     }
   }, [])
 
   useEffect(() => {
     if(courseContext.state.getTopSellSuccess === true){
       setTopSell(courseContext.state.topSell.payload)
+    }
+    if(courseContext.state.getTopNewSuccess === true){
+      setTopNew(courseContext.state.topNew.payload)
+    }
+    if(courseContext.state.getTopRateSuccess === true){
+      setTopRate(courseContext.state.topRate.payload)
     }
   }, [courseContext.state.getTopSellLoading])  
 
@@ -75,10 +90,10 @@ const SectionCourses = (props) => {
       allData = topSell;
       break;
     case HomeTitle.TopNew:
-      allData = courses;
+      allData = topNew;
       break;
-    case HomeTitle.ITOperation:
-      allData = ITOperations;
+    case HomeTitle.TopRate:
+      allData = topRate;
       break;
     case HomeTitle.DataProfessional:
       allData = DataProfessional;
@@ -98,7 +113,7 @@ const SectionCourses = (props) => {
     <View>
       {(props.title === HomeTitle.TopSell ||
         props.title === HomeTitle.TopNew || 
-        props.title === HomeTitle.ITOperation ||
+        props.title === HomeTitle.TopRate ||
         props. title === HomeTitle.DataProfessional || 
         props.title === HomeTitle.MyBookmark) && (
         <View>
