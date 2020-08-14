@@ -13,9 +13,7 @@ export const HomeTitle = {
     TopNew: 'Khóa học mới',
     TopRate: 'Khóa học được đánh giá cao',
     MyCourse: 'Khóa học của tôi',
-    MyPath: 'My paths',
-    MyChannel: 'My channels',
-    MyBookmark: "Bookmarks"
+    MyFavoriteCourse: 'Khóa học ưa thích của tôi',
 }
 
 export const BrowseTitle = {

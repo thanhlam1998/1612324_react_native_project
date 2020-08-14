@@ -18,7 +18,9 @@ const getData = async () => {
   }
 }
 
-getData();
+if(!token){
+  getData();
+}
 
 const baseApi = config.baseApi;
 
@@ -102,6 +104,7 @@ export const getTopRateCourse = (dispatch) => (limit, page=1) => {
 
 /* --------------------------- get top rate courses -------------------------- */
 export const getProcessCourse = (dispatch) => () => {
+    console.log(token)
     var config = {
       method: "get",
       url: `${baseApi}/user/get-process-courses`,
@@ -122,5 +125,30 @@ export const getProcessCourse = (dispatch) => () => {
       })
       .catch((error) => {
         dispatch({ type: "GET_MY_COURSE_FAILED", data: error.response });
+      });
+  };
+
+/* --------------------------- get top rate courses -------------------------- */
+export const getFavoriteCourse = (dispatch) => () => {
+    var config = {
+      method: "get",
+      url: `${baseApi}/user/get-favorite-courses`,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": `Bearer ${token}`
+      },
+    };
+    dispatch({
+      type: "GET_FAVORITE_COURSE_LOADING"
+    })
+    axios(config)
+      .then((res) => {
+        if (res.status === 200) {
+          dispatch({ type: "GET_FAVORITE_COURSE_SUCCESSED", data: res.data });
+        }
+      })
+      .catch((error) => {
+        dispatch({ type: "GET_FAVORITE_COURSE_FAILED", data: error.response });
       });
   };

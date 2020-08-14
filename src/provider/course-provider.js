@@ -5,6 +5,7 @@ import {
   getTopNewCourse,
   getTopRateCourse,
   getProcessCourse,
+  getFavoriteCourse
 } from "../action/course-action";
 
 export const CourseContext = React.createContext();
@@ -25,6 +26,10 @@ const initialState = {
   getMyCourseLoading: false,
   getMyCourseSuccess: false,
   myCourse: null,
+
+  getFavoriteCourseLoading: false,
+  getFavoriteCourseSuccess: false,
+  gavoriteCourse: null,
 };
 
 const CourseProvider = (props) => {
@@ -38,6 +43,7 @@ const CourseProvider = (props) => {
         getTopNew: getTopNewCourse(dispatch),
         getTopRate: getTopRateCourse(dispatch),
         getMyCourse: getProcessCourse(dispatch),
+        getFavoriteCourse: getFavoriteCourse(dispatch)
       }}>
       {props.children}
     </CourseContext.Provider>

@@ -40,6 +40,7 @@ const SectionCourses = (props) => {
   const [topNew, setTopNew] = useState();
   const [topRate, setTopRate] = useState();
   const [myCourse, setMyCourse] = useState();
+  const [favoriteCourse, setFavoriteCourse] = useState();
   const courses = useContext(CoursesContext);
   const bigsTopic = useContext(bigTopicsContext);
   const paths = useContext(pathContext);
@@ -70,6 +71,9 @@ const SectionCourses = (props) => {
     if (props.title === HomeTitle.MyCourse) {
       courseContext.getMyCourse(defaultLimit);
     }
+    if (props.title === HomeTitle.MyFavoriteCourse) {
+      courseContext.getFavoriteCourse(defaultLimit);
+    }
   }, []);
 
   useEffect(() => {
@@ -85,25 +89,10 @@ const SectionCourses = (props) => {
     if (courseContext.state.getMyCourseSuccess === true) {
       setMyCourse(courseContext.state.myCourse.payload);
     }
+    if (courseContext.state.getFavoriteCourseSuccess === true) {
+      setFavoriteCourse(courseContext.state.favoriteCourse.payload);
+    }
   }, [courseContext.state.getTopSellLoading]);
-
-  const pathData = paths.filter((item) => myPath.includes(item.id));
-  const bookmarkData = courses.filter((item) => myBookmark.includes(item.id));
-
-  const softwareDevelopment = bigsTopic.softwareDevelopment;
-  const softwareDev = courses.filter((item) =>
-    softwareDevelopment.trending.includes(item.id)
-  );
-
-  var ITOperations = bigsTopic.ITOperations;
-  ITOperations = courses.filter((item) =>
-    ITOperations.trending.includes(item.id)
-  );
-
-  var DataProfessional = bigsTopic.DataProfessional;
-  DataProfessional = courses.filter((item) =>
-    DataProfessional.trending.includes(item.id)
-  );
 
   switch (props.title) {
     case HomeTitle.TopSell:
@@ -118,14 +107,8 @@ const SectionCourses = (props) => {
     case HomeTitle.MyCourse:
       allData = myCourse;
       break;
-    case HomeTitle.DataProfessional:
-      allData = DataProfessional;
-      break;
-    case HomeTitle.MyPath:
-      allData = pathData;
-      break;
-    case HomeTitle.MyBookmark:
-      allData = bookmarkData;
+    case HomeTitle.MyFavoriteCourse:
+      allData = favoriteCourse;
       break;
   }
   if (allData) {
@@ -136,9 +119,7 @@ const SectionCourses = (props) => {
     <View>
       {(props.title === HomeTitle.TopSell ||
         props.title === HomeTitle.TopNew ||
-        props.title === HomeTitle.TopRate ||
-        props.title === HomeTitle.DataProfessional ||
-        props.title === HomeTitle.MyBookmark) && (
+        props.title === HomeTitle.TopRate) && (
         <View>
           <View style={styles.header}>
             <Text style={styles.textThemeColor}>{props.title}</Text>
@@ -206,7 +187,7 @@ const SectionCourses = (props) => {
             )}></FlatList>
         </View>
       )} */}
-      {props.title === HomeTitle.MyChannel && (
+      {props.title === HomeTitle.MyFavoriteCourse && (
         <View>
           <View style={styles.header}>
             <Text style={styles.textThemeColor}>{props.title}</Text>
@@ -218,7 +199,7 @@ const SectionCourses = (props) => {
             horizontal={true}
             data={data}
             renderItem={({ item }) => (
-              <SectionMyChannel item={item} />
+              <SectionMyCourseItem navigation={props.navigation} item={item} />
             )}></FlatList>
         </View>
       )}

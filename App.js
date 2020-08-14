@@ -173,7 +173,6 @@ export default function App() {
     <themeContext.Provider value={{themes, theme, setTheme}}>
       <AuthenticationProvider>
         <CourseProvider>
-          <CoursesContext.Provider value={courses}>
             <authorsContext.Provider value={{authors, topAuthors}}>
               <bigTopicsContext.Provider value={{Conferences, ITOperations, DataProfessional, CreatetiveProfessional, ArchitectureAndConstruction,
               softwareDevelopment, InformationSecurity, BusinessProfessional, ManufactoringAndDesign, Certifications}}>
@@ -188,7 +187,6 @@ export default function App() {
                 </skillsContext.Provider>
               </bigTopicsContext.Provider>
             </authorsContext.Provider>
-          </CoursesContext.Provider>
         </CourseProvider>
       </AuthenticationProvider>
     </themeContext.Provider>

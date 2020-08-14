@@ -28,9 +28,7 @@ const Home = (props) => {
     HomeTitle.TopNew,
     HomeTitle.TopRate,
     HomeTitle.MyCourse,
-    HomeTitle.MyPath,
-    HomeTitle.MyChannel,
-    HomeTitle.MyBookmark,
+    HomeTitle.MyFavoriteCourse,
   ];
 
   const { theme } = useContext(themeContext);
