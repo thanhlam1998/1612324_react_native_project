@@ -66,6 +66,49 @@ export const reducer = (prevState, action) => {
                 getCourseLikeStatusSuccess: false,
                 courseLike: action.data
             }
+
+        // Get search result
+        case "LIKE_COURSE_LOADING":
+            return{
+                ...prevState,
+                likeCourseLoading: true,
+                likeCourseSuccess: false,
+            }
+        case "LIKE_COURSE_SUCCESSED":
+            return {
+                ...prevState,
+                likeCourseLoading: false,
+                likeCourseSuccess: true,
+            }
+        case "LIKE_COURSE_FAILED":
+            return {
+                ...prevState,
+                likeCourseLoading: false,
+                likeCourseSuccess: false,
+            }
+       
+            // Get search result
+        case "GET_FREE_COURSE_LOADING":
+            return{
+                ...prevState,
+                getFreeCourseLoading: true,
+                getFreeCourseSuccess: false,
+                freeCourse:action.null
+            }
+        case "GET_FREE_COURSE_SUCCESSED":
+            return {
+                ...prevState,
+                getFreeCourseLoading: false,
+                getFreeCourseSuccess: true,
+                freeCourse:action.data
+            }
+        case "GET_FREE_COURSE_FAILED":
+            return {
+                ...prevState,
+                getFreeCourseLoading: false,
+                getFreeCourseSuccess: false,
+                freeCourse:action.data
+            }
       
         default: 
             throw new Error();

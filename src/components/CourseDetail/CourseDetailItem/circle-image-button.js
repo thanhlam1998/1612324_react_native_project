@@ -3,52 +3,55 @@ import { StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {myAccountContext} from '../../../../data/MyAccount'
+import { CourseDetailContext } from "../../../provider/course-detail-provider";
+
 
 const CircleImageButton = (props) => {
+  const courseDetailContext = useContext(CourseDetailContext);
   const {download, setDownload, myBookmark, setMyBookmark} = useContext(myAccountContext)
   const [isDownloaded, setIsDownloaded] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false)
   
-  useEffect(() => {
-    if(download.includes(props.item.id)){
-      setIsDownloaded(true)
-    };
-    if(myBookmark.includes(props.item.id)){
-      setIsBookmarked(true)
-    }
-  }, [])
+  // useEffect(() => {
+  //   console.log(props.courseDetailContext.state)
+  // }, [props.courseDetailContext.likeCourseLoading])
 
-  const handleDownload = () => {
-    if(isDownloaded){
-    } else {
-      setDownload([...download, props.item.id])
-      setIsDownloaded(true)
+  useEffect(() => {
+    if(courseDetailContext.state.likeCourseSuccess === true){
+      props.setIsLike(!props.isLike)
     }
+  }, [courseDetailContext.state.likeCourseLoading])
+
+  useEffect(() => {
+    console.log(courseDetailContext.state)
+    if(courseDetailContext.state.getFreeCourseSuccess === true){
+      props.setIsOwn(!props.isOwn)
+    }
+  }, [courseDetailContext.state.getFreeCourseLoading])
+
+  const handleLike = () => {
+    courseDetailContext.likeCourse(props.item.id)
   }
 
-  const handleBookmark = () => {
-    if(isBookmarked === false){
-      setIsBookmarked(true)
-      setMyBookmark([...myBookmark, props.item.id])
-    }
-    if(isBookmarked === true){
-      setIsBookmarked(false);
-      const bookmarks = myBookmark.filter(item => item !== props.item.id);
-      setMyBookmark(bookmarks)
+  const handleSubcribe = () => {
+    if(props.isOwn == true){
+      return
+    } else {
+      courseDetailContext.getFreeCourse(props.item.id)
     }
   }
 
   return (
     <View style={styles.view}>
       <TouchableOpacity style={styles.touchableView}
-                        onPress = {() => handleBookmark()}>
+                        onPress = {handleLike}>
         <View style={styles.circleImage}>
           <Icon name="bookmark" size={20} color="#ffffff"></Icon>
         </View>
         <Text style={styles.text}>{props.isLike===true ? "Đã thích" : "Thích"}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.touchableView}>
+      <TouchableOpacity style={styles.touchableView} onPress={handleSubcribe}>
         <View style={styles.circleImage}>
           <Icon name="broadcast-tower" size={20} color="#ffffff"></Icon>
         </View>
@@ -56,7 +59,7 @@ const CircleImageButton = (props) => {
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.touchableView} 
-                        onPress={() => handleDownload()}>
+                        >
         <View style={styles.circleImage}>
           <Icon name="arrow-alt-circle-down" size={20} color="#ffffff"></Icon>
         </View>

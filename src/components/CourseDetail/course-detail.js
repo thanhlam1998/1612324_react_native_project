@@ -1,58 +1,65 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, Button, Image, ImageBackground } from 'react-native';
-import { Video } from 'expo-av';
-import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
-import DefaultStyle from '../../globals/style';
-import CircleImageButton from './CourseDetailItem/circle-image-button';
-import Content from './CourseDetailItem/text-content-and-related-button';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs'
-import Contents from './Contents/Contents';
-import ExpandableText from '../Others/ExpandableText'
-import {CourseDetailContext} from '../../provider/course-detail-provider'
+import React, { useContext, useEffect, useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Button,
+  Image,
+  ImageBackground,
+} from "react-native";
+import { Video } from "expo-av";
+import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
+import DefaultStyle from "../../globals/style";
+import CircleImageButton from "./CourseDetailItem/circle-image-button";
+import Content from "./CourseDetailItem/text-content-and-related-button";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import Contents from "./Contents/Contents";
+import ExpandableText from "../Others/ExpandableText";
+import { CourseDetailContext } from "../../provider/course-detail-provider";
 
 const Tab = createMaterialTopTabNavigator();
-const win = Dimensions.get('window')
-const ratio = win.width/541
+const win = Dimensions.get("window");
+const ratio = win.width / 541;
 
 const CourseDetail = (props) => {
-  const courseDetailContext = useContext(CourseDetailContext)
-  const [section, setSection] = useState()
-  const [isOwn, setIsOwn] = useState()
-  const [isLike, setIsLike] = useState()
+  const courseDetailContext = useContext(CourseDetailContext);
+  const [section, setSection] = useState();
+  const [isOwn, setIsOwn] = useState();
+  const [isLike, setIsLike] = useState();
 
   useEffect(() => {
-    courseDetailContext.getDetailCourse(props.route.params.item.id)
-    courseDetailContext.checkOwnCourse(props.route.params.item.id)
-    courseDetailContext.getCourseLikeStatus(props.route.params.item.id)
-
-  }, [])
+    courseDetailContext.getDetailCourse(props.route.params.item.id);
+    courseDetailContext.checkOwnCourse(props.route.params.item.id);
+    courseDetailContext.getCourseLikeStatus(props.route.params.item.id);
+  }, []);
 
   useEffect(() => {
-    if(courseDetailContext.state.getCourseDetailSuccess){
-      setSection(courseDetailContext.state.courseDetail.payload.section)
+    if (courseDetailContext.state.getCourseDetailSuccess) {
+      setSection(courseDetailContext.state.courseDetail.payload.section);
     } else {
-      setSection()
+      setSection();
     }
-  }, [courseDetailContext.state.getCourseDetailLoading])
+  }, [courseDetailContext.state.getCourseDetailLoading]);
   useEffect(() => {
-    if(courseDetailContext.state.checkOwnCourseSuccess){
-      setIsOwn(courseDetailContext.state.ownCourse.payload.isUserOwnCourse)
-    } 
-  }, [courseDetailContext.state.checkOwnCourseLoading])
-  useEffect(() => {
-    if(courseDetailContext.state.getCourseLikeStatusSuccess){
-      setIsLike(courseDetailContext.state.courseLike.likeStatus)
+    if (courseDetailContext.state.checkOwnCourseSuccess) {
+      setIsOwn(courseDetailContext.state.ownCourse.payload.isUserOwnCourse);
     }
-  }, [courseDetailContext.state.getCourseLikeStatusLoading])
+  }, [courseDetailContext.state.checkOwnCourseLoading]);
+  useEffect(() => {
+    if (courseDetailContext.state.getCourseLikeStatusSuccess) {
+      setIsLike(courseDetailContext.state.courseLike.likeStatus);
+    }
+  }, [courseDetailContext.state.getCourseLikeStatusLoading]);
 
   function ContentScreen() {
     return (
       <View style={styles.marginView}>
-        <Contents data={section}/>
+        <Contents data={section} />
       </View>
     );
   }
-  
+
   function TranscriptScreen() {
     return (
       <View style={styles.marginView}>
@@ -77,9 +84,14 @@ const CourseDetail = (props) => {
           useNativeControls
         />
       )}
-      {!props.route.params.item.promoVidUrl && props.route.params.item.imageUrl && (
-        <ImageBackground style={{width: win.width, height: 362 * ratio}} source={{uri: props.route.params.item.imageUrl}}></ImageBackground>
-      )}
+      {!props.route.params.item.promoVidUrl &&
+        props.route.params.item.imageUrl && (
+          <ImageBackground
+            style={{ width: win.width, height: 362 * ratio }}
+            source={{
+              uri: props.route.params.item.imageUrl,
+            }}></ImageBackground>
+        )}
       <View style={styles.marginView}>
         {/* title */}
         <Text style={[styles.title, styles.marginTop]}>
@@ -95,32 +107,63 @@ const CourseDetail = (props) => {
 
         {/* detail */}
         <Text
-          style={[DefaultStyle.darkText, styles.marginTop]}
-        >{`Yều cầu: ${props.route.params.item.requirement}`}</Text>
+          style={[
+            DefaultStyle.darkText,
+            styles.marginTop,
+          ]}>{`Yều cầu: ${props.route.params.item.requirement}`}</Text>
         <Text
-          style={[DefaultStyle.darkText, styles.marginTop]}
-        >{`Ngày cập nhật: ${props.route.params.item.createdAt}`}</Text>
+          style={[
+            DefaultStyle.darkText,
+            styles.marginTop,
+          ]}>{`Ngày cập nhật: ${props.route.params.item.createdAt}`}</Text>
         <Text
-          style={[DefaultStyle.darkText, styles.marginTop]}
-        >{`Thời gian: ${props.route.params.item.totalHours}h`}</Text>
+          style={[
+            DefaultStyle.darkText,
+            styles.marginTop,
+          ]}>{`Thời gian: ${props.route.params.item.totalHours}h`}</Text>
 
         {/* Bookmark - Add To Channel - Download Button */}
-        <CircleImageButton style={styles.marginTop} item={props.route.params.item} isLike = {isLike} isOwn = {isOwn}></CircleImageButton>
+        <CircleImageButton
+          style={styles.marginTop}
+          item={props.route.params.item}
+          isLike={isLike}
+          setIsLike={setIsLike}
+          isOwn={isOwn}
+          setIsOwn={setIsOwn}></CircleImageButton>
 
         {/* Expandable content */}
-        <ExpandableText style={{marginTop: 20}} content={props.route.params.item.description} minLines={3}></ExpandableText>
+        <ExpandableText
+          style={{ marginTop: 20 }}
+          content={props.route.params.item.description}
+          minLines={3}></ExpandableText>
 
         {/* Take learning check Button & View related path button */}
         <View style={styles.marginTop}>
-        <Button title="Take a learning check" color="#636e72" onPress={() => {}}/>
+          <Button
+            title="Take a learning check"
+            color="#636e72"
+            onPress={() => {}}
+          />
         </View>
         <View style={styles.marginTop}>
-        <Button title="View related paths &amp; courses" color="#636e72" onPress={() => {}}/>
+          <Button
+            title="View related paths &amp; courses"
+            color="#636e72"
+            onPress={() => {}}
+          />
         </View>
       </View>
       <Tab.Navigator>
-            <Tab.Screen name ="contents" component={ContentScreen} options={{title: "CONTENTS"}}/>
-            <Tab.Screen name ="transcript" component={TranscriptScreen} options={{title: "TRANSCRIPT"}}/>
+        <Tab.Screen
+          name="contents"
+          component={ContentScreen}
+          options={{ title: "CONTENTS" }}
+        />
+        <Tab.Screen
+          name="transcript"
+          component={TranscriptScreen}
+          options={{ title: "TRANSCRIPT" }}
+        />
       </Tab.Navigator>
     </ScrollView>
   );
@@ -130,28 +173,28 @@ export default CourseDetail;
 
 const styles = StyleSheet.create({
   video: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').width * (9 / 16),
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").width * (9 / 16),
   },
   title: {
     fontSize: 25,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   touchable: {
-    backgroundColor: '#636e72',
+    backgroundColor: "#636e72",
     borderRadius: 15,
     opacity: 1,
     padding: 5,
     paddingLeft: 10,
     paddingRight: 10,
-    alignSelf: 'baseline',
+    alignSelf: "baseline",
   },
   marginView: {
     marginLeft: 10,
     marginRight: 10,
   },
   text_color_white: {
-    color: '#fff',
+    color: "#fff",
   },
   marginTop: {
     marginTop: 5,

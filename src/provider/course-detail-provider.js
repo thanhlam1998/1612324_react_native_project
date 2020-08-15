@@ -3,7 +3,9 @@ import { reducer } from "../reducer/course-detail-reducer";
 import {
  getDetailCourse,
  checkOwnCourse,
- getCourseLikeStatus
+ getCourseLikeStatus,
+ likeCourse,
+ getFreeCourse
 } from "../action/course-detail-action";
 
 export const CourseDetailContext = React.createContext();
@@ -20,7 +22,9 @@ const CourseDetailProvider = (props) => {
         state,
         getDetailCourse: getDetailCourse(dispatch),
         checkOwnCourse: checkOwnCourse(dispatch),
-        getCourseLikeStatus: getCourseLikeStatus(dispatch)
+        getCourseLikeStatus: getCourseLikeStatus(dispatch),
+        likeCourse : likeCourse(dispatch),
+        getFreeCourse: getFreeCourse(dispatch)
       }}>
       {props.children}
     </CourseDetailContext.Provider>
