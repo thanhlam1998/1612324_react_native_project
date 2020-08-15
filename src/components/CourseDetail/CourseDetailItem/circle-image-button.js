@@ -45,14 +45,14 @@ const CircleImageButton = (props) => {
         <View style={styles.circleImage}>
           <Icon name="bookmark" size={20} color="#ffffff"></Icon>
         </View>
-        <Text style={styles.text}>{isBookmarked===true ? "Bookmarked" : "Bookmark"}</Text>
+        <Text style={styles.text}>{props.isLike===true ? "Đã thích" : "Thích"}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.touchableView}>
         <View style={styles.circleImage}>
           <Icon name="broadcast-tower" size={20} color="#ffffff"></Icon>
         </View>
-        <Text style={styles.text}>Add to Channel</Text>
+        <Text style={styles.text}>{props.isOwn===true ? "Đã đăng kí" : "Đăng kí"}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.touchableView} 
@@ -60,7 +60,7 @@ const CircleImageButton = (props) => {
         <View style={styles.circleImage}>
           <Icon name="arrow-alt-circle-down" size={20} color="#ffffff"></Icon>
         </View>
-        <Text style={styles.text}>{isDownloaded ? "Downloaded" : "Download"}</Text>
+        <Text style={styles.text}>{isDownloaded ? "Đã tải về" : "Tải về"}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -71,7 +71,7 @@ export default CircleImageButton;
 const styles = StyleSheet.create({
   view: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     marginTop: 20
   },
   touchableView: {

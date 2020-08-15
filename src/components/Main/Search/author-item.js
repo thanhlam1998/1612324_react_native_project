@@ -4,26 +4,23 @@ import DefaultStyle from '../../../globals/style'
 import {themeContext} from '../../../../data/Theme'
 
 // require('../../../../assets/ic_course.jpg')
-const ListCourseItem = (props) => {
+const AuthorItem = (props) => {
   const {theme} = useContext(themeContext)
   return (
     <TouchableOpacity style={DefaultStyle.item_horizontal} 
                       onPress ={() => {props.navigation.navigate('CourseDetail', {item: props.item});}}>
-      <Image source={props.item.imageUrl ? {uri: props.item.imageUrl}: require('../../../../assets/ic_course.jpg')} 
-              style={[DefaultStyle.item_horizontal_image, {alignSelf: 'center'}]} 
+      <Image source={props.item.avatar ? {uri: props.item.avatar}: require('../../../../assets/ic_course.jpg')} 
+              style={[circleImage, {alignSelf: 'center'}]} 
               resizeMethod={"resize"}/>
       <View style={styles.container}>
-        <Text style={[DefaultStyle.title, {color: theme.foreground}]}>{props.item.title}</Text>
-        <Text style={DefaultStyle.darkText}>{props.item["instructor.user.name"] || "unknown"}</Text>
-        <Text
-          style={DefaultStyle.darkText}
-        >{`${props.item.updatedAt} . ${props.item.totalHours}h`}</Text>
+        <Text style={[DefaultStyle.title, {color: theme.foreground}]}>{props.item.name}</Text>
+        <Text style={DefaultStyle.darkText}>{`${props.item.numcourses} khóa học`}</Text>
       </View>
     </TouchableOpacity>
   );
 };
 
-export default ListCourseItem;
+export default AuthorItem;
 
 const styles = StyleSheet.create({
   container: {
@@ -31,5 +28,15 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft:5,
     marginBottom: 5 
+  },
+  circleImage: {
+    borderWidth:1,
+    borderColor:'rgba(0,0,0,0.2)',
+    alignItems:'center',
+    justifyContent:'center',
+    width:70,
+    height:70,
+    backgroundColor:'#fff',
+    borderRadius:50,
   }
 });

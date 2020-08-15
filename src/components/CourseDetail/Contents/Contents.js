@@ -7,7 +7,7 @@ const Contents = (props) => {
         <View>
             <FlatList 
                 data={props.data}
-                renderItem={({ item }) => <TopicItem item={item} />}/>
+                renderItem={({ item, index }) => <TopicItem item={item} index={index}/>}/>
         </View>
     )
 }

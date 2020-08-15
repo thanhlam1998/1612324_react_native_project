@@ -4,7 +4,7 @@ import DefaultStyle from '../../../globals/style'
 import {themeContext} from '../../../../data/Theme'
 
 // require('../../../../assets/ic_course.jpg')
-const ListCourseItem = (props) => {
+const CourseItem = (props) => {
   const {theme} = useContext(themeContext)
   return (
     <TouchableOpacity style={DefaultStyle.item_horizontal} 
@@ -14,7 +14,7 @@ const ListCourseItem = (props) => {
               resizeMethod={"resize"}/>
       <View style={styles.container}>
         <Text style={[DefaultStyle.title, {color: theme.foreground}]}>{props.item.title}</Text>
-        <Text style={DefaultStyle.darkText}>{props.item["instructor.user.name"] || "unknown"}</Text>
+        <Text style={DefaultStyle.darkText}>{props.item.name}</Text>
         <Text
           style={DefaultStyle.darkText}
         >{`${props.item.updatedAt} . ${props.item.totalHours}h`}</Text>
@@ -23,7 +23,7 @@ const ListCourseItem = (props) => {
   );
 };
 
-export default ListCourseItem;
+export default CourseItem;
 
 const styles = StyleSheet.create({
   container: {

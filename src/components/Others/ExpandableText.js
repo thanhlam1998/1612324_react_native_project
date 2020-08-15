@@ -25,7 +25,9 @@ export default ExpandableText
 const styles = StyleSheet.create({
     flatListCell: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
+        marginLeft: 10,
+        marginRight:10,
         marginTop: 20
     }
 })

@@ -5,7 +5,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 AsyncStorage.setItem(
   "@access_token",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4ZTA0OWQ4LTY4MzctNDQxYi1hOGUzLThkNTkxZDU3ZDEwZSIsImlhdCI6MTU5NzQyODU0OSwiZXhwIjoxNTk3NDM1NzQ5fQ.kBqwYdEv1pq1I-M5EaeIUcu8Sh9t2bENOWKFa0-XHSI"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4ZTA0OWQ4LTY4MzctNDQxYi1hOGUzLThkNTkxZDU3ZDEwZSIsImlhdCI6MTU5NzQ5NDMzNSwiZXhwIjoxNTk3NTAxNTM1fQ.bcNXeJEaDrcQyvKc6GnYEz_fFN6wqUcLhz07TqRewC0"
 );
 
 const baseApi = config.baseApi;

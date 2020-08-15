@@ -16,6 +16,7 @@ import {
 } from "react-native";
 import SectionCoursesItem from "../SectionItem/section-courses-item";
 import SectionMyCourseItem from "../SectionItem/setion-my-course-item";
+import SectionMyFavCourseItem from "../SectionItem/setion-my-fav-course-item.";
 import SectionPathItem from "../../Browse/SectionBrowseItem/section-path-item";
 import SectionFeatureChannel from "../SectionItem/section-feature-channel";
 import SectionMyChannel from "../SectionItem/section-my-channel";
@@ -216,7 +217,7 @@ const SectionCourses = (props) => {
             horizontal={true}
             data={data}
             renderItem={({ item }) => (
-              <SectionMyCourseItem navigation={props.navigation} item={item} />
+              <SectionMyFavCourseItem navigation={props.navigation} item={item} />
             )}></FlatList>
         </View>
       )}

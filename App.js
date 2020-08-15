@@ -36,6 +36,8 @@ import {myAccountContext, myPaths, myChanels, myBookmarks, myDownload} from './d
 import AuthenticationProvider from './src/provider/authentication-provider';
 import CourseProvider from './src/provider/course-provider';
 import BrowseProvider from './src/provider/browse-provider';
+import SearchProvider from './src/provider/search-provider';
+import CourseDetailProvider from './src/provider/course-detail-provider';
 
 /* -------------------------------------------------------------------------- */
 const BottomTab = createBottomTabNavigator();
@@ -175,20 +177,24 @@ export default function App() {
       <AuthenticationProvider>
         <CourseProvider>
           <BrowseProvider>
-              <authorsContext.Provider value={{authors, topAuthors}}>
-                <bigTopicsContext.Provider value={{Conferences, ITOperations, DataProfessional, CreatetiveProfessional, ArchitectureAndConstruction,
-                softwareDevelopment, InformationSecurity, BusinessProfessional, ManufactoringAndDesign, Certifications}}>
-                  <skillsContext.Provider value = {{skills, popularSkills}}>
-                    <pathContext.Provider value={paths}>
-                      <myAccountContext.Provider value={{download, setDownload, myPath, setMyPath, myBookmark, setMyBookmark}}>
-                        <NavigationContainer>
-                          <MainNavigation/>
-                        </NavigationContainer>
-                      </myAccountContext.Provider>
-                    </pathContext.Provider>
-                  </skillsContext.Provider>
-                </bigTopicsContext.Provider>
-              </authorsContext.Provider>
+            <SearchProvider>
+              <CourseDetailProvider>
+                  <authorsContext.Provider value={{authors, topAuthors}}>
+                    <bigTopicsContext.Provider value={{Conferences, ITOperations, DataProfessional, CreatetiveProfessional, ArchitectureAndConstruction,
+                    softwareDevelopment, InformationSecurity, BusinessProfessional, ManufactoringAndDesign, Certifications}}>
+                      <skillsContext.Provider value = {{skills, popularSkills}}>
+                        <pathContext.Provider value={paths}>
+                          <myAccountContext.Provider value={{download, setDownload, myPath, setMyPath, myBookmark, setMyBookmark}}>
+                            <NavigationContainer>
+                              <MainNavigation/>
+                            </NavigationContainer>
+                          </myAccountContext.Provider>
+                        </pathContext.Provider>
+                      </skillsContext.Provider>
+                    </bigTopicsContext.Provider>
+                  </authorsContext.Provider>
+                </CourseDetailProvider>
+              </SearchProvider>
             </BrowseProvider>
         </CourseProvider>
       </AuthenticationProvider>
