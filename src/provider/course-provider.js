@@ -29,7 +29,7 @@ const initialState = {
 
   getFavoriteCourseLoading: false,
   getFavoriteCourseSuccess: false,
-  gavoriteCourse: null,
+  favoriteCourse: null,
 };
 
 const CourseProvider = (props) => {

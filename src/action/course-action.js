@@ -5,22 +5,8 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 AsyncStorage.setItem(
   "@access_token",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4ZTA0OWQ4LTY4MzctNDQxYi1hOGUzLThkNTkxZDU3ZDEwZSIsImlhdCI6MTU5NzQxMTkwOSwiZXhwIjoxNTk3NDE5MTA5fQ.W6yZsDi4Dtw0mfzw39eQBQVMrUUTFtasIl-0TdOtXc8"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4ZTA0OWQ4LTY4MzctNDQxYi1hOGUzLThkNTkxZDU3ZDEwZSIsImlhdCI6MTU5NzQyODU0OSwiZXhwIjoxNTk3NDM1NzQ5fQ.kBqwYdEv1pq1I-M5EaeIUcu8Sh9t2bENOWKFa0-XHSI"
 );
-
-var token
-
-const getData = async () => {
-  try {
-    token = await AsyncStorage.getItem('@access_token')
-  } catch(e) {
-    // error reading value
-  }
-}
-
-if(!token){
-  getData();
-}
 
 const baseApi = config.baseApi;
 
@@ -103,15 +89,15 @@ export const getTopRateCourse = (dispatch) => (limit, page=1) => {
   };
 
 /* --------------------------- get top rate courses -------------------------- */
-export const getProcessCourse = (dispatch) => () => {
-    console.log(token)
+export const getProcessCourse = (dispatch) => async () => {
+  const access_token = await AsyncStorage.getItem('@access_token')
     var config = {
       method: "get",
       url: `${baseApi}/user/get-process-courses`,
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Authorization": `Bearer ${token}`
+        "Authorization": `Bearer ${access_token}`
       },
     };
     dispatch({
@@ -129,14 +115,15 @@ export const getProcessCourse = (dispatch) => () => {
   };
 
 /* --------------------------- get top rate courses -------------------------- */
-export const getFavoriteCourse = (dispatch) => () => {
+export const getFavoriteCourse = (dispatch) => async() => {
+    const access_token = await AsyncStorage.getItem('@access_token')
     var config = {
       method: "get",
       url: `${baseApi}/user/get-favorite-courses`,
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Authorization": `Bearer ${token}`
+        "Authorization": `Bearer ${access_token}`
       },
     };
     dispatch({

@@ -5,7 +5,7 @@ import ImageButton from '../../../Common/image-button'
 const SectionCategoryItem = (props) => {
     return (
         <View style={styles.item}>
-            <ImageButton url={props.item.imageUrl} title={props.item.name} 
+            <ImageButton url={props.imageUrl} title={props.item.name} 
             onPress={() => props.navigation.navigate("Topics", {data: props.item, navigation: props.navigation})}/>
         </View>
     )

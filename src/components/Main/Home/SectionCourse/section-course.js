@@ -76,23 +76,40 @@ const SectionCourses = (props) => {
     }
   }, []);
 
+  //get top sell 
   useEffect(() => {
     if (courseContext.state.getTopSellSuccess === true) {
       setTopSell(courseContext.state.topSell.payload);
     }
+  }, [courseContext.state.getTopSellLoading]);
+
+   //get top new 
+  useEffect(() => {
     if (courseContext.state.getTopNewSuccess === true) {
       setTopNew(courseContext.state.topNew.payload);
     }
+  }, [courseContext.state.getTopNewLoading]);
+
+   //get top rate 
+  useEffect(() => {
     if (courseContext.state.getTopRateSuccess === true) {
       setTopRate(courseContext.state.topRate.payload);
     }
+  }, [courseContext.state.getTopRateLoading]);
+
+   //get my course 
+  useEffect(() => {
     if (courseContext.state.getMyCourseSuccess === true) {
       setMyCourse(courseContext.state.myCourse.payload);
     }
+  }, [courseContext.state.getMyCourseLoading]);
+
+   //get favorite course 
+  useEffect(() => {
     if (courseContext.state.getFavoriteCourseSuccess === true) {
       setFavoriteCourse(courseContext.state.favoriteCourse.payload);
     }
-  }, [courseContext.state.getTopSellLoading]);
+  }, [courseContext.state.getFavoriteCourseLoading]);
 
   switch (props.title) {
     case HomeTitle.TopSell:
@@ -144,26 +161,26 @@ const SectionCourses = (props) => {
       )}
       {props.title === HomeTitle.MyCourse && (
         <View>
-        <View style={styles.header}>
-          <Text style={styles.textThemeColor}>{props.title}</Text>
-          <TouchableOpacity
-            onPress={() => {
-              props.navigation.navigate("ListCourse", {
-                name: props.title,
-                data: allData,
-              });
-            }}>
-            <Text style={styles.textThemeColor}>Xem thêm ></Text>
-          </TouchableOpacity>
+          <View style={styles.header}>
+            <Text style={styles.textThemeColor}>{props.title}</Text>
+            <TouchableOpacity
+              onPress={() => {
+                props.navigation.navigate("ListCourse", {
+                  name: props.title,
+                  data: allData,
+                });
+              }}>
+              <Text style={styles.textThemeColor}>Xem thêm ></Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            data={data}
+            renderItem={({ item }) => (
+              <SectionMyCourseItem navigation={props.navigation} item={item} />
+            )}></FlatList>
         </View>
-        <FlatList
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-          data={data}
-          renderItem={({ item }) => (
-            <SectionMyCourseItem navigation={props.navigation} item={item} />
-          )}></FlatList>
-      </View>
       )}
       {/* {props.title === HomeTitle.MyPath && (
         <View>
