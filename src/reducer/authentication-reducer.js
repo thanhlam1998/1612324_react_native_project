@@ -10,6 +10,7 @@ export const reducer = (prevState, action) => {
             }
         case "LOGIN_SUCCESSED":
             AsyncStorage.setItem('@access_token', action.data.token)
+            AsyncStorage.setItem('@id', action.data.userInfo.id)
             return {
                 ...prevState,
                 isLoginLoading: false,

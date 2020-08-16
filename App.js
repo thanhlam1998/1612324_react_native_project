@@ -136,7 +136,7 @@ const MainNavigation = () => {
         component={SplashScreen}
         options={{ headerShown: false }}
       /> */}
-      {/* <MainNavigationStack.Screen
+      <MainNavigationStack.Screen
         name={ScreenKey.LoginScreen}
         component={LoginScreen}
         options={{ headerShown: false }}
@@ -150,7 +150,7 @@ const MainNavigation = () => {
         name={ScreenKey.ForgotPasswordScreen}
         component={ForgotPasswordScreen}
         options={{ headerTitle: "Forgot Password", headerTransparent: true }}
-      /> */}
+      />
       <MainNavigationStack.Screen
         name={ScreenKey.MainTabScreen}
         component={MainTabNavigator}

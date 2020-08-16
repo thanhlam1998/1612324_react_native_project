@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { StyleSheet, Text, View, Switch } from 'react-native'
 import DefaultStyle from '../../globals/style'
 import {themeContext} from '../../../data/Theme'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 
 
 const Settings = (props) => {
@@ -56,6 +56,10 @@ const Settings = (props) => {
         )
     }
 
+    const signOut = () => {
+        props.navigation.navigate("loginScreen")
+    }
+
     return (
         <ScrollView style={{backgroundColor: theme.background}}>
             <View style={[DefaultStyle.marginForLayout, {marginTop: 10}]}> 
@@ -66,6 +70,9 @@ const Settings = (props) => {
                     </View>
                     <SwitchButton/>
                 </View>
+                <TouchableOpacity onPress={signOut}>
+                    <Text style={{color: theme.foreground, marginTop: 20}}>Đăng xuất</Text>
+                </TouchableOpacity>
             </View>
         </ScrollView>
     )

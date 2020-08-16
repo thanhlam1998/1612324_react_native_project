@@ -311,7 +311,7 @@ const CourseDetail = (props) => {
       </Tab.Navigator>
     </ScrollView>
   );
-};
+};  
 
 export default CourseDetail;
 

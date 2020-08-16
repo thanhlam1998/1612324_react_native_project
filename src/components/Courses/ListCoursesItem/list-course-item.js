@@ -13,11 +13,18 @@ const ListCourseItem = (props) => {
               style={[DefaultStyle.item_horizontal_image, {alignSelf: 'center'}]} 
               resizeMethod={"resize"}/>
       <View style={styles.container}>
-        <Text style={[DefaultStyle.title, {color: theme.foreground}]}>{props.item.title}</Text>
-        <Text style={DefaultStyle.darkText}>{props.item["instructor.user.name"] || props.item.subtitle}</Text>
-        <Text
-          style={DefaultStyle.darkText}
-        >{`${props.item.updatedAt} . ${props.item.totalHours}h`}</Text>
+        <Text style={[DefaultStyle.title, {color: theme.foreground}]}>{props.item.title || props.item.courseTitle}</Text>
+        <Text style={DefaultStyle.darkText}>{props.item["instructor.user.name"] || props.item.subtitle || props.item.instructorName}</Text>
+        {props.item.latestLearnTime && (
+          <Text
+            style={DefaultStyle.darkText}
+          >{`Last time: ${props.item.latestLearnTime}`}</Text>
+        )}
+        {!props.item.latestLearnTime && (
+          <Text
+            style={DefaultStyle.darkText}
+          >{`${props.item.updatedAt} . ${props.item.totalHours}h`}</Text>
+        )}
       </View>
     </TouchableOpacity>
   );

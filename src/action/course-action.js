@@ -3,15 +3,6 @@ import {config} from "../config/config";
 
 import AsyncStorage from "@react-native-community/async-storage";
 
-AsyncStorage.setItem(
-  "@access_token",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4ZTA0OWQ4LTY4MzctNDQxYi1hOGUzLThkNTkxZDU3ZDEwZSIsImlhdCI6MTU5NzU5MDE2OCwiZXhwIjoxNTk3NTk3MzY4fQ.9tmE5ap3zkeqmcbYrEWlTqAPWlUWFY-71ZzprX4ccFQ"
-);
-
-AsyncStorage.setItem(
-  "@id", "88e049d8-6837-441b-a8e3-8d591d57d10e"
-)
-
 const baseApi = config.baseApi;
 
 /* -------------------------- get top sell courses -------------------------- */
