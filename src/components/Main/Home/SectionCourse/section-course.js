@@ -101,6 +101,7 @@ const SectionCourses = (props) => {
    //get my course 
   useEffect(() => {
     if (courseContext.state.getMyCourseSuccess === true) {
+      console.log(courseContext.state.myCourse.payload)
       setMyCourse(courseContext.state.myCourse.payload);
     }
   }, [courseContext.state.getMyCourseLoading]);

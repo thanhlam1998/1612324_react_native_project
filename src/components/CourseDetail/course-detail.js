@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import {
   StyleSheet,
   Text,
@@ -16,6 +16,7 @@ import Content from "./CourseDetailItem/text-content-and-related-button";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Contents from "./Contents/Contents";
 import ExpandableText from "../Others/ExpandableText";
+import ExpandableView from "../Others/ExpandableView";
 import { CourseDetailContext } from "../../provider/course-detail-provider";
 
 const Tab = createMaterialTopTabNavigator();
@@ -27,6 +28,9 @@ const CourseDetail = (props) => {
   const [section, setSection] = useState();
   const [isOwn, setIsOwn] = useState();
   const [isLike, setIsLike] = useState();
+  const [courseDetail, setCOurseDetail] = useState();
+  const [time, setTime] = useState()
+
 
   useEffect(() => {
     courseDetailContext.getDetailCourse(props.route.params.item.id);
@@ -36,6 +40,7 @@ const CourseDetail = (props) => {
 
   useEffect(() => {
     if (courseDetailContext.state.getCourseDetailSuccess === true) {
+      setCOurseDetail(courseDetailContext.state.courseDetail.payload);
       setSection(courseDetailContext.state.courseDetail.payload.section);
     } else {
       setSection();
@@ -67,13 +72,19 @@ const CourseDetail = (props) => {
       </View>
     );
   }
+
+  const handleGetTime = (playbackStatus) => {
+    // setTime(playbackStatus.positionMillis / 1000)
+  }
+
   return (
     <ScrollView>
-      {props.route.params.item.promoVidUrl && (
+      {courseDetail && courseDetail.promoVidUrl && (
         <Video
           source={{
-            uri: props.route.params.item.promoVidUrl,
+            uri: courseDetail.promoVidUrl,
           }}
+          onPlaybackStatusUpdate = {handleGetTime}
           rate={1.0}
           volume={1.0}
           isMuted={false}
@@ -84,12 +95,12 @@ const CourseDetail = (props) => {
           useNativeControls
         />
       )}
-      {!props.route.params.item.promoVidUrl &&
-        props.route.params.item.imageUrl && (
+      {courseDetail && !courseDetail.promoVidUrl &&
+            courseDetail.imageUrl && (
           <ImageBackground
             style={{ width: win.width, height: 362 * ratio }}
             source={{
-              uri: props.route.params.item.imageUrl,
+              uri: courseDetail.imageUrl,
             }}></ImageBackground>
         )}
       <View style={styles.marginView}>
@@ -101,26 +112,51 @@ const CourseDetail = (props) => {
         {/* author */}
         <TouchableOpacity style={[styles.touchable, styles.marginTop]}>
           <Text style={styles.text_color_white}>
-            {props.route.params.item["instructor.user.name"]}
+            {props.route.params.item["instructor.user.name"] ||
+              props.route.params.item.instructorName}
           </Text>
         </TouchableOpacity>
 
-        {/* detail */}
-        <Text
-          style={[
-            DefaultStyle.darkText,
-            styles.marginTop,
-          ]}>{`Yều cầu: ${props.route.params.item.requirement}`}</Text>
-        <Text
-          style={[
-            DefaultStyle.darkText,
-            styles.marginTop,
-          ]}>{`Ngày cập nhật: ${props.route.params.item.createdAt}`}</Text>
-        <Text
-          style={[
-            DefaultStyle.darkText,
-            styles.marginTop,
-          ]}>{`Thời gian: ${props.route.params.item.totalHours}h`}</Text>
+        {!props.route.params.item.instructorName && (
+          <View>
+            {/* detail */}
+            <Text
+              style={[
+                DefaultStyle.darkText,
+                styles.marginTop,
+              ]}>{`Yều cầu: ${props.route.params.item.requirement}`}</Text>
+            <Text
+              style={[
+                DefaultStyle.darkText,
+                styles.marginTop,
+              ]}>{`Ngày cập nhật: ${props.route.params.item.createdAt}`}</Text>
+            <Text
+              style={[
+                DefaultStyle.darkText,
+                styles.marginTop,
+              ]}>{`Thời gian: ${props.route.params.item.totalHours}h`}</Text>
+          </View>
+        )}
+
+        {props.route.params.item.instructorName && (
+          <View>
+            {/* detail */}
+            <Text
+              style={[DefaultStyle.darkText, styles.marginTop]}>{`Thời lượng: ${
+              courseDetail ? courseDetail.totalHours : "0"
+            }h`}</Text>
+            <Text
+              style={[
+                DefaultStyle.darkText,
+                styles.marginTop,
+              ]}>{`Số giờ đã học: ${
+              courseDetail
+                ? (props.route.params.item.process * courseDetail.totalHours) /
+                  100
+                : "0"
+            }h`}</Text>
+          </View>
+        )}
 
         {/* Bookmark - Add To Channel - Download Button */}
         <CircleImageButton
@@ -134,17 +170,11 @@ const CourseDetail = (props) => {
         {/* Expandable content */}
         <ExpandableText
           style={{ marginTop: 20 }}
-          content={props.route.params.item.description}
+          content={props.route.params.item.description || (courseDetail ? courseDetail.description : "")}
           minLines={3}></ExpandableText>
 
         {/* Take learning check Button & View related path button */}
-        <View style={styles.marginTop}>
-          <Button
-            title="Take a learning check"
-            color="#636e72"
-            onPress={() => {}}
-          />
-        </View>
+        <ExpandableView></ExpandableView>
         <View style={styles.marginTop}>
           <Button
             title="View related paths &amp; courses"
