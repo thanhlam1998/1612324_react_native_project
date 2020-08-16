@@ -15,7 +15,7 @@ const TopicItem = (props) => {
                     <Text style={styles.darkText}>{`${props.item.sumHours}h`}</Text>
                 </View>
             </View>
-            <LessonList data={props.item.lesson}/>
+            <LessonList data={props.item.lesson} onPress = {props.onPress}/>
         </View>
     )
 }

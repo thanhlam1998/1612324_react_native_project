@@ -5,7 +5,9 @@ import {
  checkOwnCourse,
  getCourseLikeStatus,
  likeCourse,
- getFreeCourse
+ getFreeCourse,
+ getExcercise,
+ getLessonVideo
 } from "../action/course-detail-action";
 
 export const CourseDetailContext = React.createContext();
@@ -24,7 +26,9 @@ const CourseDetailProvider = (props) => {
         checkOwnCourse: checkOwnCourse(dispatch),
         getCourseLikeStatus: getCourseLikeStatus(dispatch),
         likeCourse : likeCourse(dispatch),
-        getFreeCourse: getFreeCourse(dispatch)
+        getFreeCourse: getFreeCourse(dispatch),
+        getExcercise: getExcercise(dispatch),
+        getLessonVideo: getLessonVideo(dispatch)
       }}>
       {props.children}
     </CourseDetailContext.Provider>

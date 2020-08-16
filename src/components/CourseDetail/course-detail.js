@@ -30,6 +30,8 @@ const CourseDetail = (props) => {
   const [isLike, setIsLike] = useState();
   const [courseDetail, setCOurseDetail] = useState();
   const [time, setTime] = useState()
+  const [lesson, setlesson] = useState()
+  const [excercise, setExcercise] = useState([])
 
 
   useEffect(() => {
@@ -57,10 +59,20 @@ const CourseDetail = (props) => {
     }
   }, [courseDetailContext.state.getCourseLikeStatusLoading]);
 
+  useEffect(() => {
+    if(courseDetailContext.state.getExcerciseSuccess === true){
+      setExcercise(courseDetailContext.state.excercise.payload.exercises)
+    }
+  }, [courseDetailContext.state.getExcerciseLoading]);
+
+  const onHandleLesson = (lessonId) => {
+    courseDetailContext.getExcercise(lessonId)
+  }
+
   function ContentScreen() {
     return (
       <View style={styles.marginView}>
-        <Contents data={section} />
+        <Contents data={section} onPress={onHandleLesson}/>
       </View>
     );
   }
@@ -174,7 +186,7 @@ const CourseDetail = (props) => {
           minLines={3}></ExpandableText>
 
         {/* Take learning check Button & View related path button */}
-        <ExpandableView></ExpandableView>
+        <ExpandableView data={excercise}></ExpandableView>
         <View style={styles.marginTop}>
           <Button
             title="View related paths &amp; courses"

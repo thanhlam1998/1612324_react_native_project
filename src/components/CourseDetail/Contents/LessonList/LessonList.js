@@ -7,7 +7,7 @@ const LessonList = (props) => {
         <View>
             <FlatList 
                 data={props.data}
-                renderItem={({ item }) => <LessonItem item={item} />}/>
+                renderItem={({ item }) => <LessonItem item={item} onPress = {() => props.onPress(item.id)}/>}/>
         </View>
     )
 }

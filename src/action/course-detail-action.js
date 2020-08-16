@@ -137,3 +137,57 @@ export const getFreeCourse = (dispatch) => async(id) => {
         dispatch({ type: "GET_FREE_COURSE_FAILED", data: error.response });
       });
   };
+
+/* -------------------------- get top sell courses -------------------------- */
+export const getExcercise = (dispatch) => async(id) => {
+    const access_token = await AsyncStorage.getItem('@access_token')
+    var data = JSON.stringify({ lessonId: id});
+    var config = {
+      method: "post",
+      url: `${baseApi}/exercise/student/list-exercise-lesson`,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": `Bearer ${access_token}`
+      },
+      data: data
+    };
+    dispatch({
+      type: "GET_EXCERCISE_LOADING"
+    })
+    axios(config)
+      .then((res) => {
+        if (res.status === 200) {
+          dispatch({ type: "GET_EXCERCISE_SUCCESSED", data: res.data });
+        }
+      })
+      .catch((error) => {
+        dispatch({ type: "GET_EXCERCISE_FAILED", data: error.response });
+      });
+  };
+
+/* -------------------------- get top sell courses -------------------------- */
+export const getLessonVideo = (dispatch) => async(courseId, lessonId) => {
+    const access_token = await AsyncStorage.getItem('@access_token')
+    var config = {
+      method: "get",
+      url: `${baseApi}/lesson/video/${courseId}/${lessonId}`,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": `Bearer ${access_token}`
+      },
+    };
+    dispatch({
+      type: "GET_LESSON_VIDEO_LOADING"
+    })
+    axios(config)
+      .then((res) => {
+        if (res.status === 200) {
+          dispatch({ type: "GET_LESSON_VIDEO_SUCCESSED", data: res.data });
+        }
+      })
+      .catch((error) => {
+        dispatch({ type: "GET_LESSON_VIDEO_FAILED", data: error.response });
+      });
+  };

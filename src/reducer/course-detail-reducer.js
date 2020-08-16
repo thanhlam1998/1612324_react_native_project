@@ -109,6 +109,50 @@ export const reducer = (prevState, action) => {
                 getFreeCourseSuccess: false,
                 freeCourse:action.data
             }
+            // Get search result
+        case "GET_EXCERCISE_LOADING":
+            return{
+                ...prevState,
+                getExcerciseLoading: true,
+                getExcerciseSuccess: false,
+                excercise:action.null
+            }
+        case "GET_EXCERCISE_SUCCESSED":
+            return {
+                ...prevState,
+                getExcerciseLoading: false,
+                getExcerciseSuccess: true,
+                excercise:action.data
+            }
+        case "GET_EXCERCISE_FAILED":
+            return {
+                ...prevState,
+                getExcerciseLoading: false,
+                getExcerciseSuccess: false,
+                excercise:action.data
+            }
+            // Get search result
+        case "GET_LESSON_VIDEO_LOADING":
+            return{
+                ...prevState,
+                getLessonVideoLoading: true,
+                getLessonVideoSuccess: false,
+                video:action.null
+            }
+        case "GET_LESSON_VIDEO_SUCCESSED":
+            return {
+                ...prevState,
+                getLessonVideoLoading: false,
+                getLessonVideoSuccess: true,
+                video:action.data
+            }
+        case "GET_LESSON_VIDEO_FAILED":
+            return {
+                ...prevState,
+                getLessonVideoLoading: false,
+                getLessonVideoSuccess: false,
+                video:action.data
+            }
       
         default: 
             throw new Error();

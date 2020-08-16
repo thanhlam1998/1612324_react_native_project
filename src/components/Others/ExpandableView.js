@@ -4,15 +4,24 @@ import MaterialcomunnityIcons from "react-native-vector-icons/MaterialCommunityI
 import { FlatList } from "react-native-gesture-handler";
 
 const ExpandableText = (props) => {
-  const [expand, setExpand] = useState(false);
+  const [expand, setExpand] = useState(true);
   return (
     <View style={styles.flatListCell}>
       <Button
         title={"Bài tập"}
         color="#636e72"
-        onPress={() => setExpand((expand) => !expand)}>
-      </Button>
-      {expand && <FlatList></FlatList>}
+        onPress={() => setExpand((expand) => !expand)}></Button>
+      {expand && (
+        <FlatList
+          horizontal={true}
+          data={props.data}
+          renderItem={({ item }) => (
+            <View style={styles.exercise}>
+                <Text>{item.title}</Text>
+                <Text>{`${item.exercises_questions.length} câu hỏi`}</Text>
+            </View>
+          )}></FlatList>
+      )}
     </View>
   );
 };
@@ -25,9 +34,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-
-    backgroundColor: "#636E72", 
+    backgroundColor: "#636E72",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+  },
+  exercise:{
+    backgroundColor: "#eeeeee",
+    marginTop: 5,
+    paddingLeft: 5
   }
 });

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 
 const LessonItem = (props) => {
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress = {props.onPress}>
             <Text>{props.item.name}</Text>
             <Text>{`${props.item.hours}h`}</Text>
         </TouchableOpacity>
