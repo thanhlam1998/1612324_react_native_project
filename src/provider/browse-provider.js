@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from "react";
 import { reducer } from "../reducer/browse-reducer";
-import { getAllCategory } from "../action/browse-action";
+import { getAllCategory, getSuggestedCourse, getCourseByCategory } from "../action/browse-action";
 
 export const BrowseContext = React.createContext();
 
@@ -17,6 +17,8 @@ const BrowseProvider = (props) => {
       value={{
         state,
         getAllCategory: getAllCategory(dispatch),
+        getSuggestedCourse: getSuggestedCourse(dispatch),
+        getCourseByCategory: getCourseByCategory(dispatch)
       }}>
       {props.children}
     </BrowseContext.Provider>

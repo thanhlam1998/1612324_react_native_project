@@ -5,8 +5,12 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 AsyncStorage.setItem(
   "@access_token",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4ZTA0OWQ4LTY4MzctNDQxYi1hOGUzLThkNTkxZDU3ZDEwZSIsImlhdCI6MTU5NzQ5NDMzNSwiZXhwIjoxNTk3NTAxNTM1fQ.bcNXeJEaDrcQyvKc6GnYEz_fFN6wqUcLhz07TqRewC0"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4ZTA0OWQ4LTY4MzctNDQxYi1hOGUzLThkNTkxZDU3ZDEwZSIsImlhdCI6MTU5NzU0NTE4MywiZXhwIjoxNTk3NTUyMzgzfQ.N8G4HgHc3m-xmF8CBpoBxQi5m8K2JgRP0vsg2jpYd_w"
 );
+
+AsyncStorage.setItem(
+  "@id", "88e049d8-6837-441b-a8e3-8d591d57d10e"
+)
 
 const baseApi = config.baseApi;
 

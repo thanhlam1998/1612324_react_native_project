@@ -10,6 +10,7 @@ import { authorsContext } from "../../../../../data/Authors";
 import { pathContext } from "../../../../../data/Paths";
 import ListAuthors from "../../../Authors/ListAuthors/list-authors";
 import { themeContext } from "../../../../../data/Theme";
+import { BrowseContext } from "../../../../provider/browse-provider";
 
 const image = [
   "https://cdn.dribbble.com/users/46822/screenshots/1335062/stars.jpg",
@@ -24,8 +25,10 @@ const image = [
 
 const SectionBrowse = (props) => {
   const { category, setCategory } = useState();
-
+  const browseContext = useContext(BrowseContext);
+  const [courseData, setCourseData] = useState();
   const { data } = props;
+  const [title, setTitle] = useState()
 
   const { theme } = useContext(themeContext);
   const skillContext = useContext(skillsContext);
@@ -59,6 +62,24 @@ const SectionBrowse = (props) => {
       color: theme.foreground,
     },
   });
+
+  useEffect(() => {
+    browseContext.state.getCourseByCategorySuccess = false
+  }, [])
+
+  useEffect(() => {
+    if (browseContext.state.getCourseByCategorySuccess === true) {
+      props.navigation.navigate("ListCourse", {
+        name: title,
+        data: browseContext.state.courses.payload.rows
+      })
+    }
+  }, [browseContext.state.getCourseByCategoryLoading]);
+
+  const handleCategoryClick = (item) => {
+    setTitle(item.name)
+    browseContext.getCourseByCategory(item.id);
+  };
 
   const titles = {
     none: "",
@@ -95,7 +116,8 @@ const SectionBrowse = (props) => {
               <SectionCategoryItem
                 item={item}
                 imageUrl={image[index]}
-                navigation={props.navigation}></SectionCategoryItem>
+                navigation={props.navigation}
+                onPress={() => handleCategoryClick(item)}></SectionCategoryItem>
             )}
           />
         </ScrollView>

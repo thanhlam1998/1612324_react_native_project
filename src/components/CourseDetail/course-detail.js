@@ -35,7 +35,7 @@ const CourseDetail = (props) => {
   }, []);
 
   useEffect(() => {
-    if (courseDetailContext.state.getCourseDetailSuccess) {
+    if (courseDetailContext.state.getCourseDetailSuccess === true) {
       setSection(courseDetailContext.state.courseDetail.payload.section);
     } else {
       setSection();

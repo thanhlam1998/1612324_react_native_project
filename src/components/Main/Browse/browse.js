@@ -15,6 +15,7 @@ const Browse = (props) => {
   const browseContext = useContext(BrowseContext)
 
   const [data, setData] = useState()
+  const [suggestedCourse, setSuggestedCourse] = useState()
 
   useLayoutEffect(() => {
     props.navigation.setOptions({
@@ -38,16 +39,31 @@ const Browse = (props) => {
   }, [browseContext.state.getAllCategoryLoading])
 
   useEffect(() => {
+    if(browseContext.state.getSuggestedCourseSuccess === true){
+      setSuggestedCourse(browseContext.state.suggestedCourse.payload)
+    }
+  }, [browseContext.state.getSuggestedCourseLoading])
+
+  useEffect(() => {
     browseContext.getAllCategory()
+    browseContext.getSuggestedCourse()
   }, [])
 
-  const titles = ['',BrowseTitle.TopAuthors];
+  const handleSuggestedCourse = () => {
+    props.navigation.navigate("ListCourse", {
+      name: "Khóa học gợi ý",
+      data: suggestedCourse
+    })
+  }
+
+  const titles = [''];
   return (
     <ScrollView style={{backgroundColor: theme.background}}>
       <ScrollView
         style={DefaultStyle.marginForLayout}
         showsVerticalScrollIndicator={false}>
         <ImageButton
+          onPress = {handleSuggestedCourse}
           title="GỢI Ý KHÓA HỌC CHO BẠN"
           url={
             'https://hd-background.com/wp-content/uploads/2019/12/blue-vector-wallpaper-7216-hd-wallpapers.jpg'

@@ -14,7 +14,7 @@ const ListCourseItem = (props) => {
               resizeMethod={"resize"}/>
       <View style={styles.container}>
         <Text style={[DefaultStyle.title, {color: theme.foreground}]}>{props.item.title}</Text>
-        <Text style={DefaultStyle.darkText}>{props.item["instructor.user.name"] || "unknown"}</Text>
+        <Text style={DefaultStyle.darkText}>{props.item["instructor.user.name"] || props.item.subtitle}</Text>
         <Text
           style={DefaultStyle.darkText}
         >{`${props.item.updatedAt} . ${props.item.totalHours}h`}</Text>

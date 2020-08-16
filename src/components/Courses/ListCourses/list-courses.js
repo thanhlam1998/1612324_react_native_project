@@ -9,13 +9,13 @@ import {
 } from 'react-native';
 import ListCourseItem from '../ListCoursesItem/list-course-item';
 import DefaultStyle from '../../../globals/style';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import {themeContext} from '../../../../data/Theme'
 
 const ListCourses = (props) => {
   const {theme} = useContext(themeContext)
   return (
-    <View style={{backgroundColor: theme.background}}>
+    <ScrollView style={{backgroundColor: theme.background}}>
       <View style={DefaultStyle.marginForLayout}>
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -23,7 +23,7 @@ const ListCourses = (props) => {
           renderItem={({ item }) => <ListCourseItem item={item} navigation={props.navigation}/>}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
