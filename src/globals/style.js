@@ -6,9 +6,9 @@ export default StyleSheet.create({
   /* ------------ Default style for item in FlatView or SectionView ----------- */
   item: {
     marginRight: 10,
-    marginTop: 10,
+    marginTop: 5,
     width: 200,
-    backgroundColor: '#F4F4F4',
+    backgroundColor: '#222222',
   },
   image: {
     width: 200,

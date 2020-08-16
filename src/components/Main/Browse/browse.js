@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useContext, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import DefaultStyle from '../../../globals/style';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -6,9 +6,16 @@ import ImageButton from '../../Common/image-button';
 import SectionBrowse from '../Browse/SectionBrowse/section-browse';
 import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import {BrowseTitle} from '../../../globals/constants'
+import {themeContext} from '../../../../data/Theme'
+import {BrowseContext} from "../../../provider/browse-provider";
+
 
 const Browse = (props) => {
+  const {theme} = useContext(themeContext)
+  const browseContext = useContext(BrowseContext)
 
+  const [data, setData] = useState()
+  const [suggestedCourse, setSuggestedCourse] = useState()
 
   useLayoutEffect(() => {
     props.navigation.setOptions({
@@ -25,26 +32,47 @@ const Browse = (props) => {
     });
   });
 
-  const titles = ['', BrowseTitle.PopularSkills, BrowseTitle.Paths, BrowseTitle.TopAuthors];
+  useEffect(() => {
+    if(browseContext.state.getAllCategorySuccess){
+      setData(browseContext.state.category.payload)
+    }
+  }, [browseContext.state.getAllCategoryLoading])
+
+  useEffect(() => {
+    if(browseContext.state.getSuggestedCourseSuccess === true){
+      setSuggestedCourse(browseContext.state.suggestedCourse.payload)
+    }
+  }, [browseContext.state.getSuggestedCourseLoading])
+
+  useEffect(() => {
+    browseContext.getAllCategory()
+    browseContext.getSuggestedCourse()
+  }, [])
+
+  const handleSuggestedCourse = () => {
+    props.navigation.navigate("ListCourse", {
+      name: "Khóa học gợi ý",
+      data: suggestedCourse
+    })
+  }
+
+  const titles = [''];
   return (
-    <ScrollView
-      style={DefaultStyle.marginForLayout}
-      showsVerticalScrollIndicator={false}>
-      <ImageButton
-        title="NEW RELEASE"
-        url={
-          'https://www.conceptdata.co.uk/images/blog/blog-flat-wallpapers.gif'
-        }
-      />
-      <ImageButton
-        title="RECOMMEND FOR YOU"
-        url={
-          'https://hd-background.com/wp-content/uploads/2019/12/blue-vector-wallpaper-7216-hd-wallpapers.jpg'
-        }
-      />
-      {titles.map((title, key) => (
-        <SectionBrowse navigation={props.navigation} key={key} title={title} />
-      ))}
+    <ScrollView style={{backgroundColor: theme.background}}>
+      <ScrollView
+        style={DefaultStyle.marginForLayout}
+        showsVerticalScrollIndicator={false}>
+        <ImageButton
+          onPress = {handleSuggestedCourse}
+          title="GỢI Ý KHÓA HỌC CHO BẠN"
+          url={
+            'https://hd-background.com/wp-content/uploads/2019/12/blue-vector-wallpaper-7216-hd-wallpapers.jpg'
+          }
+        />
+        {titles.map((title, key) => (
+          <SectionBrowse navigation={props.navigation} key={key} title={title} data={data}/>
+        ))}
+      </ScrollView>
     </ScrollView>
   );
 };

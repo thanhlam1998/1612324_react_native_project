@@ -4,9 +4,9 @@ import DefaultStyle from '../../../globals/style';
 
 const ListPathItem = (props) => {
   return (
-    <TouchableOpacity style={DefaultStyle.item_horizontal}>
+    <TouchableOpacity style={DefaultStyle.item_horizontal} onPress={() => props.navigation.navigate('PathDetail', {name: props.item.name, item: props.item})}>
       <View>
-        <View style={{backgroundColor:"#222222"}}>
+        <View style={{backgroundColor:"#000000"}}>
           <Image
             source={props.item.imageUrl ? {uri: props.item.imageUrl} : require('../../../../assets/ic_course.jpg')}
             style={DefaultStyle.item_horizontal_image}

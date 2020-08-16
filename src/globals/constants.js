@@ -2,17 +2,18 @@ export const ScreenKey = {
     MainTabScreen: "mainTabScreen",
     SplashScreen: "splashScreen",
     LoginScreen: "loginScreen",
-    ProfileScreen: "profileScreen"
+    ForgotPasswordScreen: "forgotPasswordScreen",
+    RegisterScreen: "registerScreen",
+    ProfileScreen: "profileScreen",
+    SettingScreen: "settingScreen"
 }
 
 export const HomeTitle = {
-    SoftwareDevelopment: 'Software Development',
-    ITOperation: 'IT Operation',
-    DataProfessional: 'Data Professional',
-    CourseList: 'Course List',
-    MyPath: 'My paths',
-    MyChannel: 'My channels',
-    MyBookmark: "Bookmarks"
+    TopSell: 'Khóa học nổi bật',
+    TopNew: 'Khóa học mới',
+    TopRate: 'Khóa học được đánh giá cao',
+    MyCourse: 'Khóa học của tôi',
+    MyFavoriteCourse: 'Khóa học ưa thích của tôi',
 }
 
 export const BrowseTitle = {

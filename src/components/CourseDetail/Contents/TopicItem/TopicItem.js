@@ -8,14 +8,14 @@ const TopicItem = (props) => {
         <View style={styles.borderBottom}>
             <View style={styles.itemHorrizontal}>
                 <View style={styles.imageSize}>
-                    <Text style={styles.text}>{props.item.topic}</Text>
+                    <Text style={styles.text}>{props.index + 1}</Text>
                 </View>
                 <View style={styles.container}>
-                    <Text style={styles.title}>{props.item.title}</Text>
-                    <Text style={styles.darkText}>{props.item.duration}</Text>
+                    <Text style={styles.title}>{props.item.name}</Text>
+                    <Text style={styles.darkText}>{`${props.item.sumHours}h`}</Text>
                 </View>
             </View>
-            <LessonList data={props.item.lessons}/>
+            <LessonList data={props.item.lesson} onPress = {props.onPress}/>
         </View>
     )
 }

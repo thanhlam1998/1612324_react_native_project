@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import {themeContext} from '../../../../data/Theme'
 
 const ListAuthorItem = (props) => {
+    const {theme} = useContext(themeContext)
     return (
         <TouchableOpacity style={styles.touchableView}>
             <Image style={styles.circleImage} source={{uri: props.item.imageUrl || "https://w7.pngwing.com/pngs/340/956/png-transparent-profile-user-icon-computer-icons-user-profile-head-ico-miscellaneous-black-desktop-wallpaper.png"}}></Image>
-            <Text numberOfLines={2}>{props.item.name}</Text>
+            <Text numberOfLines={2} style={{color: theme.foreground}}>{props.item.name}</Text>
         </TouchableOpacity>
     )
 }
