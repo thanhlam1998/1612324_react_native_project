@@ -5,7 +5,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 AsyncStorage.setItem(
   "@access_token",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4ZTA0OWQ4LTY4MzctNDQxYi1hOGUzLThkNTkxZDU3ZDEwZSIsImlhdCI6MTU5NzU2NjQ3NywiZXhwIjoxNTk3NTczNjc3fQ.ittyd2yP7I6sRBqpxQzOZTP7K5DeSdywsXLSQbKge2o"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4ZTA0OWQ4LTY4MzctNDQxYi1hOGUzLThkNTkxZDU3ZDEwZSIsImlhdCI6MTU5NzU5MDE2OCwiZXhwIjoxNTk3NTk3MzY4fQ.9tmE5ap3zkeqmcbYrEWlTqAPWlUWFY-71ZzprX4ccFQ"
 );
 
 AsyncStorage.setItem(

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useContext } from 'react';
+import React, { useLayoutEffect, useContext, useEffect, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -13,6 +13,7 @@ import MaterialcomunnityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { myAccountContext } from '../../../../data/MyAccount';
 import { CoursesContext } from '../../../../data/Courses';
 import { themeContext } from '../../../../data/Theme';
+import AsyncStorage from "@react-native-community/async-storage";
 
 const Download = (props) => {
   const {theme} = useContext(themeContext);
@@ -32,9 +33,25 @@ const Download = (props) => {
   });
 
   /* -------------------------- Get data from context ------------------------- */
-  const courses = useContext(CoursesContext);
-  const { download, setDownload } = useContext(myAccountContext);
-  const myDownload = courses.filter((item) => download.includes(item.id));
+  const  [download, setDownload]  = useState([]);
+
+
+  useEffect(() => {
+    getDownload()
+  }, [])
+
+  const getDownload = async () => {
+    var downloadData = await AsyncStorage.getItem("@downloaded")
+    if(downloadData){
+      downloadData = await JSON.parse(downloadData)
+      setDownload(downloadData)
+    }
+  }
+
+  const handleRemove = async () => {
+    AsyncStorage.removeItem("@downloaded")
+    setDownload([])
+  }
 
   const styles = StyleSheet.create({
     header: {
@@ -52,7 +69,6 @@ const Download = (props) => {
       color: theme.foreground,
     },
   });
-
   return (
     <ScrollView style={{backgroundColor: theme.background}}>
       <ScrollView
@@ -60,15 +76,15 @@ const Download = (props) => {
         showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Text style={styles.textColorTheme}>
-            {myDownload.length}
-            {myDownload.length > 1 ? ' courses' : ' course'}
+            {download ? download.length : "0"}
+            {download && download.length > 1 ? ' courses' : ' course'}
           </Text>
-          <TouchableOpacity onPress={() => setDownload([])}>
+          <TouchableOpacity onPress={handleRemove}>
             <Text style={styles.textColorTheme}>REMOVE ALL ></Text>
           </TouchableOpacity>
         </View>
         <FlatList
-          data={myDownload}
+          data={download}
           renderItem={({ item }) => <ListCourseItem item={item} navigation = {props.navigation}/>}></FlatList>
       </ScrollView>
     </ScrollView>

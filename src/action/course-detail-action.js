@@ -10,7 +10,7 @@ export const getDetailCourse = (dispatch) => async(id) => {
     const access_token = await AsyncStorage.getItem('@access_token')
     var config = {
       method: "get",
-      url: `${baseApi}/course/detail-with-lesson/${id}`,
+      url: `${baseApi}/course/get-course-detail/${id}/null`,
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",

@@ -153,7 +153,6 @@ export const reducer = (prevState, action) => {
                 getLessonVideoSuccess: false,
                 video:action.data
             }
-      
         default: 
             throw new Error();
     }
